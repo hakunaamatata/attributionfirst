@@ -8,23 +8,30 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Our lead volume increased 3x in just 2 months. Junaid's data-driven approach to Google Ads completely transformed our digital marketing results.",
-    name: "Rahul S.",
-    role: "CEO",
-    company: "TechStart Solutions",
+      "Efficient, capable, knowledgable, friendly and reliable. If you need a PPC expert and you want your campaign to be successful — better hire Junaid.",
+    name: "Michael Simkin",
+    role: "Client",
+    company: "Climate-Tech & Wellness",
   },
   {
     quote:
-      "The cost per lead dropped by 40% after working with Junaid. His expertise in campaign optimization and A/B testing is unmatched.",
-    name: "Priya M.",
-    role: "Marketing Director",
-    company: "PropCo Realty",
+      "A pleasant and reliable experience. He takes on my toughest requests and always delivers prompt solutions. His experience in the industry is clear in the detail of his work.",
+    name: "Zachary Miller",
+    role: "Sr. Campaign Manager",
+    company: "ReachLocal",
   },
   {
     quote:
-      "Best PPC strategist we've worked with. He took the time to understand our business goals and delivered campaigns that actually drove revenue, not just clicks.",
-    name: "Amit K.",
+      "A quick learner who effortlessly stays on top of tasks, ensuring projects are completed with efficiency and precision. His proactive approach makes him a great asset to any team.",
+    name: "Sarah Tropper",
+    role: "Manager",
+    company: "Marketing & Advertising",
+  },
+  {
+    quote:
+      "Someone you can really count on. He knows what he is doing and helped us curate various strategies. A growthful experience to work by his side.",
+    name: "Zaid Khan",
     role: "Founder",
-    company: "GrowX Digital",
+    company: "Froheyo",
   },
 ];

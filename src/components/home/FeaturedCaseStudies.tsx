@@ -7,7 +7,7 @@ export default function FeaturedCaseStudies() {
     <section id="case-studies" className="py-16 md:py-24 bg-surface scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary leading-tight tracking-tight mb-4">
             Proof That Speaks For Itself
           </h2>
           <p className="text-text-secondary text-lg max-w-2xl mx-auto">
@@ -56,7 +56,7 @@ export default function FeaturedCaseStudies() {
 
         <div className="text-center mt-12">
           <Link
-            href="/#case-studies"
+            href="/case-studies"
             className="inline-flex items-center gap-2 text-accent hover:text-accent-hover font-semibold transition-colors"
           >
             <TrendingUp className="w-5 h-5" />

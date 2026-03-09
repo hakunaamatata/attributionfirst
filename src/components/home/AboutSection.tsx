@@ -1,4 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ChevronDown, Briefcase, Award, FileText } from "lucide-react";
+import { experience, achievements, resumePdfUrl } from "@/data/about";
 
 const skills = [
   "Google Ads", "Meta Ads", "Bing Ads", "GA4", "GTM",
@@ -63,7 +66,7 @@ export default function AboutSection() {
               ))}
             </div>
 
-            <div className="about-skill-tags flex flex-wrap gap-2">
+            <div className="about-skill-tags flex flex-wrap gap-2 mb-6">
               {skills.map((skill, i) => (
                 <span
                   key={skill}
@@ -73,6 +76,58 @@ export default function AboutSection() {
                 </span>
               ))}
             </div>
+
+            {/* More details: Experience & Achievements */}
+            <details className="group/about-details rounded-xl border border-border bg-surface overflow-hidden">
+              <summary className="flex items-center justify-between gap-2 cursor-pointer list-none px-4 py-3 text-accent font-semibold hover:bg-accent/5 transition-colors [&::-webkit-details-marker]:hidden">
+                <span className="flex items-center gap-2">
+                  <ChevronDown className="w-4 h-4 transition-transform group-open/about-details:rotate-180" />
+                  More details
+                </span>
+              </summary>
+              <div className="px-4 pb-4 pt-1 space-y-6 border-t border-border">
+                <div>
+                  <h3 className="flex items-center gap-2 text-primary font-bold text-sm mb-3">
+                    <Briefcase className="w-4 h-4 text-accent" />
+                    Experience
+                  </h3>
+                  <ul className="space-y-4">
+                    {experience.map((exp) => (
+                      <li key={`${exp.company}-${exp.period}`} className="pl-0">
+                        <p className="font-semibold text-primary text-sm">{exp.role}</p>
+                        <p className="text-text-secondary text-sm">{exp.company} · {exp.period}</p>
+                        <p className="text-text-secondary text-sm mt-1 leading-relaxed" style={{ color: "#374151" }}>{exp.summary}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="flex items-center gap-2 text-primary font-bold text-sm mb-3">
+                    <Award className="w-4 h-4 text-accent" />
+                    Key achievements
+                  </h3>
+                  <ul className="space-y-2">
+                    {achievements.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-text-secondary leading-relaxed" style={{ color: "#374151" }}>
+                        <span className="text-accent mt-1.5 shrink-0">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="pt-2">
+                  <Link
+                    href={resumePdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-accent hover:text-accent-hover font-semibold text-sm transition-colors"
+                  >
+                    <FileText className="w-4 h-4" />
+                    Download resume (PDF)
+                  </Link>
+                </div>
+              </div>
+            </details>
           </div>
         </div>
       </div>

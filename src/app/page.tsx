@@ -60,11 +60,6 @@ export default function HomePage() {
       <FadeInSection>
         <ContactSection />
       </FadeInSection>
-      {/* Gradient bridge: smooth transition from white to dark CTA */}
-      <div
-        className="h-24 bg-gradient-to-b from-white to-primary"
-        aria-hidden
-      />
       <FinalCTA />
     </>
   );

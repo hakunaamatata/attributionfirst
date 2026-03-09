@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Phone, MessageCircle, CheckCircle } from "lucide-react";
+import { ArrowLeft, Phone, MessageCircle, CheckCircle, FileDown, ArrowRight } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
 import { siteConfig } from "@/data/siteConfig";
 
@@ -109,24 +109,53 @@ export default async function CaseStudyDetailPage({ params }: Props) {
             </div>
 
             {/* Results */}
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">
+            <div className="space-y-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary">
                 Results
               </h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {cs.results.map((result) => (
-                  <div
-                    key={result.label}
-                    className="bg-surface rounded-2xl p-6 text-center border border-border"
-                  >
-                    <p className="text-2xl font-bold text-accent mb-1">
-                      {result.value}
-                    </p>
-                    <p className="text-text-secondary text-sm">
-                      {result.label}
-                    </p>
-                  </div>
-                ))}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                {cs.results.map((result) => {
+                  const useHero = result.highlight && result.subline;
+                  const sublineParts = result.subline?.split(" → ");
+                  const hasArrow = sublineParts && sublineParts.length >= 2;
+                  return (
+                    <div
+                      key={result.label}
+                      className="bg-surface rounded-2xl border border-border flex flex-col items-center justify-center min-h-[120px] md:min-h-[140px] p-6 text-center"
+                    >
+                      {useHero ? (
+                        <>
+                          <p className="text-2xl md:text-3xl font-bold text-accent leading-none mb-2">
+                            {result.highlight}
+                          </p>
+                          {hasArrow ? (
+                            <p className="text-text-secondary text-xs font-medium mb-3 flex items-center gap-1.5 justify-center flex-wrap">
+                              <span className="tabular-nums">{sublineParts[0]}</span>
+                              <ArrowRight className="w-3.5 h-3.5 text-accent/70 shrink-0" />
+                              <span className="tabular-nums font-semibold text-primary">{sublineParts[1]}</span>
+                            </p>
+                          ) : (
+                            <p className="text-text-secondary text-xs font-medium mb-3 tabular-nums">
+                              {result.subline}
+                            </p>
+                          )}
+                          <p className="text-text-secondary text-sm font-medium">
+                            {result.label}
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <p className="text-xl md:text-2xl font-bold text-accent leading-snug mb-2 min-h-13 flex items-center justify-center">
+                            {result.value}
+                          </p>
+                          <p className="text-text-secondary text-sm font-medium">
+                            {result.label}
+                          </p>
+                        </>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -149,6 +178,21 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                 ))}
               </ul>
             </div>
+
+            {/* Download PDF (when available) */}
+            {cs.pdfUrl && (
+              <div className="pt-4 border-t border-border">
+                <a
+                  href={cs.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-accent hover:text-accent-hover font-semibold transition-colors"
+                >
+                  <FileDown className="w-5 h-5" />
+                  Download full case study (PDF)
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </section>
