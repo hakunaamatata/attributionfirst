@@ -5,7 +5,10 @@ export interface CaseStudy {
   client: string;
   adSpend: string;
   leads: string;
+  /** Third metric value (e.g. ROAS, CPA reduction, Qualified Lead Rate) */
   roas: string;
+  /** Optional label for third metric when not "ROAS" (e.g. "Qualified Lead Rate", "CPA reduction") */
+  roasLabel?: string;
   period: string;
   challenge: string;
   strategy: string[];
@@ -31,6 +34,7 @@ export const caseStudies: CaseStudy[] = [
     adSpend: "₹3L/month",
     leads: "14,165 installs",
     roas: "54% CPA ↓",
+    roasLabel: "CPA reduction",
     period: "Dec 2025 – Feb 2026",
     challenge:
       "Thomas Cook India needed to massively scale user acquisition for iOS and Android apps in a highly competitive travel market—without inflating cost per acquisition. Scaling ad spend typically increases per-click costs; the mandate was volume growth with cost efficiency and focus on high-value, booking-intent users.",
@@ -60,7 +64,8 @@ export const caseStudies: CaseStudy[] = [
     client: "ServerFactory (USA & UAE)",
     adSpend: "USA & UAE",
     leads: "50+ high-quality leads",
-    roas: "$18 PMax CPL",
+    roas: "70%",
+    roasLabel: "Qualified Lead Rate",
     period: "1 Month",
     challenge:
       "ServerFactory needed to capture B2B decision-makers actively searching for enterprise-grade GPU servers, rackmount workstations, and Supermicro systems. The mandate was to penetrate highly competitive, high-CPC markets in USA and UAE without letting cost per acquisition spiral, while ensuring traffic quality translated into genuine sales opportunities—not wasted clicks from unqualified visitors.",
@@ -95,7 +100,8 @@ export const caseStudies: CaseStudy[] = [
     client: "Thomas Cook",
     adSpend: "Multi-platform",
     leads: "2x Revenue",
-    roas: "44x Brand ROAS",
+    roas: "44x",
+    roasLabel: "Brand ROAS",
     period: "May – Dec 2025",
     challenge:
       "The objective was to break through a revenue ceiling while managing a massive keyword inventory across domestic and international travel segments. Traditional metrics like CPL proved insufficient — the real problem was distinguishing between low-intent leads that drained budgets versus high-intent searches that converted into premium bookings worth ₹345K+.",

@@ -7,7 +7,7 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary leading-tight tracking-tight mb-4">
-            What Clients Say
+            Recommendations
           </h2>
           <p className="text-text-secondary text-lg max-w-2xl mx-auto">
             Don&apos;t just take my word for it — hear from businesses I&apos;ve helped grow.

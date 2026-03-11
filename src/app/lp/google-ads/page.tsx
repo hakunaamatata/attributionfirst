@@ -152,7 +152,7 @@ export default function GoogleAdsLandingPage() {
                     <p className="font-bold text-primary">{cs.adSpend}</p>
                   </div>
                   <div>
-                    <p className="text-text-secondary text-xs">ROAS</p>
+                    <p className="text-text-secondary text-xs">{cs.roasLabel ?? "ROAS"}</p>
                     <p className="font-bold text-accent">{cs.roas}</p>
                   </div>
                 </div>

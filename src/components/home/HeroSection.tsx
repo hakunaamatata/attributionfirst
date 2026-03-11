@@ -42,13 +42,13 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={siteConfig.callUrl}
+              <Link
+                href="/#contact"
                 className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/30 text-base"
               >
                 Get a Free Audit
                 <ArrowRight className="w-5 h-5" />
-              </a>
+              </Link>
               <Link
                 href="/#case-studies"
                 className="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white/50 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:bg-white/5 text-base"

@@ -64,7 +64,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                 <p className="text-2xl font-bold text-primary">{cs.leads}</p>
               </div>
               <div className="text-center">
-                <p className="text-text-secondary text-xs mb-1">ROAS</p>
+                <p className="text-text-secondary text-xs mb-1">{cs.roasLabel ?? "ROAS"}</p>
                 <p className="text-2xl font-bold text-accent">{cs.roas}</p>
               </div>
               <div className="text-center">

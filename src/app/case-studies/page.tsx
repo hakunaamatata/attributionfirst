@@ -62,7 +62,7 @@ export default function CaseStudiesPage() {
                     <p className="text-primary font-bold text-sm">{cs.leads}</p>
                   </div>
                   <div>
-                    <p className="text-text-secondary text-xs mb-1">ROAS</p>
+                    <p className="text-text-secondary text-xs mb-1">{cs.roasLabel ?? "ROAS"}</p>
                     <p className="text-accent font-bold">{cs.roas}</p>
                   </div>
                 </div>

@@ -17,7 +17,9 @@ export default function FeaturedCaseStudies() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {caseStudies.map((cs) => (
+          {caseStudies.map((cs) => {
+            const thirdMetricLabel = cs.roasLabel ?? "ROAS";
+            return (
             <Link
               key={cs.slug}
               href={`/case-studies/${cs.slug}`}
@@ -41,7 +43,7 @@ export default function FeaturedCaseStudies() {
                   <p className="text-primary font-bold text-sm">{cs.leads}</p>
                 </div>
                 <div>
-                  <p className="text-text-secondary text-xs mb-1">ROAS</p>
+                  <p className="text-text-secondary text-xs mb-1">{thirdMetricLabel}</p>
                   <p className="text-accent font-bold">{cs.roas}</p>
                 </div>
               </div>
@@ -51,7 +53,8 @@ export default function FeaturedCaseStudies() {
                 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>
-          ))}
+          );
+          })}
         </div>
 
         <div className="text-center mt-12">

@@ -1,22 +1,28 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Send, Loader2 } from "lucide-react";
+import { Send, Mail } from "lucide-react";
+import { siteConfig } from "@/data/siteConfig";
+
+const contactFormEmail =
+  process.env.NEXT_PUBLIC_CONTACT_FORM_EMAIL ?? siteConfig.email;
 
 export default function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setIsSubmitting(true);
+    const form = e.currentTarget;
+    const name = (form.querySelector('[name="name"]') as HTMLInputElement).value.trim();
+    const email = (form.querySelector('[name="email"]') as HTMLInputElement).value.trim();
+    const phone = (form.querySelector('[name="phone"]') as HTMLInputElement).value.trim();
+    const message = (form.querySelector('[name="message"]') as HTMLTextAreaElement).value.trim();
 
-    // Wire to Web3Forms, Formspree, or your own API endpoint:
-    // const formData = new FormData(e.currentTarget);
-    // await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
+    const subject = encodeURIComponent("Contact from portfolio – " + (name || "Someone"));
+    const body = encodeURIComponent(
+      ["Name: " + (name || "—"), "Email: " + (email || "—"), "Phone: " + (phone || "—"), "", "Message:", message || "—"].join("\n")
+    );
+    window.location.href = `mailto:${contactFormEmail}?subject=${subject}&body=${body}`;
     setIsSubmitted(true);
   }
 
@@ -24,14 +30,21 @@ export default function ContactForm() {
     return (
       <div className="bg-accent/10 border border-accent/20 rounded-2xl p-8 text-center">
         <div className="w-16 h-16 bg-accent/20 text-accent rounded-full flex items-center justify-center mx-auto mb-4">
-          <Send className="w-7 h-7" />
+          <Mail className="w-7 h-7" />
         </div>
         <h3 className="text-xl font-bold text-primary mb-2">
-          Message Sent!
+          Open your email app
         </h3>
-        <p className="text-text-secondary">
-          Thank you for reaching out. I&apos;ll get back to you within 24 hours.
+        <p className="text-text-secondary mb-4">
+          Your default email app should open with the message ready. Click Send to deliver it.
         </p>
+        <a
+          href={`mailto:${contactFormEmail}`}
+          className="inline-flex items-center gap-2 text-accent font-semibold hover:underline"
+        >
+          <Mail className="w-4 h-4" />
+          Or email {contactFormEmail} directly
+        </a>
       </div>
     );
   }
@@ -105,20 +118,10 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        disabled={isSubmitting}
-        className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-4 rounded-xl transition-colors w-full sm:w-auto disabled:opacity-70 disabled:cursor-not-allowed"
+        className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-4 rounded-xl transition-colors w-full sm:w-auto"
       >
-        {isSubmitting ? (
-          <>
-            <Loader2 className="w-5 h-5 animate-spin" />
-            Sending...
-          </>
-        ) : (
-          <>
-            <Send className="w-5 h-5" />
-            Send Message
-          </>
-        )}
+        <Send className="w-5 h-5" />
+        Send Message
       </button>
     </form>
   );
