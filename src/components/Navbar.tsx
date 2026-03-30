@@ -48,16 +48,30 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-lg bg-accent flex items-center justify-center text-white font-bold text-sm">
-              JK
+            <div className="flex items-center gap-2.5">
+              {/* Logo mark */}
+              <div className="relative w-8 h-8 shrink-0">
+                <div className="absolute inset-0 rounded-lg bg-accent opacity-20 blur-sm" />
+                <div className="relative w-8 h-8 rounded-lg bg-linear-to-br from-accent to-teal-400 flex items-center justify-center shadow-lg shadow-accent/30">
+                  <svg viewBox="0 0 20 20" className="w-[18px] h-[18px]" fill="none">
+                    <rect x="2" y="12" width="3" height="6" rx="0.8" fill="white" fillOpacity="0.55"/>
+                    <rect x="7" y="7" width="3" height="11" rx="0.8" fill="white" fillOpacity="0.8"/>
+                    <rect x="12" y="3" width="3" height="15" rx="0.8" fill="white"/>
+                    <circle cx="17" cy="3" r="1.5" fill="white" fillOpacity="0.9"/>
+                    <path d="M3.5 12.5 8.5 7.5 13.5 3.5 17 3" stroke="white" strokeWidth="0.8" strokeOpacity="0.35" strokeLinecap="round" strokeDasharray="1.5 1"/>
+                  </svg>
+                </div>
+              </div>
+              {/* Wordmark */}
+              <div className="flex items-baseline">
+                <span className="font-semibold text-[1.05rem] text-white/90 tracking-tight leading-none">
+                  Attribution
+                </span>
+                <span className="font-black text-[1.05rem] bg-linear-to-r from-accent to-teal-300 bg-clip-text text-transparent tracking-tight leading-none ml-px">
+                  First
+                </span>
+              </div>
             </div>
-            <span
-              className={`font-bold text-lg transition-colors ${
-                isScrolled ? "text-white" : "text-white"
-              }`}
-            >
-              {siteConfig.name}
-            </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

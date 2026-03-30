@@ -15,7 +15,10 @@ async function getAccessToken(): Promise<string> {
     }),
   });
   const data = await res.json();
-  if (!data.access_token) throw new Error("Failed to get access token");
+  if (!data.access_token) {
+    console.error("Token error response:", JSON.stringify(data));
+    throw new Error("Failed to get access token");
+  }
   return data.access_token;
 }
 
