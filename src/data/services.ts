@@ -5,6 +5,7 @@ export interface Service {
   icon: string;
   features: string[];
   longDescription: string;
+  metric?: string;
 }
 
 export const services: Service[] = [
@@ -71,6 +72,21 @@ export const services: Service[] = [
     ],
     longDescription:
       "I build lead generation funnels that guide prospects from initial awareness to conversion. By integrating GA4, GTM, and CRM systems like Salesforce and Oracle, I ensure every lead is tracked, scored, and followed up on. The result: more qualified leads and a shorter sales cycle for your team.",
+  },
+  {
+    slug: "local-search-gmb-ads",
+    title: "Local Search & GMB Ads",
+    description:
+      "Strategic management of Google Business Profile and Map ads to dominate local search results and drive immediate foot traffic and inquiries.",
+    icon: "MapPin",
+    features: [
+      "Hyper-Local Targeting: Radius and location-based targeting for high-intent users",
+      "Maps & Search Integration: Promoted Pins on Google Maps for maximum visibility",
+      "Action-Oriented Optimization: Focus on Call and Direction clicks for offline growth",
+    ],
+    longDescription:
+      "I manage Google Business Profile and local Map ad campaigns that put your business in front of nearby customers at the exact moment they're searching. Through precise geographic targeting, promoted pin placement, and continuous optimization of call and direction actions, I help local businesses dominate their service zones and convert searchers into real customers.",
+    metric: "Boosted local branch calls by 25% through targeted geographic campaign orchestration.",
   },
   {
     slug: "landing-page-optimization",

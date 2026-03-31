@@ -1,4 +1,4 @@
-import { Target, BarChart3, Megaphone, Filter, Layout } from "lucide-react";
+import { Target, BarChart3, Megaphone, Filter, Layout, MapPin, TrendingUp } from "lucide-react";
 import { services } from "@/data/services";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -7,6 +7,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Megaphone,
   Filter,
   Layout,
+  MapPin,
 };
 
 export default function ServicesSection() {
@@ -49,6 +50,12 @@ export default function ServicesSection() {
                     </li>
                   ))}
                 </ul>
+                {service.metric && (
+                  <div className="mt-5 flex items-start gap-2 bg-accent/8 border border-accent/20 rounded-xl px-3 py-2.5">
+                    <TrendingUp className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                    <p className="text-accent text-xs font-medium leading-snug">{service.metric}</p>
+                  </div>
+                )}
               </div>
             );
           })}
