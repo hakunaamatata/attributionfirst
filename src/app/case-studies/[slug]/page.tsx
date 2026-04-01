@@ -17,9 +17,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const cs = caseStudies.find((c) => c.slug === slug);
   if (!cs) return { title: "Case Study Not Found" };
+  const url = `${siteConfig.siteUrl}/case-studies/${slug}`;
   return {
     title: `${cs.title} - Case Study`,
     description: cs.challenge.slice(0, 160),
+    alternates: { canonical: url },
+    openGraph: { url },
   };
 }
 

@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Performance marketing services including Google Ads management, Meta Ads campaigns, lead generation funnels, and landing page optimization.",
+  alternates: { canonical: `${siteConfig.siteUrl}/services` },
+  openGraph: { url: `${siteConfig.siteUrl}/services` },
 };
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {

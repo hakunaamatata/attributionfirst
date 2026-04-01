@@ -47,30 +47,130 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex items-center gap-2.5">
-              {/* Logo mark */}
-              <div className="relative w-8 h-8 shrink-0">
-                <div className="absolute inset-0 rounded-lg bg-accent opacity-20 blur-sm" />
-                <div className="relative w-8 h-8 rounded-lg bg-linear-to-br from-accent to-teal-400 flex items-center justify-center shadow-lg shadow-accent/30">
-                  <svg viewBox="0 0 20 20" className="w-[18px] h-[18px]" fill="none">
-                    <rect x="2" y="12" width="3" height="6" rx="0.8" fill="white" fillOpacity="0.55"/>
-                    <rect x="7" y="7" width="3" height="11" rx="0.8" fill="white" fillOpacity="0.8"/>
-                    <rect x="12" y="3" width="3" height="15" rx="0.8" fill="white"/>
-                    <circle cx="17" cy="3" r="1.5" fill="white" fillOpacity="0.9"/>
-                    <path d="M3.5 12.5 8.5 7.5 13.5 3.5 17 3" stroke="white" strokeWidth="0.8" strokeOpacity="0.35" strokeLinecap="round" strokeDasharray="1.5 1"/>
-                  </svg>
-                </div>
+          <Link href="/" className="flex items-center gap-3.5 group">
+            {/* Logo icon */}
+            <div className="relative w-11 h-11 shrink-0">
+              {/* Glow halo */}
+              <div
+                className="absolute inset-[-6px] rounded-2xl blur-xl opacity-50 transition-opacity duration-300 group-hover:opacity-75"
+                style={{ background: "radial-gradient(ellipse at 40% 40%, #f59e0b 0%, #7c3aed 50%, transparent 75%)" }}
+              />
+              {/* Tile */}
+              <div
+                className="relative w-11 h-11 rounded-2xl flex items-center justify-center overflow-hidden"
+                style={{
+                  background: "linear-gradient(145deg, #23205a 0%, #130f35 55%, #0a0720 100%)",
+                  boxShadow: [
+                    "0 1px 0 rgba(255,255,255,0.15) inset",
+                    "0 -1px 0 rgba(0,0,0,0.6) inset",
+                    "0 8px 32px rgba(124,58,237,0.55)",
+                    "0 2px 8px rgba(0,0,0,0.7)",
+                  ].join(", "),
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                {/* Top-left gloss */}
+                <div
+                  className="absolute top-0 left-0 w-[65%] h-[45%] rounded-tl-2xl opacity-[0.12]"
+                  style={{ background: "linear-gradient(135deg, white 0%, transparent 100%)" }}
+                />
+                {/* Bottom purple bloom */}
+                <div
+                  className="absolute bottom-0 right-0 w-full h-1/2 opacity-20"
+                  style={{ background: "radial-gradient(ellipse at 80% 100%, #7c3aed 0%, transparent 70%)" }}
+                />
+
+                <svg viewBox="0 0 26 26" className="w-[22px] h-[22px] relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="af-base" x1="2" y1="20" x2="20" y2="23" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#8b5cf6"/>
+                      <stop offset="1" stopColor="#5b21b6"/>
+                    </linearGradient>
+                    <linearGradient id="af-bl" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                      <stop stopColor="#bfdbfe"/>
+                      <stop offset="1" stopColor="#7dd3fc"/>
+                    </linearGradient>
+                    <linearGradient id="af-bd" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                      <stop stopColor="#93c5fd"/>
+                      <stop offset="1" stopColor="#3b82f6"/>
+                    </linearGradient>
+                    <filter id="af-glow" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur stdDeviation="0.8" result="blur"/>
+                      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                    </filter>
+                  </defs>
+
+                  {/* Purple platform base */}
+                  <rect x="1.5" y="19.5" width="17" height="2.8" rx="1.2" fill="url(#af-base)"/>
+                  <rect x="1.5" y="19.5" width="17" height="1" rx="1" fill="rgba(255,255,255,0.15)"/>
+
+                  {/* Bars — ascending, alternating light/dark */}
+                  <rect x="1.8"  y="15"   width="2.6" height="4.5" rx="0.6" fill="#93c5fd" fillOpacity="0.7"/>
+                  <rect x="1.8"  y="15"   width="2.6" height="0.9" rx="0.6" fill="white"   fillOpacity="0.45"/>
+
+                  <rect x="5.0"  y="11.5" width="2.6" height="8"   rx="0.6" fill="#60a5fa" fillOpacity="0.9"/>
+                  <rect x="5.0"  y="11.5" width="2.6" height="0.9" rx="0.6" fill="white"   fillOpacity="0.3"/>
+
+                  <rect x="8.2"  y="13"   width="2.6" height="6.5" rx="0.6" fill="#93c5fd" fillOpacity="0.7"/>
+                  <rect x="8.2"  y="13"   width="2.6" height="0.9" rx="0.6" fill="white"   fillOpacity="0.45"/>
+
+                  <rect x="11.4" y="9"    width="2.6" height="10.5" rx="0.6" fill="#60a5fa" fillOpacity="0.9"/>
+                  <rect x="11.4" y="9"    width="2.6" height="0.9"  rx="0.6" fill="white"   fillOpacity="0.3"/>
+
+                  <rect x="14.6" y="11"   width="2.6" height="8.5" rx="0.6" fill="#93c5fd" fillOpacity="0.7"/>
+                  <rect x="14.6" y="11"   width="2.6" height="0.9" rx="0.6" fill="white"   fillOpacity="0.45"/>
+
+                  <rect x="17.8" y="6"    width="2.6" height="13.5" rx="0.6" fill="#3b82f6"/>
+                  <rect x="17.8" y="6"    width="2.6" height="0.9"  rx="0.6" fill="white"   fillOpacity="0.4"/>
+
+                  {/* Arrow glow (blurred copy) */}
+                  <path d="M2.8 15.8 6.2 12.2 9.3 14 13 9.5 19.5 2.5" stroke="#fbbf24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.25"/>
+                  {/* Arrow */}
+                  <path d="M2.8 15.8 6.2 12.2 9.3 14 13 9.5 19.5 2.5" stroke="#f59e0b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  {/* Arrowhead */}
+                  <path d="M15.8 2.2 19.5 2.5 19.8 6.2" stroke="#f59e0b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  {/* Tip sparkle */}
+                  <circle cx="19.6" cy="2.6" r="1.5" fill="#fbbf24" fillOpacity="0.35"/>
+                  <circle cx="19.6" cy="2.6" r="0.7" fill="#fef08a"/>
+                </svg>
               </div>
-              {/* Wordmark */}
-              <div className="flex items-baseline">
-                <span className="font-semibold text-[1.05rem] text-white/90 tracking-tight leading-none">
-                  Attribution
-                </span>
-                <span className="font-black text-[1.05rem] bg-linear-to-r from-accent to-teal-300 bg-clip-text text-transparent tracking-tight leading-none ml-px">
-                  First
-                </span>
-              </div>
+              {/* Drop shadow */}
+              <div
+                className="absolute -bottom-2 left-1 right-1 h-3 rounded-full blur-lg opacity-35"
+                style={{ background: "radial-gradient(ellipse, #7c3aed, transparent 70%)" }}
+              />
+            </div>
+
+            {/* Wordmark */}
+            <div className="flex flex-col justify-center gap-1">
+              <span
+                className="block font-black leading-none tracking-tight"
+                style={{
+                  fontSize: "1.15rem",
+                  letterSpacing: "-0.02em",
+                  background: "linear-gradient(90deg, #ffffff 0%, #dde4ff 70%, #c4b5fd 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  filter: "drop-shadow(0 0 12px rgba(167,139,250,0.35))",
+                }}
+              >
+                ATTRIBUTION
+              </span>
+              <span
+                className="block font-bold leading-none"
+                style={{
+                  fontSize: "0.62rem",
+                  letterSpacing: "0.28em",
+                  background: "linear-gradient(90deg, #fbbf24 0%, #f59e0b 50%, #fcd34d 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  filter: "drop-shadow(0 0 8px rgba(251,191,36,0.5))",
+                }}
+              >
+                FIRST
+              </span>
             </div>
           </Link>
 

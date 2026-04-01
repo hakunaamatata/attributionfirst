@@ -13,6 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.siteUrl),
   title: {
     default: `${siteConfig.name} | ${siteConfig.title}`,
     template: `%s | ${siteConfig.name}`,
@@ -29,6 +30,9 @@ export const metadata: Metadata = {
     "ROAS optimization",
   ],
   authors: [{ name: siteConfig.name }],
+  alternates: {
+    canonical: siteConfig.siteUrl,
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -36,11 +40,20 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} | ${siteConfig.title}`,
     description: siteConfig.description,
+    images: [
+      {
+        url: "/images/profileImage.jpeg",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — Performance Marketing Expert`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} | ${siteConfig.title}`,
     description: siteConfig.description,
+    images: ["/images/profileImage.jpeg"],
   },
   robots: {
     index: true,

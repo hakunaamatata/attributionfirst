@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
+import { siteConfig } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
     "Real results from real campaigns. Explore detailed case studies showing how data-driven PPC strategies deliver measurable ROI.",
+  alternates: { canonical: `${siteConfig.siteUrl}/case-studies` },
+  openGraph: { url: `${siteConfig.siteUrl}/case-studies` },
 };
 
 export default function CaseStudiesPage() {

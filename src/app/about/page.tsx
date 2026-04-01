@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Learn about Junaid Ahmed Kazi — a performance marketing expert with 5+ years of experience in Google Ads, Meta Ads, and data-driven campaign management.",
+  alternates: { canonical: `${siteConfig.siteUrl}/about` },
+  openGraph: { url: `${siteConfig.siteUrl}/about` },
 };
 
 const experience = [

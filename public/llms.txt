@@ -1,0 +1,26 @@
+# Junaid Ahmed Kazi — Performance Marketing Expert
+> Freelance Google Ads and Meta Ads consultant based in Mumbai, India.
+> 5+ years experience managing ₹7Cr+ in ad spend across Google, Meta, and Bing.
+
+## About
+Junaid Ahmed Kazi is a Mumbai-based performance marketing consultant with over five years of experience managing paid advertising campaigns across Google Ads, Meta Ads, and Bing. He currently serves as Assistant Manager - Digital at Thomas Cook India, where he oversees cross-platform App Campaigns for iOS and Android with Firebase Analytics integration. Junaid has managed over ₹7 crore in cumulative ad spend across industries including travel, B2B IT infrastructure, and e-commerce. His documented results include a 13x growth in app installs while reducing cost per acquisition by 54%, a 44x brand ROAS for Thomas Cook's branded search campaigns, and a 200% revenue scale-up through keyword-to-booking attribution analysis. He holds Google Ads Search Certification and the Meta Social Media Marketing Professional credential.
+
+## Services
+- Google Ads Management (Search, Performance Max, Shopping, Display)
+- Meta Ads Campaigns (Lead Generation, Retargeting, Lookalike Audiences)
+- Lead Generation Funnels with CRM integration (Salesforce, Oracle)
+- Local Search and Google Business Profile Ads
+- Landing Page Optimization (Webflow, A/B Testing)
+- Performance Marketing Strategy and Audit
+
+## Case Studies
+- /case-studies/scaling-app-acquisition-13x-halving-cpa — Thomas Cook India: 13x app install growth, 54% CPA reduction
+- /case-studies/scaling-b2b-lead-generation-serverfactory — ServerFactory: 70%+ qualified B2B lead rate, USA & UAE markets
+- /case-studies/data-architecting-200-revenue-scale-up — 200% revenue scale-up via Looker Studio attribution analysis
+
+## Contact
+- Website: https://junaidkazi.com
+- Email: junaidkazi66@gmail.com
+- Phone: +91-9545087538
+- LinkedIn: https://www.linkedin.com/in/junaid-kazi-b205b0222
+- Location: Nerul, Mumbai, Maharashtra 400706, India

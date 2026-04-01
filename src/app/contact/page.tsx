@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Get in touch with Junaid Ahmed Kazi for performance marketing services, Google Ads management, and lead generation campaigns.",
+  alternates: { canonical: `${siteConfig.siteUrl}/contact` },
+  openGraph: { url: `${siteConfig.siteUrl}/contact` },
 };
 
 export default function ContactPage() {
