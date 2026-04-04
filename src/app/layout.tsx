@@ -15,8 +15,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: `${siteConfig.name} | ${siteConfig.title}`,
-    template: `%s | ${siteConfig.name}`,
+    default: `Attribution First | ${siteConfig.title}`,
+    template: `%s | Attribution First`,
   },
   description: siteConfig.description,
   keywords: [
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: siteConfig.siteUrl,
-    siteName: siteConfig.name,
-    title: `${siteConfig.name} | ${siteConfig.title}`,
+    siteName: "Attribution First",
+    title: `Attribution First | ${siteConfig.title}`,
     description: siteConfig.description,
     images: [
       {
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | ${siteConfig.title}`,
+    title: `Attribution First | ${siteConfig.title}`,
     description: siteConfig.description,
     images: ["/images/profileImage.jpeg"],
   },
