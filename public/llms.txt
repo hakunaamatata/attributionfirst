@@ -1,5 +1,5 @@
-# Junaid Ahmed Kazi — Performance Marketing Expert
-> Freelance Google Ads and Meta Ads consultant based in Mumbai, India.
+# Attribution First — Marketing Attribution & Performance Marketing
+> Expert attribution infrastructure and paid media management for scaling brands in India.
 > 5+ years experience managing ₹7Cr+ in ad spend across Google, Meta, and Bing.
 
 ## About
@@ -19,7 +19,7 @@ Junaid Ahmed Kazi is a Mumbai-based performance marketing consultant with over f
 - /case-studies/data-architecting-200-revenue-scale-up — 200% revenue scale-up via Looker Studio attribution analysis
 
 ## Contact
-- Website: https://junaidkazi.com
+- Website: https://attributionfirst.co.in
 - Email: junaidkazi66@gmail.com
 - Phone: +91-9545087538
 - LinkedIn: https://www.linkedin.com/in/junaid-kazi-b205b0222

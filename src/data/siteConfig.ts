@@ -10,9 +10,9 @@ export const siteConfig = {
   callUrl: "tel:+919545087538",
   linkedin: "https://www.linkedin.com/in/junaid-kazi-b205b0222",
   location: "Nerul, Mumbai - 400706",
-  siteUrl: "https://junaidkazi.com",
+  siteUrl: "https://attributionfirst.co.in",
   description:
-    "Performance marketing expert with 5+ years experience. Specializing in Google Ads, Meta Ads, and lead generation campaigns focused on ROI and scalable growth.",
+    "Attribution First — performance marketing & attribution infrastructure for scaling brands. Google Ads, Meta Ads, and measurement systems that connect ad spend to real revenue.",
 };
 
 export const navLinks = [
