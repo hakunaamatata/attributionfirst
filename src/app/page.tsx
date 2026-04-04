@@ -6,6 +6,7 @@ import ProcessSection from "@/components/home/ProcessSection";
 import AboutSection from "@/components/home/AboutSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import ContactSection from "@/components/home/ContactSection";
+import FAQSection from "@/components/home/FAQSection";
 import FinalCTA from "@/components/home/FinalCTA";
 import FadeInSection from "@/components/FadeInSection";
 import { siteConfig } from "@/data/siteConfig";
@@ -56,6 +57,9 @@ export default function HomePage() {
       </FadeInSection>
       <FadeInSection>
         <TestimonialsSection />
+      </FadeInSection>
+      <FadeInSection>
+        <FAQSection />
       </FadeInSection>
       <FadeInSection>
         <ContactSection />
