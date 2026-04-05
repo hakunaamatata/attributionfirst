@@ -76,18 +76,26 @@ export const services: Service[] = [
   },
   {
     slug: "local-search-gmb-ads",
-    title: "Local Search & GMB Ads",
+    title: "SEO & Local Search",
     description:
-      "Strategic management of Google Business Profile and Map ads to dominate local search results and drive immediate foot traffic and inquiries.",
-    icon: "MapPin",
+      "Technical SEO, on-page optimization, and Google Business Profile management to dominate organic search results — from local map packs to national rankings.",
+    icon: "Search",
     features: [
-      "Hyper-Local Targeting: Radius and location-based targeting for high-intent users",
-      "Maps & Search Integration: Promoted Pins on Google Maps for maximum visibility",
-      "Action-Oriented Optimization: Focus on Call and Direction clicks for offline growth",
+      "Technical SEO audit & implementation",
+      "On-page and content optimization",
+      "Google Business Profile management",
+      "Local citations & NAP consistency",
+      "Core Web Vitals optimization",
+      "Schema markup & rich result targeting",
     ],
     longDescription:
-      "I manage Google Business Profile and local Map ad campaigns that put your business in front of nearby customers at the exact moment they're searching. Through precise geographic targeting, promoted pin placement, and continuous optimization of call and direction actions, I help local businesses dominate their service zones and convert searchers into real customers.",
+      "Search doesn't stop at paid ads. I combine technical SEO, on-page content strategy, and Google Business Profile optimization to build sustainable organic visibility. From fixing crawlability issues and structured data gaps to optimizing for local map pack rankings, every recommendation is tied to real traffic and lead outcomes — not just rankings.",
     metric: "Boosted local branch calls by 25% through targeted geographic campaign orchestration.",
+    tags: [
+      { label: "Technical SEO", tooltip: "Crawlability, indexability, Core Web Vitals, schema markup, and site architecture" },
+      { label: "Local SEO", tooltip: "Google Business Profile, map pack rankings, NAP consistency, and local citations" },
+      { label: "On-Page SEO", tooltip: "Title tags, meta descriptions, heading hierarchy, and content optimization" },
+    ],
   },
   {
     slug: "landing-page-optimization",
