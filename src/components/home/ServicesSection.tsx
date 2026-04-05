@@ -2,7 +2,7 @@
 
 import { useRef, useState, useCallback, useEffect } from "react";
 import {
-  Target, BarChart3, Megaphone, Filter,
+  Target, BarChart3, Megaphone, Filter, MapPin,
   TrendingUp, Zap, Bot, ArrowRight, Search, Globe,
   ChevronLeft, ChevronRight,
 } from "lucide-react";
@@ -10,7 +10,7 @@ import { services } from "@/data/services";
 import Link from "next/link";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Target, BarChart3, Megaphone, Filter, Layout: Globe, Search,
+  Target, BarChart3, Megaphone, Filter, Layout: Globe, Search, MapPin,
 };
 
 /* ─────────────────────────────────────────────────────────────────────
@@ -196,7 +196,72 @@ function StandardCard({ service }: { service: (typeof services)[number] }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   SEO featured card
+   Local Search & GMB Ads card — cyan/sky theme
+───────────────────────────────────────────────────────────────────── */
+function LocalCard({ service }: { service: (typeof services)[number] }) {
+  const features = service.features.slice(0, 4);
+  return (
+    <div className="group relative rounded-2xl overflow-hidden border border-cyan-500/20 hover:border-cyan-400/45 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(6,182,212,0.2)] transition-all duration-300 h-full flex flex-col">
+      <div className="absolute inset-0 bg-linear-to-br from-[#041820] via-[#061e28] to-primary" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(6,182,212,0.2)_0%,transparent_55%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(14,165,233,0.08)_0%,transparent_55%)]" />
+      {/* map-pin dot pattern */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, #06b6d4 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+
+      <div className="relative z-10 p-7 flex flex-col flex-1">
+        <div className="flex items-start justify-between mb-5">
+          <div className="inline-flex items-center justify-center w-12 h-12 bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 rounded-xl group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300">
+            <MapPin className="w-6 h-6" />
+          </div>
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-[10px] font-bold tracking-widest uppercase">
+            <Zap className="w-2.5 h-2.5" /> Local
+          </span>
+        </div>
+
+        <h3 className="text-lg font-extrabold text-white mb-2 leading-tight group-hover:text-cyan-300 transition-colors">
+          {service.title}
+        </h3>
+        <p className="text-white/45 text-xs leading-relaxed mb-5">
+          {service.description}
+        </p>
+
+        <div className="border-t border-cyan-500/10 mb-4" />
+
+        <ul className="space-y-2 mb-4 flex-1">
+          {features.map((f) => (
+            <li key={f} className="flex items-start gap-2.5 text-white/55 text-xs leading-snug">
+              <span className="w-4 h-4 rounded-md bg-cyan-500/15 border border-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                <span className="w-1 h-1 rounded-full bg-cyan-400" />
+              </span>
+              {f}
+            </li>
+          ))}
+        </ul>
+
+        {service.tags && (
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {service.tags.map((tag) => (
+              <span key={tag.label} title={tag.tooltip}
+                className="cursor-help inline-flex items-center px-2 py-0.5 rounded-md bg-cyan-500/12 border border-cyan-400/25 text-cyan-300 text-[11px] font-semibold hover:bg-cyan-500/25 transition-colors">
+                {tag.label}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {service.metric && (
+          <div className="flex items-start gap-2 bg-cyan-500/10 border border-cyan-400/20 rounded-lg px-3 py-2">
+            <TrendingUp className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+            <p className="text-cyan-300/80 text-[11px] leading-snug">{service.metric}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   SEO Optimisation card — violet theme
 ───────────────────────────────────────────────────────────────────── */
 function SEOCard({ service }: { service: (typeof services)[number] }) {
   const features = service.features.slice(0, 5);
@@ -338,10 +403,11 @@ export default function ServicesSection() {
   const CARD_W = 300;
   const GAP = 16;
 
-  const specialSlugs = ["local-search-gmb-ads", "landing-page-optimization"];
+  const specialSlugs = ["local-search-gmb-ads", "seo-optimisation", "landing-page-optimization"];
   const orderedServices = [
     ...services.filter((s) => !specialSlugs.includes(s.slug)),
     services.find((s) => s.slug === "local-search-gmb-ads")!,
+    services.find((s) => s.slug === "seo-optimisation")!,
     services.find((s) => s.slug === "landing-page-optimization")!,
   ];
 
@@ -419,6 +485,8 @@ export default function ServicesSection() {
           {orderedServices.map((service) => (
             <div key={service.slug} className="snap-start shrink-0" style={{ width: CARD_W }}>
               {service.slug === "local-search-gmb-ads" ? (
+                <LocalCard service={service} />
+              ) : service.slug === "seo-optimisation" ? (
                 <SEOCard service={service} />
               ) : service.slug === "landing-page-optimization" ? (
                 <LandingAICard service={service} />

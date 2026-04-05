@@ -100,25 +100,46 @@ export const services: Service[] = [
   },
   {
     slug: "local-search-gmb-ads",
-    title: "SEO & Local Search",
+    title: "Local Search & GMB Ads",
     description:
-      "Technical SEO, on-page optimization, and Google Business Profile management to dominate organic search results — from local map packs to national rankings.",
+      "Strategic management of Google Business Profile and Map ads to dominate local search results and drive immediate foot traffic and inquiries.",
+    icon: "MapPin",
+    features: [
+      "Hyper-Local Targeting: Radius and location-based targeting for high-intent users",
+      "Maps & Search Integration: Promoted Pins on Google Maps for maximum visibility",
+      "Action-Oriented Optimisation: Focus on Call and Direction clicks for offline growth",
+      "Google Business Profile setup & optimisation",
+      "Local review generation and reputation management",
+    ],
+    longDescription:
+      "I manage Google Business Profile and local Map ad campaigns that put your business in front of nearby customers at the exact moment they're searching. Through precise geographic targeting, promoted pin placement, and continuous optimisation of call and direction actions, I help local businesses dominate their service zones and convert searchers into real customers.",
+    metric: "Boosted local branch calls by 25% through targeted geographic campaign orchestration.",
+    tags: [
+      { label: "GMB", tooltip: "Google Business Profile optimisation for map pack and local panel visibility" },
+      { label: "Local Ads", tooltip: "Google Maps promoted pins and local search campaigns" },
+      { label: "Geo-Targeting", tooltip: "Radius and location-based targeting for high-intent nearby users" },
+    ],
+  },
+  {
+    slug: "seo-optimisation",
+    title: "SEO Optimisation",
+    description:
+      "Technical SEO, on-page optimisation, and content strategy to build sustainable organic visibility — from local map packs to national rankings.",
     icon: "Search",
     features: [
       "Technical SEO audit & implementation",
-      "On-page and content optimization",
-      "Google Business Profile management",
-      "Local citations & NAP consistency",
-      "Core Web Vitals optimization",
+      "On-page and content optimisation",
+      "Core Web Vitals optimisation",
       "Schema markup & rich result targeting",
+      "Keyword research and competitor gap analysis",
     ],
     longDescription:
-      "Search doesn't stop at paid ads. I combine technical SEO, on-page content strategy, and Google Business Profile optimization to build sustainable organic visibility. From fixing crawlability issues and structured data gaps to optimizing for local map pack rankings, every recommendation is tied to real traffic and lead outcomes — not just rankings.",
-    metric: "Boosted local branch calls by 25% through targeted geographic campaign orchestration.",
+      "Search doesn't stop at paid ads. I combine technical SEO, on-page content strategy, and structured data implementation to build sustainable organic traffic. From fixing crawlability issues and Core Web Vitals to closing competitor keyword gaps, every recommendation is tied to real traffic and lead outcomes — not vanity rankings.",
+    metric: "Organic impressions improved 40% after technical SEO and schema implementation.",
     tags: [
       { label: "Technical SEO", tooltip: "Crawlability, indexability, Core Web Vitals, schema markup, and site architecture" },
-      { label: "Local SEO", tooltip: "Google Business Profile, map pack rankings, NAP consistency, and local citations" },
-      { label: "On-Page SEO", tooltip: "Title tags, meta descriptions, heading hierarchy, and content optimization" },
+      { label: "On-Page SEO", tooltip: "Title tags, meta descriptions, heading hierarchy, and content optimisation" },
+      { label: "Schema", tooltip: "Structured data markup for rich results and Knowledge Graph signals" },
     ],
   },
   {
