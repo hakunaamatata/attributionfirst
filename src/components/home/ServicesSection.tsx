@@ -50,8 +50,21 @@ export default function ServicesSection() {
                     </li>
                   ))}
                 </ul>
+                {service.tags && service.tags.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {service.tags.map((tag) => (
+                      <span
+                        key={tag.label}
+                        title={tag.tooltip}
+                        className="cursor-help inline-flex items-center px-2 py-0.5 rounded-md bg-primary/5 border border-primary/10 text-primary text-[11px] font-semibold tracking-wide hover:bg-accent/10 hover:border-accent/30 hover:text-accent transition-colors"
+                      >
+                        {tag.label}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 {service.metric && (
-                  <div className="mt-5 flex items-start gap-2 bg-accent/8 border border-accent/20 rounded-xl px-3 py-2.5">
+                  <div className="mt-4 flex items-start gap-2 bg-accent/8 border border-accent/20 rounded-xl px-3 py-2.5">
                     <TrendingUp className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                     <p className="text-accent text-xs font-medium leading-snug">{service.metric}</p>
                   </div>

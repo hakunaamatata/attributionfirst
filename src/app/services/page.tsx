@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Target, BarChart3, Megaphone, Filter, Layout, CheckCircle, Phone, MessageCircle } from "lucide-react";
+import { Target, BarChart3, Megaphone, Filter, Layout, MapPin, CheckCircle, Phone, MessageCircle, TrendingUp } from "lucide-react";
 import { services } from "@/data/services";
 import { siteConfig } from "@/data/siteConfig";
 
@@ -17,6 +17,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Megaphone,
   Filter,
   Layout,
+  MapPin,
 };
 
 export default function ServicesPage() {
@@ -71,6 +72,33 @@ export default function ServicesPage() {
                         </li>
                       ))}
                     </ul>
+                    {service.tags && service.tags.length > 0 && (
+                      <div className="mb-6">
+                        <p className="text-xs font-semibold text-text-secondary uppercase tracking-widest mb-2">Optimization Disciplines</p>
+                        <div className="flex flex-wrap gap-2">
+                          {service.tags.map((tag) => (
+                            <span
+                              key={tag.label}
+                              title={tag.tooltip}
+                              className="group relative inline-flex flex-col cursor-help"
+                            >
+                              <span className="inline-flex items-center px-3 py-1 rounded-lg bg-primary text-white text-xs font-bold tracking-wide">
+                                {tag.label}
+                              </span>
+                              <span className="absolute bottom-full left-0 mb-2 w-56 bg-primary text-white text-[11px] leading-snug rounded-lg px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-lg">
+                                {tag.tooltip}
+                              </span>
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {service.metric && (
+                      <div className="mb-6 flex items-start gap-2 bg-accent/8 border border-accent/20 rounded-xl px-4 py-3">
+                        <TrendingUp className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                        <p className="text-accent text-sm font-medium leading-snug">{service.metric}</p>
+                      </div>
+                    )}
                     <a
                       href={siteConfig.callUrl}
                       className="inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm"

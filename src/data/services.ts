@@ -6,6 +6,7 @@ export interface Service {
   features: string[];
   longDescription: string;
   metric?: string;
+  tags?: { label: string; tooltip: string }[];
 }
 
 export const services: Service[] = [
@@ -90,18 +91,43 @@ export const services: Service[] = [
   },
   {
     slug: "landing-page-optimization",
-    title: "Landing Page Optimization",
+    title: "Landing Page Optimization & AI SEO",
     description:
-      "High-converting landing pages built and optimized using data-driven post-click optimization techniques.",
+      "High-converting landing pages engineered for both human visitors and AI-powered search engines — optimized to rank, convert, and get cited by ChatGPT, Perplexity, and Google AI Overviews.",
     icon: "Layout",
     features: [
-      "Webflow landing page design",
-      "A/B testing and experimentation",
-      "Post-click optimization",
-      "Page speed optimization",
-      "Conversion rate optimization",
+      "Webflow & Next.js landing page design",
+      "A/B testing and CRO experimentation",
+      "Post-click funnel alignment",
+      "Core Web Vitals & page speed optimization",
+      "AI-ready content structure (passage-level citability)",
+      "Schema markup for rich results",
+      "Answer-optimized FAQ and heading architecture",
     ],
     longDescription:
-      "Your ad is only half the equation — the landing page is where conversions happen. I specialize in post-click optimization, building and testing Webflow landing pages that align with ad messaging, reduce bounce rates, and maximize form submissions. Every element is tested and refined based on real user data.",
+      "Your ad is only half the equation — the landing page is where conversions happen and where AI search engines decide whether to surface you. I build and optimize landing pages that score on both fronts: fast load times, clear messaging, and frictionless forms for human visitors; structured content, semantic markup, and entity-optimized copy for AI discovery engines. From Google AI Overviews to ChatGPT search to Perplexity, the next wave of search requires pages that AI models can parse, quote, and cite. Every page I build is engineered for this new reality — so your brand shows up whether the query is typed into Google, asked to an AI assistant, or processed by a large language model.",
+    metric: "Pages optimized for AI search see 2–3× more organic impressions from AI Overview placements.",
+    tags: [
+      {
+        label: "AIO",
+        tooltip: "Artificial Intelligence Optimization — structuring content so AI systems understand and surface your pages",
+      },
+      {
+        label: "AEO",
+        tooltip: "Answer Engine Optimization — formatting content to be directly cited as answers by AI assistants",
+      },
+      {
+        label: "AI SEO",
+        tooltip: "AI Search Engine Optimization — optimizing for AI-powered SERP features like Google AI Overviews",
+      },
+      {
+        label: "GEO",
+        tooltip: "Generative Engine Optimization — emerging practice of optimizing for ChatGPT, Perplexity, and other generative AI search tools",
+      },
+      {
+        label: "LLMO",
+        tooltip: "Large Language Model Optimization — making your content machine-readable and citable by LLMs like GPT-4 and Claude",
+      },
+    ],
   },
 ];
