@@ -204,21 +204,21 @@ export default function Navbar() {
       </div>
 
       {isMobileOpen && (
-        <div className="md:hidden bg-white border-t border-border shadow-lg">
+        <div className="md:hidden border-t border-white/8" style={{ backdropFilter: "blur(12px)", background: "rgba(10,15,26,0.97)" }}>
           <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-4 py-3 rounded-lg text-sm font-medium transition-colors text-text-secondary hover:bg-surface"
+                className="block px-4 py-3 rounded-xl text-sm font-medium transition-colors text-white/70 hover:text-accent hover:bg-white/5"
               >
                 {link.label}
               </Link>
             ))}
             <a
               href={siteConfig.callUrl}
-              className="flex items-center justify-center gap-2 mt-3 bg-accent hover:bg-accent-hover text-white font-semibold px-5 py-3 rounded-xl transition-colors text-sm w-full"
+              className="flex items-center justify-center gap-2 mt-3 bg-accent hover:bg-accent-hover text-primary font-bold px-5 py-3 rounded-xl transition-colors text-sm w-full"
             >
               <Phone className="w-4 h-4" />
               Book Strategy Call
