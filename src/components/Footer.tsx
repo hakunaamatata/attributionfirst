@@ -80,9 +80,21 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8 text-center text-white/40 text-sm">
-          &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
-          reserved.
+        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col items-center gap-1.5 text-center">
+          <p className="text-white/40 text-sm">
+            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+          </p>
+          <p className="text-white/25 text-xs">
+            Website Design, SEO Optimisation &amp; Landing Pages by{" "}
+            <a
+              href="https://nouman-portfolio-ashen.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/45 hover:text-accent transition-colors underline underline-offset-2"
+            >
+              Nouman Khatib
+            </a>
+          </p>
         </div>
       </div>
     </footer>
