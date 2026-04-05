@@ -14,39 +14,51 @@ export const services: Service[] = [
     slug: "performance-marketing",
     title: "Performance Marketing",
     description:
-      "Full-funnel paid advertising strategy across Google and Meta platforms, optimized for maximum ROI.",
+      "Full-funnel paid advertising strategy across Google and Meta platforms, engineered for maximum ROI and scalable revenue growth.",
     icon: "Target",
     features: [
       "Multi-platform campaign architecture",
       "Audience segmentation and targeting",
-      "Budget allocation and optimization",
+      "Budget allocation and optimisation",
       "Conversion tracking and attribution",
       "Monthly performance reporting",
     ],
     longDescription:
       "I design and execute data-driven performance marketing strategies that align with your business goals. From identifying your target audience to setting up cross-platform campaigns, every decision is backed by data. With experience managing ₹7Cr+ in ad spend across industries, I build campaigns that deliver measurable, scalable results.",
+    metric: "₹7Cr+ in ad spend managed across Google, Meta, and Bing platforms.",
+    tags: [
+      { label: "Google Ads", tooltip: "Search, Display, Performance Max, and Shopping campaigns" },
+      { label: "Meta Ads", tooltip: "Facebook and Instagram lead generation and conversion campaigns" },
+      { label: "Attribution", tooltip: "GA4, GTM, and server-side tracking for accurate ROAS measurement" },
+    ],
   },
   {
     slug: "google-ads-management",
     title: "Google Ads Management",
     description:
-      "Expert management of Search, Display, Performance Max, and Shopping campaigns to capture high-intent buyers.",
+      "Expert management of Search, Display, Performance Max, and Shopping campaigns to capture high-intent buyers at every stage of the funnel.",
     icon: "BarChart3",
     features: [
-      "Search campaign optimization",
+      "Search campaign optimisation",
       "Performance Max campaigns",
       "Smart bidding strategies",
-      "Keyword research and negative keyword management",
-      "Quality Score optimization",
+      "Keyword research & negative keyword management",
+      "Quality Score optimisation",
     ],
     longDescription:
-      "With Google Ads Search certification and 5+ years of hands-on experience, I manage campaigns that consistently outperform industry benchmarks. From strategic keyword targeting that boosted ROI by 35% to bid optimization that reduced ad spend by 40%, I focus on every lever that moves the needle for your business.",
+      "With Google Ads Search certification and 5+ years of hands-on experience, I manage campaigns that consistently outperform industry benchmarks. From strategic keyword targeting that boosted ROI by 35% to bid optimisation that reduced ad spend by 40%, I focus on every lever that moves the needle for your business.",
+    metric: "35% ROI increase and 40% cost reduction across Search and PMax campaigns.",
+    tags: [
+      { label: "Search", tooltip: "Keyword-targeted campaigns for high-intent bottom-of-funnel buyers" },
+      { label: "Performance Max", tooltip: "AI-driven campaigns across all Google inventory channels" },
+      { label: "Shopping", tooltip: "Product listing ads for e-commerce and retail businesses" },
+    ],
   },
   {
     slug: "meta-ads-campaigns",
     title: "Meta Ads Campaigns",
     description:
-      "Facebook and Instagram advertising campaigns designed to generate qualified leads and drive conversions.",
+      "Facebook and Instagram advertising campaigns built for qualified lead generation, retargeting, and full-funnel conversion at scale.",
     icon: "Megaphone",
     features: [
       "Lead generation campaigns",
@@ -57,22 +69,34 @@ export const services: Service[] = [
     ],
     longDescription:
       "I create Meta Ads campaigns that go beyond impressions and clicks. By combining precise audience targeting with compelling creatives and continuous A/B testing, I build campaigns that consistently generate high-quality leads at a cost-per-acquisition that makes sense for your business.",
+    metric: "2× revenue uplift through Meta retargeting and lookalike audience optimisation.",
+    tags: [
+      { label: "Facebook", tooltip: "Feed, Stories, and Reels campaigns for lead generation and sales" },
+      { label: "Instagram", tooltip: "Visual-first campaigns for brand awareness and direct response" },
+      { label: "CAPI", tooltip: "Conversion API for accurate tracking post iOS 14 privacy changes" },
+    ],
   },
   {
     slug: "lead-generation-funnels",
     title: "Lead Generation Funnels",
     description:
-      "End-to-end funnel design from ad click to lead capture, built to maximize conversion rates.",
+      "End-to-end funnel design from ad click to CRM — built to qualify, capture, and convert high-intent leads at the lowest possible CPA.",
     icon: "Filter",
     features: [
       "Funnel strategy and mapping",
       "Lead magnet creation",
-      "Form optimization",
+      "Form and landing page optimisation",
       "CRM integration (Salesforce, Oracle)",
       "Lead scoring and qualification",
     ],
     longDescription:
       "I build lead generation funnels that guide prospects from initial awareness to conversion. By integrating GA4, GTM, and CRM systems like Salesforce and Oracle, I ensure every lead is tracked, scored, and followed up on. The result: more qualified leads and a shorter sales cycle for your team.",
+    metric: "2000+ qualified leads generated across B2B and B2C verticals.",
+    tags: [
+      { label: "GA4 + GTM", tooltip: "Full event tracking and tag management for funnel visibility" },
+      { label: "Salesforce", tooltip: "CRM integration for automated lead routing and scoring" },
+      { label: "CRO", tooltip: "Conversion Rate Optimisation — testing every step of the funnel" },
+    ],
   },
   {
     slug: "local-search-gmb-ads",
