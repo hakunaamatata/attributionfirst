@@ -10,37 +10,14 @@ export default function Footer() {
 
           {/* Brand col */}
           <div>
-            {/* Logo — matches navbar */}
+            {/* Logo */}
             <div className="flex items-center gap-3 mb-4">
-              <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
-                style={{
-                  background: "linear-gradient(145deg, #23205a 0%, #130f35 55%, #0a0720 100%)",
-                  boxShadow: "0 4px 16px rgba(124,58,237,0.4)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                }}
-              >
-                <svg viewBox="0 0 26 26" className="w-5 h-5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="1.5" y="19.5" width="17" height="2.8" rx="1.2" fill="url(#ft-base)" />
-                  <defs>
-                    <linearGradient id="ft-base" x1="2" y1="20" x2="20" y2="23" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#8b5cf6" /><stop offset="1" stopColor="#5b21b6" />
-                    </linearGradient>
-                  </defs>
-                  <rect x="1.8"  y="15"   width="2.6" height="4.5" rx="0.6" fill="#93c5fd" fillOpacity="0.7" />
-                  <rect x="5.0"  y="11.5" width="2.6" height="8"   rx="0.6" fill="#60a5fa" fillOpacity="0.9" />
-                  <rect x="8.2"  y="13"   width="2.6" height="6.5" rx="0.6" fill="#93c5fd" fillOpacity="0.7" />
-                  <rect x="11.4" y="9"    width="2.6" height="10.5" rx="0.6" fill="#60a5fa" fillOpacity="0.9" />
-                  <rect x="14.6" y="11"   width="2.6" height="8.5" rx="0.6" fill="#93c5fd" fillOpacity="0.7" />
-                  <rect x="17.8" y="6"    width="2.6" height="13.5" rx="0.6" fill="#3b82f6" />
-                  <path d="M2.8 15.8 6.2 12.2 9.3 14 13 9.5 19.5 2.5" stroke="#f59e0b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M15.8 2.2 19.5 2.5 19.8 6.2" stroke="#f59e0b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                  <circle cx="19.6" cy="2.6" r="0.7" fill="#fef08a" />
-                </svg>
+              <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center shrink-0">
+                <span className="font-extrabold text-primary text-sm tracking-tight">JK</span>
               </div>
               <div className="flex flex-col gap-0.5">
-                <span className="font-black text-sm leading-none tracking-tight text-white">ATTRIBUTION</span>
-                <span className="font-bold text-[9px] leading-none tracking-[0.25em] text-yellow-400">FIRST</span>
+                <span className="font-bold text-base leading-tight text-white">{siteConfig.name}</span>
+                <span className="text-white/40 text-xs leading-tight">{siteConfig.title}</span>
               </div>
             </div>
 
