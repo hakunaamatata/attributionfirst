@@ -42,14 +42,23 @@ export default function Footer() {
               </a>
             </div>
 
-            {/* Credit */}
-            <p className="text-white/20 text-xs mt-5">
-              Website Design, SEO &amp; Landing Pages by{" "}
-              <a href="https://nouman-portfolio-ashen.vercel.app" target="_blank" rel="noopener noreferrer"
-                className="text-white/40 hover:text-accent transition-colors underline underline-offset-2">
-                Nouman Khatib
-              </a>
-            </p>
+            {/* Nouman Khatib credit */}
+            <div className="flex items-center gap-3 mt-5 pt-5 border-t border-white/8">
+              <div className="w-8 h-8 rounded-lg bg-violet-500/20 border border-violet-500/30 flex items-center justify-center shrink-0">
+                <span className="font-extrabold text-violet-400 text-[10px] tracking-tight">NK</span>
+              </div>
+              <div className="flex flex-col gap-0.5">
+                <a
+                  href="https://nouman-portfolio-ashen.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-white/70 text-xs leading-tight hover:text-accent transition-colors"
+                >
+                  Nouman Khatib
+                </a>
+                <span className="text-white/30 text-[11px] leading-tight">Website Design, SEO &amp; Landing Pages</span>
+              </div>
+            </div>
           </div>
 
           {/* Quick Links */}
