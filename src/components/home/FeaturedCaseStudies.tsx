@@ -37,23 +37,16 @@ export default function FeaturedCaseStudies() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-          <div>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold tracking-widest uppercase mb-4">
-              <TrendingUp className="w-3 h-3" aria-hidden="true" /> Real Results
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary leading-tight tracking-tight">
-              Proof That Speaks
-              <br className="hidden sm:block" />
-              <span className="text-accent"> For Itself</span>
-            </h2>
-          </div>
-          <Link
-            href="/case-studies"
-            className="inline-flex items-center gap-2 text-accent hover:text-white border border-accent/30 hover:bg-accent font-semibold px-6 py-3 rounded-xl transition-all duration-200 text-sm cursor-pointer self-start md:self-auto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            All Case Studies <ArrowRight className="w-4 h-4" />
-          </Link>
+        <div className="text-center mb-12 md:mb-16">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold tracking-widest uppercase mb-4">
+            <TrendingUp className="w-3 h-3" aria-hidden="true" /> Real Results
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary leading-tight tracking-tight mb-4">
+            Proof That Speaks For Itself
+          </h2>
+          <p className="text-text-secondary text-base md:text-lg max-w-2xl mx-auto">
+            Real results from real campaigns — how I&apos;ve helped businesses generate leads and maximise ROI.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -104,6 +97,15 @@ export default function FeaturedCaseStudies() {
               </Link>
             );
           })}
+        </div>
+
+        <div className="text-center mt-10">
+          <Link
+            href="/case-studies"
+            className="inline-flex items-center gap-2 text-accent hover:text-white border border-accent/30 hover:bg-accent font-semibold px-6 py-3 rounded-xl transition-all duration-200 text-sm cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            View All Case Studies <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </section>
