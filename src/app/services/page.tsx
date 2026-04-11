@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Target, BarChart3, Megaphone, Filter, Layout, MapPin, CheckCircle, Phone, MessageCircle, TrendingUp } from "lucide-react";
 import { services } from "@/data/services";
 import { siteConfig } from "@/data/siteConfig";
+import ServiceIllustration from "@/components/ServiceIllustration";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -138,11 +139,7 @@ export default function ServicesPage() {
                   </div>
 
                   <div className={isReversed ? "lg:order-1" : ""}>
-                    <div className="bg-surface rounded-2xl border border-border p-8 md:p-12">
-                      <div className="w-full aspect-square max-w-xs mx-auto flex items-center justify-center">
-                        <Icon className="w-32 h-32 text-accent/20" />
-                      </div>
-                    </div>
+                    <ServiceIllustration slug={service.slug} icon={service.icon} />
                   </div>
                 </div>
               );
