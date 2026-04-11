@@ -43,15 +43,15 @@ export default function BlogPage() {
       />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-br from-primary via-primary-light to-primary-mid">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg border-b border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block bg-accent/20 text-accent text-xs font-semibold px-3 py-1.5 rounded-full mb-5 tracking-wide uppercase">
             Insights & Strategy
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Marketing Attribution Blog
           </h1>
-          <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto">
             No fluff. Just actionable frameworks on attribution, paid media, and
             the measurement infrastructure that separates scaling brands from
             stagnating ones.
@@ -60,7 +60,7 @@ export default function BlogPage() {
       </section>
 
       {/* Posts Grid */}
-      <section className="py-16 md:py-24 bg-surface">
+      <section className="py-16 md:py-24 bg-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {blogPosts.length === 0 ? (
             <p className="text-center text-text-secondary text-lg">
@@ -72,7 +72,7 @@ export default function BlogPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group bg-white rounded-2xl border border-border p-6 md:p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                  className="group bg-bg-card rounded-2xl border border-white/8 p-6 md:p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
                 >
                   {/* Category */}
                   <div className="flex items-center gap-2 mb-4">

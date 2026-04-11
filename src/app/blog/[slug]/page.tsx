@@ -55,7 +55,7 @@ function RenderContent({ block }: { block: BlogContent }) {
       return (
         <nav
           aria-label="Table of contents"
-          className="bg-surface border border-border rounded-2xl p-6 mb-2"
+          className="bg-bg-card border border-white/8 rounded-2xl p-6 mb-2"
         >
           <p className="text-sm font-bold text-primary uppercase tracking-wider mb-4">
             Table of Contents
@@ -105,9 +105,9 @@ function RenderContent({ block }: { block: BlogContent }) {
 
     case "callout": {
       const styles = {
-        warning: "border-amber-400 bg-amber-50 text-amber-900",
-        info: "border-blue-400 bg-blue-50 text-blue-900",
-        success: "border-emerald-400 bg-emerald-50 text-emerald-900",
+        warning: "border-amber-500/30 bg-amber-500/10 text-amber-200",
+        info: "border-violet-500/20 bg-violet-500/10 text-violet-200",
+        success: "border-emerald-500/30 bg-emerald-500/10 text-emerald-200",
       };
       return (
         <div
@@ -127,7 +127,7 @@ function RenderContent({ block }: { block: BlogContent }) {
                 {block.headers.map((h) => (
                   <th
                     key={h}
-                    className="bg-primary text-white text-left px-4 py-3 first:rounded-tl-xl last:rounded-tr-xl font-semibold whitespace-nowrap"
+                    className="bg-bg-card text-white text-left px-4 py-3 first:rounded-tl-xl last:rounded-tr-xl font-semibold whitespace-nowrap"
                   >
                     {h}
                   </th>
@@ -138,7 +138,7 @@ function RenderContent({ block }: { block: BlogContent }) {
               {block.rows.map((row, ri) => (
                 <tr
                   key={ri}
-                  className={ri % 2 === 0 ? "bg-white" : "bg-surface"}
+                  className={ri % 2 === 0 ? "bg-bg-card" : "bg-white/6"}
                 >
                   {row.map((cell, ci) => (
                     <td
@@ -192,7 +192,7 @@ function RenderContent({ block }: { block: BlogContent }) {
           {block.stats.map((s) => (
             <div
               key={s.label}
-              className="bg-white border border-border rounded-2xl p-5 text-center shadow-sm"
+              className="bg-bg-card border border-white/8 rounded-2xl p-5 text-center shadow-sm"
             >
               <p className="text-2xl md:text-3xl font-bold text-accent leading-none mb-1">
                 {s.value}
@@ -209,7 +209,7 @@ function RenderContent({ block }: { block: BlogContent }) {
           {block.items.map((item, i) => (
             <details
               key={i}
-              className="group bg-white border border-border rounded-2xl overflow-hidden"
+              className="group bg-bg-card border border-white/8 rounded-2xl overflow-hidden"
             >
               <summary className="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer select-none list-none font-semibold text-primary text-sm md:text-base hover:bg-surface transition-colors">
                 <span>{item.q}</span>
@@ -229,7 +229,7 @@ function RenderContent({ block }: { block: BlogContent }) {
           {block.phases.map((phase) => (
             <div
               key={phase.number}
-              className="bg-white border border-border rounded-2xl p-6 md:p-8"
+              className="bg-bg-card border border-white/8 rounded-2xl p-6 md:p-8"
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-10 h-10 bg-accent text-white rounded-xl flex items-center justify-center font-bold text-lg shrink-0">
@@ -267,11 +267,11 @@ function RenderContent({ block }: { block: BlogContent }) {
 
     case "cta":
       return (
-        <div className="bg-gradient-to-br from-primary via-primary-light to-primary-mid rounded-2xl p-8 md:p-10 text-center my-2">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+        <div className="bg-bg-card border border-white/8 rounded-2xl p-8 md:p-10 text-center my-2">
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">
             {block.heading}
           </h2>
-          <p className="text-white/70 text-base leading-relaxed max-w-2xl mx-auto mb-6">
+          <p className="text-text-secondary text-base leading-relaxed max-w-2xl mx-auto mb-6">
             {block.subtext}
           </p>
           <Link
@@ -301,21 +301,25 @@ export default async function BlogPostPage({ params }: Props) {
   // Schema markup
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.metaTitle,
     description: post.metaDescription,
     url,
+    image: `${siteConfig.siteUrl}/images/profileImage.jpeg`,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt ?? post.publishedAt,
     author: {
       "@type": "Person",
+      "@id": `${siteConfig.siteUrl}/#person-junaid`,
       name: siteConfig.name,
-      url: siteConfig.siteUrl,
+      url: `${siteConfig.siteUrl}/about`,
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${siteConfig.siteUrl}/#organization`,
       name: "Attribution First",
       url: siteConfig.siteUrl,
+      logo: { "@type": "ImageObject", url: `${siteConfig.siteUrl}/logo.png` },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
@@ -331,27 +335,6 @@ export default async function BlogPostPage({ params }: Props) {
             "@type": "Question",
             name: item.q,
             acceptedAnswer: { "@type": "Answer", text: item.a },
-          })),
-        }
-      : null;
-
-  // HowTo schema (extracted from phase list)
-  const phaseBlock = post.content.find((b) => b.type === "phase_list");
-  const howToSchema =
-    phaseBlock && phaseBlock.type === "phase_list"
-      ? {
-          "@context": "https://schema.org",
-          "@type": "HowTo",
-          name: "How to Fix Broken Marketing Attribution",
-          description: "A three-phase framework to rebuild your attribution infrastructure and restore ROAS accuracy.",
-          step: phaseBlock.phases.map((p) => ({
-            "@type": "HowToStep",
-            name: `Phase ${p.number}: ${p.title}`,
-            text: p.goal,
-            itemListElement: p.activities.map((a) => ({
-              "@type": "HowToDirection",
-              text: a,
-            })),
           })),
         }
       : null;
@@ -381,13 +364,6 @@ export default async function BlogPostPage({ params }: Props) {
           suppressHydrationWarning
         />
       )}
-      {howToSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-          suppressHydrationWarning
-        />
-      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -395,15 +371,15 @@ export default async function BlogPostPage({ params }: Props) {
       />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-br from-primary via-primary-light to-primary-mid">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg border-b border-white/8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-white/50 text-sm mb-6">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-text-secondary text-sm mb-6">
+            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+            <Link href="/blog" className="hover:text-primary transition-colors">Blog</Link>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-white/80 truncate max-w-[200px]">{post.metaTitle}</span>
+            <span className="text-primary truncate max-w-[200px]">{post.metaTitle}</span>
           </nav>
 
           {/* Category & meta */}
@@ -412,11 +388,11 @@ export default async function BlogPostPage({ params }: Props) {
               <Tag className="w-3 h-3" />
               {post.category}
             </span>
-            <span className="flex items-center gap-1.5 text-white/50 text-xs">
+            <span className="flex items-center gap-1.5 text-text-secondary text-xs">
               <Clock className="w-3.5 h-3.5" />
               {post.readingTime} min read
             </span>
-            <time dateTime={post.publishedAt} className="text-white/50 text-xs">
+            <time dateTime={post.publishedAt} className="text-text-secondary text-xs">
               {new Date(post.publishedAt).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
@@ -425,11 +401,11 @@ export default async function BlogPostPage({ params }: Props) {
             </time>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
+          <h1 className="text-3xl md:text-5xl font-bold text-primary leading-tight mb-4">
             {post.title}
           </h1>
 
-          <p className="text-white/70 text-lg leading-relaxed">
+          <p className="text-text-secondary text-lg leading-relaxed">
             {post.excerpt}
           </p>
         </div>
@@ -472,7 +448,7 @@ export default async function BlogPostPage({ params }: Props) {
       </article>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-surface">
+      <section className="py-16 md:py-20 bg-bg-card">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
             Ready to Fix Your Attribution?
@@ -494,7 +470,7 @@ export default async function BlogPostPage({ params }: Props) {
               href={siteConfig.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp/90 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
             >
               <MessageCircle className="w-5 h-5" />
               Chat on WhatsApp

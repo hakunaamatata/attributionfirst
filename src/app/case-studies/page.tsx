@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 export default function CaseStudiesPage() {
   return (
     <>
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-br from-primary via-primary-light to-primary-mid">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg border-b border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Case Studies
           </h1>
-          <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto">
             Detailed breakdowns of campaigns I&apos;ve managed — the
             challenges, strategies, and results.
           </p>
@@ -28,7 +28,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Same "Proof That Speaks For Itself" card layout as home page */}
-      <section className="py-16 md:py-24 bg-surface">
+      <section className="py-16 md:py-24 bg-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary leading-tight tracking-tight mb-4">
@@ -45,7 +45,7 @@ export default function CaseStudiesPage() {
               <Link
                 key={cs.slug}
                 href={`/case-studies/${cs.slug}`}
-                className="group bg-white rounded-2xl border border-border p-6 md:p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="group bg-bg-card rounded-2xl border border-white/8 p-6 md:p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 <span className="inline-block bg-accent/10 text-accent text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
                   {cs.industry}

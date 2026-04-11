@@ -21,15 +21,44 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 export default function ServicesPage() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Performance Marketing Services",
+    url: `${siteConfig.siteUrl}/services`,
+    itemListElement: services.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Service",
+        name: s.title,
+        description: s.description,
+        provider: { "@id": `${siteConfig.siteUrl}/#organization` },
+        url: `${siteConfig.siteUrl}/services#${s.slug}`,
+      },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Services" },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} suppressHydrationWarning />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} suppressHydrationWarning />
       {/* Page Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-br from-primary via-primary-light to-primary-mid">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg border-b border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Services That Drive Measurable Growth
           </h1>
-          <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto">
             Data-driven marketing solutions tailored to your business goals.
             Every campaign is built to deliver ROI.
           </p>
@@ -82,10 +111,10 @@ export default function ServicesPage() {
                               title={tag.tooltip}
                               className="group relative inline-flex flex-col cursor-help"
                             >
-                              <span className="inline-flex items-center px-3 py-1 rounded-lg bg-primary text-white text-xs font-bold tracking-wide">
+                              <span className="inline-flex items-center px-3 py-1 rounded-lg bg-white/6 text-white text-xs font-bold tracking-wide border border-white/10">
                                 {tag.label}
                               </span>
-                              <span className="absolute bottom-full left-0 mb-2 w-56 bg-primary text-white text-[11px] leading-snug rounded-lg px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-lg">
+                              <span className="absolute bottom-full left-0 mb-2 w-56 bg-bg-card text-white text-[11px] leading-snug rounded-lg px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-lg border border-white/10">
                                 {tag.tooltip}
                               </span>
                             </span>
@@ -123,12 +152,12 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-primary via-primary-light to-primary-mid">
+      <section className="py-16 md:py-24 bg-bg-card">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-white/70 text-lg mb-8 max-w-xl mx-auto">
+          <p className="text-text-secondary text-lg mb-8 max-w-xl mx-auto">
             Let&apos;s discuss which services are right for your business and
             create a custom strategy.
           </p>
@@ -144,7 +173,7 @@ export default function ServicesPage() {
               href={siteConfig.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp/90 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
             >
               <MessageCircle className="w-5 h-5" />
               Chat on WhatsApp

@@ -16,11 +16,10 @@ export const siteConfig = {
 };
 
 export const navLinks = [
-  { label: "Home", href: "/#hero" },
-  { label: "Services", href: "/#services" },
-  { label: "Case Studies", href: "/#case-studies" },
+  { label: "Home", href: "/" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
-  { label: "FAQ", href: "/#faq" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];

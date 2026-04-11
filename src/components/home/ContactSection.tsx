@@ -4,7 +4,7 @@ import ContactForm from "@/components/ContactForm";
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-16 md:py-24 bg-white scroll-mt-24">
+    <section id="contact" className="py-16 md:py-24 bg-bg scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary leading-tight tracking-tight mb-4">
@@ -28,13 +28,13 @@ export default function ContactSection() {
             <h3 className="text-xl font-bold text-primary mb-6">
               Direct Contact
             </h3>
-            <div className="space-y-6">
+            <div className="space-y-4">
               <a
                 href={siteConfig.callUrl}
-                className="flex items-start gap-4 p-4 rounded-xl bg-surface border border-border hover:border-accent transition-colors group"
+                className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-white/8 hover:border-accent/40 transition-all duration-200 group cursor-pointer"
               >
-                <div className="w-12 h-12 bg-teal-500/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
-                  <Phone className="w-5 h-5" />
+                <div className="w-12 h-12 bg-violet-500/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-200">
+                  <Phone className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="font-semibold text-primary">Phone</p>
@@ -48,10 +48,10 @@ export default function ContactSection() {
                 href={siteConfig.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 p-4 rounded-xl bg-surface border border-border hover:border-teal-400 transition-colors group"
+                className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-white/8 hover:border-accent/40 transition-all duration-200 group cursor-pointer"
               >
-                <div className="w-12 h-12 bg-teal-500/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
-                  <MessageCircle className="w-5 h-5" />
+                <div className="w-12 h-12 bg-violet-500/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
+                  <MessageCircle className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="font-semibold text-primary">WhatsApp</p>
@@ -63,10 +63,10 @@ export default function ContactSection() {
 
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="flex items-start gap-4 p-4 rounded-xl bg-surface border border-border hover:border-accent transition-colors group"
+                className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-white/8 hover:border-accent/40 transition-all duration-200 group cursor-pointer"
               >
-                <div className="w-12 h-12 bg-teal-500/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
-                  <Mail className="w-5 h-5" />
+                <div className="w-12 h-12 bg-violet-500/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-200">
+                  <Mail className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="font-semibold text-primary">Email</p>
@@ -80,10 +80,10 @@ export default function ContactSection() {
                 href={siteConfig.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 p-4 rounded-xl bg-surface border border-border hover:border-accent transition-colors group"
+                className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-white/8 hover:border-accent/40 transition-all duration-200 group cursor-pointer"
               >
-                <div className="w-12 h-12 bg-teal-500/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
-                  <Linkedin className="w-5 h-5" />
+                <div className="w-12 h-12 bg-violet-500/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-200">
+                  <Linkedin className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="font-semibold text-primary">LinkedIn</p>
@@ -93,9 +93,9 @@ export default function ContactSection() {
                 </div>
               </a>
 
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-surface border border-border">
-                <div className="w-12 h-12 bg-teal-500/10 text-accent rounded-xl flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5" />
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-white/8">
+                <div className="w-12 h-12 bg-violet-500/10 text-accent rounded-xl flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="font-semibold text-primary">Location</p>

@@ -31,32 +31,68 @@ export default async function CaseStudyDetailPage({ params }: Props) {
   const cs = caseStudies.find((c) => c.slug === slug);
   if (!cs) notFound();
 
+  const url = `${siteConfig.siteUrl}/case-studies/${slug}`;
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: cs.title,
+    description: cs.challenge.slice(0, 160),
+    url,
+    image: `${siteConfig.siteUrl}/images/profileImage.jpeg`,
+    author: {
+      "@type": "Person",
+      "@id": `${siteConfig.siteUrl}/#person-junaid`,
+      name: "Junaid Ahmed Kazi",
+      url: `${siteConfig.siteUrl}/about`,
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": `${siteConfig.siteUrl}/#organization`,
+      name: "Attribution First",
+      logo: { "@type": "ImageObject", url: `${siteConfig.siteUrl}/logo.png` },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Case Studies", item: `${siteConfig.siteUrl}/case-studies` },
+      { "@type": "ListItem", position: 3, name: cs.title },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} suppressHydrationWarning />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} suppressHydrationWarning />
       {/* Hero */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-primary via-primary-light to-primary-mid relative">
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-bg border-b border-white/8 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/case-studies"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors text-sm mb-6"
+            className="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors text-sm mb-6"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Case Studies
           </Link>
-          <span className="inline-block bg-accent/20 text-accent text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
+          <span className="inline-block bg-accent/10 text-accent text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
             {cs.industry}
           </span>
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-2">
+          <h1 className="text-3xl md:text-5xl font-bold text-primary mb-2">
             {cs.title}
           </h1>
-          <p className="text-white/60 text-lg">{cs.client}</p>
+          <p className="text-text-secondary text-lg">{cs.client}</p>
         </div>
       </section>
 
       {/* Metrics Bar */}
       <section className="relative -mt-10 z-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-xl border border-border p-6 md:p-8">
+          <div className="bg-bg-card rounded-2xl shadow-xl border border-white/8 p-6 md:p-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
                 <p className="text-text-secondary text-xs mb-1">Ad Spend</p>
@@ -201,7 +237,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-surface">
+      <section className="py-16 md:py-20 bg-bg-card">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
             Want Results Like These?
@@ -221,7 +257,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
               href={siteConfig.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp/90 text-white font-semibold px-8 py-4 rounded-xl transition-colors"
             >
               <MessageCircle className="w-5 h-5" />
               Chat on WhatsApp

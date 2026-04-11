@@ -12,14 +12,24 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
+      { "@type": "ListItem", position: 2, name: "Contact" },
+    ],
+  };
+
   return (
     <>
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-br from-primary via-primary-light to-primary-mid">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} suppressHydrationWarning />
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg border-b border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Let&apos;s Discuss Your Growth Strategy
           </h1>
-          <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto">
             Ready to generate more leads and maximize your ROAS? Get in touch
             and let&apos;s create a plan.
           </p>

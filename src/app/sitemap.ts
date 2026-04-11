@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/blog`,              lastModified: today,         changeFrequency: "weekly",   priority: 0.8 },
     { url: `${baseUrl}/about`,             lastModified: "2026-04-04",  changeFrequency: "monthly",  priority: 0.7 },
     { url: `${baseUrl}/contact`,           lastModified: "2026-04-04",  changeFrequency: "monthly",  priority: 0.8 },
+    { url: `${baseUrl}/privacy`,           lastModified: "2026-04-11",  changeFrequency: "yearly",   priority: 0.3 },
   ];
 
   const caseStudyPages: MetadataRoute.Sitemap = caseStudies.map((cs) => ({
