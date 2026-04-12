@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Target, BarChart3, Megaphone, Filter, Layout, MapPin, CheckCircle, Phone, MessageCircle, TrendingUp } from "lucide-react";
 import { services } from "@/data/services";
+import { serviceBlockThemes } from "@/data/sectionThemes";
 import { siteConfig } from "@/data/siteConfig";
 import ServiceIllustration from "@/components/ServiceIllustration";
 
@@ -53,37 +54,64 @@ export default function ServicesPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} suppressHydrationWarning />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} suppressHydrationWarning />
-      {/* Page Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg border-b border-white/8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+      {/* Page Hero — multi-color wash + comfortable height */}
+      <section className="relative flex min-h-[min(52vh,560px)] flex-col justify-center overflow-hidden border-b border-white/8 bg-bg pt-40 pb-20 md:min-h-[min(48vh,620px)] md:pt-48 md:pb-28">
+        <div
+          className="pointer-events-none absolute inset-0 bg-linear-to-br from-accent/18 via-bg to-violet-600/12 dark:from-accent/22 dark:via-bg dark:to-indigo-950/50"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_-30%,rgba(59,130,246,0.22),transparent_55%)] dark:bg-[radial-gradient(ellipse_90%_55%_at_50%_-25%,rgba(99,102,241,0.28),transparent_50%)]"
+          aria-hidden
+        />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-linear-to-r from-violet-500 via-accent to-emerald-500 opacity-90" aria-hidden />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <h1 className="mb-4 text-4xl font-bold text-primary md:text-5xl">
             Services That Drive Measurable Growth
           </h1>
-          <p className="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-lg text-text-secondary md:text-xl">
             Data-driven marketing solutions tailored to your business goals.
             Every campaign is built to deliver ROI.
           </p>
         </div>
       </section>
 
-      {/* Services Detail */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-20 md:space-y-28">
-            {services.map((service, i) => {
-              const Icon = iconMap[service.icon] || Target;
-              const isReversed = i % 2 !== 0;
-              return (
+      {/* Services Detail — alternating color blocks, tall sections */}
+      <section className="bg-bg">
+        <div>
+          {services.map((service, i) => {
+            const Icon = iconMap[service.icon] || Target;
+            const isReversed = i % 2 !== 0;
+            const theme = serviceBlockThemes[i % serviceBlockThemes.length];
+            return (
+              <div
+                key={service.slug}
+                id={service.slug}
+                className="relative scroll-mt-28 overflow-hidden border-b border-white/6"
+              >
                 <div
-                  key={service.slug}
-                  id={service.slug}
-                  className={`grid lg:grid-cols-2 gap-12 lg:gap-16 items-center ${
-                    isReversed ? "lg:direction-rtl" : ""
-                  }`}
-                >
+                  className={`absolute inset-x-0 top-0 h-[3px] bg-linear-to-r ${theme.topBar} opacity-[0.92]`}
+                  aria-hidden
+                />
+                <div
+                  className={`pointer-events-none absolute inset-0 bg-linear-to-br ${theme.wash}`}
+                  aria-hidden
+                />
+                <div
+                  className={`pointer-events-none absolute -right-20 top-1/2 h-[min(85vw,380px)] w-[min(85vw,380px)] -translate-y-1/2 rounded-full blur-3xl opacity-[0.45] ${theme.glow} md:-right-12`}
+                  aria-hidden
+                />
+                <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-7xl items-center px-4 py-16 sm:px-6 md:min-h-[min(85vh,820px)] md:py-24 lg:px-8">
+                  <div
+                    className={`grid w-full items-center gap-12 lg:grid-cols-2 lg:gap-16 ${
+                      isReversed ? "lg:direction-rtl" : ""
+                    }`}
+                  >
                   <div className={isReversed ? "lg:order-2" : ""}>
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent rounded-2xl mb-6">
-                      <Icon className="w-8 h-8" />
+                    <div
+                      className={`mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl ${theme.icon}`}
+                    >
+                      <Icon className="h-8 w-8" />
                     </div>
                     <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
                       {service.title}
@@ -97,7 +125,7 @@ export default function ServicesPage() {
                           key={feature}
                           className="flex items-start gap-3 text-text-secondary"
                         >
-                          <CheckCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                          <CheckCircle className={`h-5 w-5 shrink-0 mt-0.5 ${theme.check}`} />
                           <span>{feature}</span>
                         </li>
                       ))}
@@ -124,9 +152,11 @@ export default function ServicesPage() {
                       </div>
                     )}
                     {service.metric && (
-                      <div className="mb-6 flex items-start gap-2 bg-accent/8 border border-accent/20 rounded-xl px-4 py-3">
-                        <TrendingUp className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                        <p className="text-accent text-sm font-medium leading-snug">{service.metric}</p>
+                      <div
+                        className={`mb-6 flex items-start gap-2 rounded-xl border px-4 py-3 text-sm font-medium leading-snug ${theme.metric}`}
+                      >
+                        <TrendingUp className={`h-4 w-4 shrink-0 mt-0.5 ${theme.check}`} />
+                        <p>{service.metric}</p>
                       </div>
                     )}
                     <a
@@ -142,15 +172,24 @@ export default function ServicesPage() {
                     <ServiceIllustration slug={service.slug} icon={service.icon} />
                   </div>
                 </div>
-              );
-            })}
-          </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-bg-card">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative overflow-hidden border-t border-white/8 bg-bg-card py-20 md:py-28">
+        <div
+          className="pointer-events-none absolute inset-0 bg-linear-to-br from-emerald-600/10 via-bg-card to-violet-600/14 dark:from-emerald-500/8 dark:to-violet-950/40"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_80%_100%,rgba(139,92,246,0.15),transparent)]"
+          aria-hidden
+        />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
             Ready to Get Started?
           </h2>

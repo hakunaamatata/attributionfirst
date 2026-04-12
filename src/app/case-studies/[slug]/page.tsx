@@ -70,7 +70,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} suppressHydrationWarning />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} suppressHydrationWarning />
       {/* Hero */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-bg border-b border-white/8 relative">
+      <section className="pt-40 pb-20 md:pt-44 md:pb-28 bg-bg border-b border-white/8 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/case-studies"

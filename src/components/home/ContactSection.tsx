@@ -31,9 +31,9 @@ export default function ContactSection() {
             <div className="space-y-4">
               <a
                 href={siteConfig.callUrl}
-                className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-white/8 hover:border-accent/40 transition-all duration-200 group cursor-pointer"
+                className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-border hover:border-accent/40 transition-all duration-200 group cursor-pointer"
               >
-                <div className="w-12 h-12 bg-violet-500/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-200">
+                <div className="w-12 h-12 bg-accent/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-200">
                   <Phone className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
@@ -48,9 +48,9 @@ export default function ContactSection() {
                 href={siteConfig.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-white/8 hover:border-accent/40 transition-all duration-200 group cursor-pointer"
+                className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-border hover:border-accent/40 transition-all duration-200 group cursor-pointer"
               >
-                <div className="w-12 h-12 bg-violet-500/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
+                <div className="w-12 h-12 bg-accent/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
                   <MessageCircle className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
@@ -63,9 +63,9 @@ export default function ContactSection() {
 
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-white/8 hover:border-accent/40 transition-all duration-200 group cursor-pointer"
+                className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-border hover:border-accent/40 transition-all duration-200 group cursor-pointer"
               >
-                <div className="w-12 h-12 bg-violet-500/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-200">
+                <div className="w-12 h-12 bg-accent/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-200">
                   <Mail className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
@@ -80,9 +80,9 @@ export default function ContactSection() {
                 href={siteConfig.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-white/8 hover:border-accent/40 transition-all duration-200 group cursor-pointer"
+                className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-border hover:border-accent/40 transition-all duration-200 group cursor-pointer"
               >
-                <div className="w-12 h-12 bg-violet-500/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-200">
+                <div className="w-12 h-12 bg-accent/10 text-accent rounded-xl flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-200">
                   <Linkedin className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
@@ -93,8 +93,8 @@ export default function ContactSection() {
                 </div>
               </a>
 
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-white/8">
-                <div className="w-12 h-12 bg-violet-500/10 text-accent rounded-xl flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-bg-card border border-border">
+                <div className="w-12 h-12 bg-accent/10 text-accent rounded-xl flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>

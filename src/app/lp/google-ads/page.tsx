@@ -6,9 +6,9 @@ export default function GoogleAdsLandingPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-28 pb-16 md:pt-36 md:pb-24 bg-bg border-b border-white/8 relative overflow-hidden">
+      <section className="pt-36 pb-16 md:pt-44 md:pb-24 bg-bg border-b border-white/8 relative overflow-hidden">
         <div className="absolute top-20 left-10 w-80 h-80 bg-accent/[0.04] rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-6">
@@ -107,7 +107,7 @@ export default function GoogleAdsLandingPage() {
               </ul>
             </div>
 
-            <div className="bg-violet-500/10 rounded-2xl p-8 border border-violet-500/20">
+            <div className="rounded-2xl border border-accent/20 bg-accent/10 p-8">
               <h2 className="text-2xl font-bold text-primary mb-6">
                 How I solve it:
               </h2>
@@ -133,7 +133,7 @@ export default function GoogleAdsLandingPage() {
       {/* Mini Case Studies */}
       <section className="py-16 md:py-20 bg-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary text-center mb-12">
+          <h2 className="mb-10 text-center text-2xl font-bold text-primary md:mb-12 md:text-3xl">
             Real Results, Real Businesses
           </h2>
           <div className="grid md:grid-cols-3 gap-6">

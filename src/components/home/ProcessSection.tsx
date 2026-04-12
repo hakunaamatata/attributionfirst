@@ -1,144 +1,151 @@
 import { PhoneCall, Lightbulb, Rocket, Settings, TrendingUp } from "lucide-react";
 
+/** Per-step accents — readable in light & dark; badges + icons + hover glow. */
 const steps = [
   {
     icon: PhoneCall,
     title: "Discovery Call",
     description: "We discuss your business goals, target audience, and current marketing efforts.",
-    color: "text-violet-400",
-    iconBg: "bg-violet-500/12 border-violet-500/20",
-    numGradient: "from-violet-500 to-purple-600",
-    glowColor: "rgba(139,92,246,0.12)",
+    color: "text-blue-600 dark:text-blue-400",
+    iconBg:
+      "bg-blue-500/10 border-blue-500/25 shadow-sm shadow-blue-500/10 dark:bg-blue-500/15 dark:border-blue-400/30 dark:shadow-blue-900/20",
+    numGradient: "from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500",
+    glowColor: "rgba(37, 99, 235, 0.2)",
+    titleHover: "group-hover:text-blue-700 dark:group-hover:text-blue-300",
   },
   {
     icon: Lightbulb,
     title: "Marketing Strategy",
     description: "I create a custom roadmap with platform selection, budget, and KPI targets.",
-    color: "text-blue-400",
-    iconBg: "bg-blue-500/12 border-blue-500/20",
-    numGradient: "from-blue-500 to-cyan-500",
-    glowColor: "rgba(59,130,246,0.12)",
+    color: "text-violet-600 dark:text-violet-400",
+    iconBg:
+      "bg-violet-500/10 border-violet-500/25 shadow-sm shadow-violet-500/10 dark:bg-violet-500/15 dark:border-violet-400/30 dark:shadow-violet-900/20",
+    numGradient: "from-violet-600 to-purple-600 dark:from-violet-500 dark:to-purple-500",
+    glowColor: "rgba(124, 58, 237, 0.18)",
+    titleHover: "group-hover:text-violet-700 dark:group-hover:text-violet-300",
   },
   {
     icon: Rocket,
     title: "Campaign Setup",
     description: "Launch campaigns with proper tracking, creatives, and conversion setup.",
-    color: "text-indigo-400",
-    iconBg: "bg-indigo-500/12 border-indigo-500/20",
-    numGradient: "from-indigo-500 to-violet-500",
-    glowColor: "rgba(99,102,241,0.12)",
+    color: "text-cyan-600 dark:text-cyan-400",
+    iconBg:
+      "bg-cyan-500/10 border-cyan-500/25 shadow-sm shadow-cyan-500/10 dark:bg-cyan-500/15 dark:border-cyan-400/30 dark:shadow-cyan-900/20",
+    numGradient: "from-cyan-600 to-sky-600 dark:from-cyan-500 dark:to-sky-500",
+    glowColor: "rgba(8, 145, 178, 0.18)",
+    titleHover: "group-hover:text-cyan-700 dark:group-hover:text-cyan-300",
   },
   {
     icon: Settings,
     title: "Optimisation",
     description: "Continuous A/B testing, bid optimisation, and data-driven refinement.",
-    color: "text-emerald-400",
-    iconBg: "bg-emerald-500/12 border-emerald-500/20",
-    numGradient: "from-emerald-500 to-teal-500",
-    glowColor: "rgba(16,185,129,0.12)",
+    color: "text-emerald-600 dark:text-emerald-400",
+    iconBg:
+      "bg-emerald-500/10 border-emerald-500/25 shadow-sm shadow-emerald-500/10 dark:bg-emerald-500/15 dark:border-emerald-400/30 dark:shadow-emerald-900/20",
+    numGradient: "from-emerald-600 to-teal-600 dark:from-emerald-500 dark:to-teal-600",
+    glowColor: "rgba(5, 150, 105, 0.18)",
+    titleHover: "group-hover:text-emerald-700 dark:group-hover:text-emerald-300",
   },
   {
     icon: TrendingUp,
     title: "Scaling",
     description: "Scale winning campaigns and expand into new audiences and platforms.",
-    color: "text-amber-400",
-    iconBg: "bg-amber-500/12 border-amber-500/20",
-    numGradient: "from-amber-500 to-orange-500",
-    glowColor: "rgba(245,158,11,0.12)",
+    color: "text-amber-600 dark:text-amber-400",
+    iconBg:
+      "bg-amber-500/10 border-amber-500/25 shadow-sm shadow-amber-500/10 dark:bg-amber-500/15 dark:border-amber-400/30 dark:shadow-amber-900/20",
+    numGradient: "from-amber-600 to-orange-600 dark:from-amber-500 dark:to-orange-500",
+    glowColor: "rgba(217, 119, 6, 0.18)",
+    titleHover: "group-hover:text-amber-700 dark:group-hover:text-amber-300",
   },
-];
+] as const;
 
 export default function ProcessSection() {
   return (
-    <section id="process" className="py-20 md:py-28 bg-bg scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div className="text-center mb-14 md:mb-20">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold tracking-widest uppercase mb-4">
+    <section id="process" className="scroll-mt-24 bg-bg py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-14 text-center md:mb-20">
+          <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-accent/20 bg-accent/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent">
             How It Works
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary leading-tight tracking-tight mb-4">
+          <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-primary sm:text-4xl md:text-5xl">
             How We Work Together
           </h2>
-          <p className="text-text-secondary text-base md:text-lg max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-base text-text-secondary md:text-lg">
             A proven 5-step process from initial consultation to scalable, profitable campaigns.
           </p>
         </div>
 
-        {/* Desktop: Horizontal cards with connecting line */}
-        <div className="hidden md:block relative">
-          {/* Connecting line */}
-          <div className="absolute top-[52px] left-[10%] right-[10%] h-px" aria-hidden="true">
-            <div className="w-full h-full bg-linear-to-r from-violet-500/30 via-blue-500/30 to-amber-500/30" />
+        <div className="relative hidden md:block">
+          <div className="absolute left-[10%] right-[10%] top-[52px] h-px" aria-hidden="true">
+            <div className="h-full w-full bg-linear-to-r from-blue-500/35 via-violet-500/25 to-amber-500/35 opacity-90 dark:from-blue-400/30 dark:via-violet-400/22 dark:to-amber-400/30" />
           </div>
 
           <div className="grid grid-cols-5 gap-6">
             {steps.map((step, i) => {
               const Icon = step.icon;
               return (
-                <div key={step.title} className="flex flex-col items-center text-center group">
-                  {/* Number + Icon */}
+                <div key={step.title} className="group flex flex-col items-center text-center">
                   <div className="relative mb-6">
                     <div
-                      className={`w-[104px] h-[104px] rounded-3xl ${step.iconBg} border flex items-center justify-center ${step.color} transition-all duration-300 group-hover:scale-105`}
-                      style={{
-                        boxShadow: `0 0 0 0 transparent`,
-                      }}
+                      className={`flex h-[104px] w-[104px] items-center justify-center rounded-3xl border transition-all duration-300 group-hover:scale-105 ${step.iconBg} ${step.color}`}
                     >
-                      <Icon className="w-7 h-7" aria-hidden="true" />
+                      <Icon className="h-7 w-7" aria-hidden="true" />
                     </div>
-                    {/* Number badge */}
                     <span
-                      className={`absolute -top-2 -right-2 w-7 h-7 bg-linear-to-br ${step.numGradient} text-white rounded-lg flex items-center justify-center text-xs font-bold shadow-lg`}
+                      className={`absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-lg bg-linear-to-br ${step.numGradient} text-xs font-bold text-white shadow-lg`}
                       aria-hidden="true"
                     >
                       {i + 1}
                     </span>
-                    {/* Hover glow */}
                     <div
-                      className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl"
+                      className="absolute inset-0 -z-10 rounded-3xl opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"
                       style={{ background: step.glowColor }}
                     />
                   </div>
 
-                  <h3 className={`text-sm font-bold text-primary mb-2 ${step.color.replace("text-", "group-hover:text-")} transition-colors`}>
-                    <span className="sr-only">Step {i + 1}: </span>{step.title}
+                  <h3
+                    className={`mb-2 text-sm font-bold text-primary transition-colors ${step.titleHover}`}
+                  >
+                    <span className="sr-only">Step {i + 1}: </span>
+                    {step.title}
                   </h3>
-                  <p className="text-text-tertiary text-xs leading-relaxed px-1">
-                    {step.description}
-                  </p>
+                  <p className="px-1 text-xs leading-relaxed text-text-tertiary">{step.description}</p>
                 </div>
               );
             })}
           </div>
         </div>
 
-        {/* Mobile: Vertical timeline */}
-        <div className="md:hidden space-y-0">
+        <div className="space-y-0 md:hidden">
           {steps.map((step, i) => {
             const Icon = step.icon;
             return (
               <div key={step.title} className="flex gap-5">
-                {/* Timeline line + dot */}
-                <div className="flex flex-col items-center shrink-0">
-                  <div className={`relative w-14 h-14 rounded-2xl ${step.iconBg} border ${step.color} flex items-center justify-center`}>
-                    <Icon className="w-5 h-5" aria-hidden="true" />
+                <div className="flex shrink-0 flex-col items-center">
+                  <div
+                    className={`relative flex h-14 w-14 items-center justify-center rounded-2xl border transition-transform active:scale-[0.98] ${step.iconBg} ${step.color}`}
+                  >
+                    <Icon className="h-5 w-5" aria-hidden="true" />
                     <span
-                      className={`absolute -top-1.5 -right-1.5 w-5 h-5 bg-linear-to-br ${step.numGradient} text-white rounded-md flex items-center justify-center text-[10px] font-bold`}
+                      className={`absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-md bg-linear-to-br ${step.numGradient} text-[10px] font-bold text-white`}
                       aria-hidden="true"
                     >
                       {i + 1}
                     </span>
                   </div>
                   {i < steps.length - 1 && (
-                    <div className="w-px flex-1 min-h-[40px] bg-linear-to-b from-white/15 to-white/5 my-2" aria-hidden="true" />
+                    <div
+                      className="my-2 min-h-[40px] w-px flex-1 bg-linear-to-b from-blue-500/35 via-violet-400/25 to-amber-500/35 opacity-60 dark:from-blue-400/30 dark:via-violet-400/25 dark:to-amber-400/30"
+                      aria-hidden="true"
+                    />
                   )}
                 </div>
                 <div className="pb-8 pt-1">
-                  <h3 className={`font-bold text-primary text-sm mb-1.5 ${step.color}`}>
-                    <span className="sr-only">Step {i + 1}: </span>{step.title}
+                  <h3 className={`mb-1.5 text-sm font-bold text-primary ${step.color}`}>
+                    <span className="sr-only">Step {i + 1}: </span>
+                    {step.title}
                   </h3>
-                  <p className="text-text-secondary text-xs leading-relaxed">{step.description}</p>
+                  <p className="text-sm leading-relaxed text-text-tertiary">{step.description}</p>
                 </div>
               </div>
             );

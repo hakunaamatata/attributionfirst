@@ -30,23 +30,23 @@ export default function Footer() {
 
             <div className="flex items-center gap-2">
               <a href={siteConfig.callUrl}
-                className="w-10 h-10 rounded-lg bg-white/6 border border-white/10 text-text-tertiary flex items-center justify-center hover:text-accent hover:border-accent/30 hover:bg-accent/10 transition-all duration-200">
+                className="w-10 h-10 rounded-lg bg-bg-elevated/70 border border-border text-text-tertiary flex items-center justify-center hover:text-accent hover:border-accent/30 hover:bg-accent/10 transition-all duration-200 cursor-pointer">
                 <Phone className="w-3.5 h-3.5" />
               </a>
               <a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-white/6 border border-white/10 text-text-tertiary flex items-center justify-center hover:text-whatsapp hover:border-whatsapp/30 hover:bg-whatsapp/10 transition-all duration-200">
+                className="w-10 h-10 rounded-lg bg-bg-elevated/70 border border-border text-text-tertiary flex items-center justify-center hover:text-whatsapp hover:border-whatsapp/30 hover:bg-whatsapp/10 transition-all duration-200 cursor-pointer">
                 <MessageCircle className="w-3.5 h-3.5" />
               </a>
               <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-white/6 border border-white/10 text-text-tertiary flex items-center justify-center hover:text-violet-400 hover:border-violet-500/25 hover:bg-violet-500/10 transition-all duration-200">
+                className="w-10 h-10 rounded-lg bg-bg-elevated/70 border border-border text-text-tertiary flex items-center justify-center hover:text-accent hover:border-accent/25 hover:bg-accent/10 transition-all duration-200 cursor-pointer">
                 <Linkedin className="w-3.5 h-3.5" />
               </a>
             </div>
 
             {/* Nouman Khatib credit */}
-            <div className="flex items-start gap-3 mt-5 pt-5 border-t border-white/8">
-              <div className="w-10 h-10 rounded-lg bg-violet-500/15 border border-violet-500/20 flex items-center justify-center shrink-0">
-                <span className="font-extrabold text-violet-400 text-xs tracking-tight">NK</span>
+            <div className="flex items-start gap-3 mt-5 pt-5 border-t border-border">
+              <div className="w-10 h-10 rounded-lg bg-accent/12 border border-accent/25 flex items-center justify-center shrink-0">
+                <span className="font-extrabold text-accent text-xs tracking-tight">NK</span>
               </div>
               <div className="flex flex-col gap-0.5">
                 <a
@@ -79,7 +79,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link href={link.href}
                     className="text-text-secondary hover:text-accent transition-colors text-sm flex items-center gap-2 group">
-                    <span className="w-1 h-1 rounded-full bg-white/20 group-hover:bg-accent transition-colors" />
+                    <span className="w-1 h-1 rounded-full bg-[var(--app-footer-dot)] group-hover:bg-accent transition-colors" />
                     {link.label}
                   </Link>
                 </li>
@@ -94,7 +94,7 @@ export default function Footer() {
               <li>
                 <a href={siteConfig.callUrl}
                   className="flex items-center gap-3 text-text-secondary hover:text-accent transition-colors text-sm group">
-                  <span className="w-7 h-7 rounded-lg bg-white/6 border border-white/10 flex items-center justify-center group-hover:bg-accent/10 group-hover:border-accent/20 transition-all">
+                  <span className="w-7 h-7 rounded-lg bg-bg-elevated/70 border border-border flex items-center justify-center group-hover:bg-accent/10 group-hover:border-accent/20 transition-all">
                     <Phone className="w-3.5 h-3.5" />
                   </span>
                   {siteConfig.phoneDisplay}
@@ -103,7 +103,7 @@ export default function Footer() {
               <li>
                 <a href={`mailto:${siteConfig.email}`}
                   className="flex items-center gap-3 text-text-secondary hover:text-accent transition-colors text-sm group">
-                  <span className="w-7 h-7 rounded-lg bg-white/6 border border-white/10 flex items-center justify-center group-hover:bg-accent/10 group-hover:border-accent/20 transition-all">
+                  <span className="w-7 h-7 rounded-lg bg-bg-elevated/70 border border-border flex items-center justify-center group-hover:bg-accent/10 group-hover:border-accent/20 transition-all">
                     <Mail className="w-3.5 h-3.5" />
                   </span>
                   {siteConfig.email}
@@ -112,14 +112,14 @@ export default function Footer() {
               <li>
                 <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-3 text-text-secondary hover:text-accent transition-colors text-sm group">
-                  <span className="w-7 h-7 rounded-lg bg-white/6 border border-white/10 flex items-center justify-center group-hover:bg-accent/10 group-hover:border-accent/20 transition-all">
+                  <span className="w-7 h-7 rounded-lg bg-bg-elevated/70 border border-border flex items-center justify-center group-hover:bg-accent/10 group-hover:border-accent/20 transition-all">
                     <Linkedin className="w-3.5 h-3.5" />
                   </span>
                   LinkedIn Profile
                 </a>
               </li>
               <li className="flex items-center gap-3 text-text-tertiary text-sm">
-                <span className="w-7 h-7 rounded-lg bg-white/6 border border-white/10 flex items-center justify-center shrink-0">
+                <span className="w-7 h-7 rounded-lg bg-bg-elevated/70 border border-border flex items-center justify-center shrink-0">
                   <MapPin className="w-3.5 h-3.5" />
                 </span>
                 {siteConfig.location}
@@ -129,7 +129,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-text-tertiary text-xs">
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>

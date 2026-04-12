@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import { siteConfig, navLinks } from "@/data/siteConfig";
 import BrandLogo from "./BrandLogo";
+import ThemeToggle from "./ThemeToggle";
+import AvailabilityBadge from "./AvailabilityBadge";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -110,46 +112,35 @@ export default function Navbar() {
     <nav
       className={`fixed z-50 transition-all duration-500 ${
         showScrolledStyles
-          ? "top-3 left-4 right-4 rounded-2xl shadow-lg shadow-black/20 border border-white/[0.06]"
+          ? "top-3 left-4 right-4 rounded-2xl shadow-lg shadow-black/20 light:shadow-slate-900/10 border border-border"
           : "top-0 left-0 right-0 border-b border-transparent"
       }`}
       style={{
         backdropFilter: showScrolledStyles ? "blur(20px) saturate(1.4)" : undefined,
-        background: showScrolledStyles ? "rgba(6, 9, 24, 0.85)" : undefined,
+        background: showScrolledStyles ? "var(--app-nav-scrolled)" : undefined,
+        borderColor: showScrolledStyles ? "var(--app-nav-border)" : undefined,
       }}
     >
+      {/* Available for new projects — once, top of header */}
+      <div
+        className={`border-b border-white/6 ${showScrolledStyles ? "bg-transparent" : "bg-bg/40"}`}
+        style={{ backdropFilter: showScrolledStyles ? undefined : "blur(8px)" }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center py-2 md:py-2.5">
+          <AvailabilityBadge size="sm" />
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3.5 group">
             <BrandLogo size={44} />
             <div className="flex flex-col justify-center gap-1">
-              <span
-                className="block font-black leading-none tracking-tight"
-                style={{
-                  fontSize: "1.15rem",
-                  letterSpacing: "-0.02em",
-                  background: "linear-gradient(90deg, #ffffff 0%, #dde4ff 70%, #c4b5fd 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  filter: "drop-shadow(0 0 12px rgba(167,139,250,0.35))",
-                }}
-              >
+              <span className="logo-wordmark-main block font-black leading-none tracking-tight">
                 ATTRIBUTION
               </span>
-              <span
-                className="block font-bold leading-none"
-                style={{
-                  fontSize: "0.62rem",
-                  letterSpacing: "0.28em",
-                  background: "linear-gradient(90deg, #fbbf24 0%, #f59e0b 50%, #fcd34d 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  filter: "drop-shadow(0 0 8px rgba(251,191,36,0.5))",
-                }}
-              >
+              <span className="logo-wordmark-sub block font-bold leading-none">
                 FIRST
               </span>
             </div>
@@ -186,19 +177,23 @@ export default function Navbar() {
               </Link>
             ))}
 
+            <ThemeToggle className="ml-2 hidden md:inline-flex" />
+
             <a
               href={siteConfig.callUrl}
-              className="relative ml-4 inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-white font-semibold px-5 py-2 rounded-lg transition-all duration-200 text-sm hover:shadow-[0_4px_20px_rgba(139,92,246,0.3)] hover:-translate-y-px active:translate-y-0 active:shadow-none"
+              className="relative ml-3 inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-white font-semibold px-5 py-2 rounded-lg transition-all duration-200 text-sm hover:shadow-[0_4px_20px_rgba(30,64,175,0.3)] hover:-translate-y-px active:translate-y-0 active:shadow-none cursor-pointer"
             >
               <Phone className="w-4 h-4" />
               Book Strategy Call
             </a>
           </div>
 
+          <ThemeToggle className="md:hidden mr-1" />
+
           {/* Mobile hamburger */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="md:hidden p-2 rounded-lg transition-all duration-200 text-text-secondary hover:bg-bg active:scale-90"
+            className="md:hidden p-2 rounded-lg transition-all duration-200 text-text-secondary hover:bg-bg active:scale-90 cursor-pointer"
             aria-label="Toggle menu"
           >
             <div className="relative w-6 h-6">
@@ -215,7 +210,10 @@ export default function Navbar() {
           isMobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="border-t border-border px-4 py-4 space-y-1" style={{ backdropFilter: "blur(16px)", background: "rgba(11, 17, 32, 0.97)" }}>
+        <div
+          className="border-t border-border px-4 py-4 space-y-1"
+          style={{ backdropFilter: "blur(16px)", background: "var(--app-mobile-menu-bg)" }}
+        >
           {navLinks.map((link, i) => (
             <Link
               key={link.href}

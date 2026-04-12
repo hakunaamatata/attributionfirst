@@ -61,7 +61,7 @@ function FAQItem({
           <span
             className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-all duration-300 ${
               open
-                ? "bg-accent text-white shadow-[0_0_12px_rgba(139,92,246,0.3)]"
+                ? "bg-accent text-white shadow-[0_0_12px_rgba(30,64,175,0.35)]"
                 : "bg-bg-elevated text-text-tertiary group-hover:bg-accent/15 group-hover:text-accent"
             }`}
             aria-hidden="true"
@@ -99,7 +99,7 @@ function FAQItem({
         role="region"
         aria-hidden={!open}
       >
-        <p className="px-5 pb-5 text-text-secondary text-sm leading-relaxed border-t border-white/8 pt-4 ml-10">
+        <p className="px-5 pb-5 text-text-secondary text-sm leading-relaxed border-t border-border pt-4 ml-10">
           {a}
         </p>
       </div>

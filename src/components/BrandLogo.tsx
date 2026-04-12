@@ -1,68 +1,108 @@
+"use client";
+
+import { useId } from "react";
+
+/** Brand mark: purple glass tile, sky-blue bars, purple base, orange trend + arrow (reference lockup). */
 export default function BrandLogo({ size = 44, className = "" }: { size?: number; className?: string }) {
+  const id = useId().replace(/:/g, "");
+  const sky = "#7dd3fc";
+  const skyDeep = "#38bdf8";
+  const purpleBase = "#7c3aed";
+  const purpleDark = "#5b21b6";
+  const orange = "#fb923c";
+  const orangeDeep = "#f97316";
+
   return (
     <div className={`relative shrink-0 ${className}`} style={{ width: size, height: size }}>
-      {/* Glow behind */}
       <div
-        className="absolute inset-[-6px] rounded-2xl blur-xl opacity-50 transition-opacity duration-300 group-hover:opacity-75"
-        style={{ background: "radial-gradient(ellipse at 40% 40%, #f59e0b 0%, #7c3aed 50%, transparent 75%)" }}
+        className="brand-logo-glow absolute inset-[-8px] rounded-2xl blur-xl opacity-60 transition-opacity duration-300 group-hover:opacity-90"
+        style={{
+          background:
+            "radial-gradient(ellipse at 38% 38%, rgba(167, 139, 250, 0.55) 0%, rgba(109, 40, 217, 0.45) 45%, transparent 72%)",
+        }}
       />
 
-      {/* Icon container */}
       <div
-        className="relative w-full h-full rounded-2xl flex items-center justify-center overflow-hidden"
+        className="brand-logo-shell relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl transition-[background,box-shadow,border-color] duration-300"
         style={{
-          background: "linear-gradient(145deg, #23205a 0%, #130f35 55%, #0a0720 100%)",
-          boxShadow: "0 1px 0 rgba(255,255,255,0.15) inset, 0 -1px 0 rgba(0,0,0,0.6) inset, 0 8px 32px rgba(124,58,237,0.55), 0 2px 8px rgba(0,0,0,0.7)",
-          border: "1px solid rgba(255,255,255,0.08)",
+          background: "linear-gradient(148deg, rgba(91, 33, 182, 0.92) 0%, rgba(55, 48, 163, 0.95) 42%, #1e1b4b 100%)",
+          boxShadow:
+            "0 1px 0 rgba(255,255,255,0.14) inset, 0 -1px 0 rgba(0,0,0,0.45) inset, 0 10px 36px rgba(91, 33, 182, 0.5), 0 2px 10px rgba(0,0,0,0.55)",
+          border: "1px solid rgba(196, 181, 253, 0.22)",
         }}
       >
-        {/* Glass sheen */}
         <div
-          className="absolute top-0 left-0 w-[65%] h-[45%] rounded-tl-2xl opacity-[0.12]"
-          style={{ background: "linear-gradient(135deg, white 0%, transparent 100%)" }}
+          className="absolute left-0 top-0 h-[48%] w-[62%] rounded-tl-2xl opacity-[0.2]"
+          style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.55) 0%, transparent 65%)" }}
         />
         <div
-          className="absolute bottom-0 right-0 w-full h-1/2 opacity-20"
-          style={{ background: "radial-gradient(ellipse at 80% 100%, #7c3aed 0%, transparent 70%)" }}
+          className="absolute bottom-0 right-0 h-[55%] w-full opacity-25"
+          style={{
+            background: "radial-gradient(ellipse at 85% 100%, rgba(124, 58, 237, 0.9) 0%, transparent 68%)",
+          }}
         />
 
-        {/* Chart SVG */}
-        <svg viewBox="0 0 26 26" className="w-[55%] h-[55%] relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          viewBox="0 0 26 26"
+          className="relative z-10 h-[62%] w-[62%]"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
           <defs>
-            <linearGradient id="af-base" x1="2" y1="20" x2="20" y2="23" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#8b5cf6" />
-              <stop offset="1" stopColor="#5b21b6" />
+            <linearGradient id={`${id}-base`} x1="2" y1="20.5" x2="21" y2="22" gradientUnits="userSpaceOnUse">
+              <stop stopColor={purpleBase} />
+              <stop offset="1" stopColor={purpleDark} />
             </linearGradient>
           </defs>
-          {/* Base bar */}
-          <rect x="1.5" y="19.5" width="17" height="2.8" rx="1.2" fill="url(#af-base)" />
-          <rect x="1.5" y="19.5" width="17" height="1" rx="1" fill="rgba(255,255,255,0.15)" />
-          {/* Chart bars */}
-          <rect x="1.8" y="15" width="2.6" height="4.5" rx="0.6" fill="#93c5fd" fillOpacity="0.7" />
-          <rect x="1.8" y="15" width="2.6" height="0.9" rx="0.6" fill="white" fillOpacity="0.45" />
-          <rect x="5.0" y="11.5" width="2.6" height="8" rx="0.6" fill="#60a5fa" fillOpacity="0.9" />
-          <rect x="5.0" y="11.5" width="2.6" height="0.9" rx="0.6" fill="white" fillOpacity="0.3" />
-          <rect x="8.2" y="13" width="2.6" height="6.5" rx="0.6" fill="#93c5fd" fillOpacity="0.7" />
-          <rect x="8.2" y="13" width="2.6" height="0.9" rx="0.6" fill="white" fillOpacity="0.45" />
-          <rect x="11.4" y="9" width="2.6" height="10.5" rx="0.6" fill="#60a5fa" fillOpacity="0.9" />
-          <rect x="11.4" y="9" width="2.6" height="0.9" rx="0.6" fill="white" fillOpacity="0.3" />
-          <rect x="14.6" y="11" width="2.6" height="8.5" rx="0.6" fill="#93c5fd" fillOpacity="0.7" />
-          <rect x="14.6" y="11" width="2.6" height="0.9" rx="0.6" fill="white" fillOpacity="0.45" />
-          <rect x="17.8" y="6" width="2.6" height="13.5" rx="0.6" fill="#3b82f6" />
-          <rect x="17.8" y="6" width="2.6" height="0.9" rx="0.6" fill="white" fillOpacity="0.4" />
-          {/* Trend line + arrow */}
-          <path d="M2.8 15.8 6.2 12.2 9.3 14 13 9.5 19.5 2.5" stroke="#fbbf24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.25" />
-          <path d="M2.8 15.8 6.2 12.2 9.3 14 13 9.5 19.5 2.5" stroke="#f59e0b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M15.8 2.2 19.5 2.5 19.8 6.2" stroke="#f59e0b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-          <circle cx="19.6" cy="2.6" r="1.5" fill="#fbbf24" fillOpacity="0.35" />
-          <circle cx="19.6" cy="2.6" r="0.7" fill="#fef08a" />
+
+          {/* Base rail */}
+          <rect x="1.5" y="19.6" width="17.2" height="2.6" rx="1.2" fill={`url(#${id}-base)`} />
+          <rect x="1.5" y="19.6" width="17.2" height="0.85" rx="0.8" fill="rgba(255,255,255,0.12)" />
+
+          {/* Four sky-blue bars, increasing height */}
+          <rect x="2.2" y="14.2" width="2.8" height="5.4" rx="0.65" fill={sky} />
+          <rect x="2.2" y="14.2" width="2.8" height="0.85" rx="0.65" fill="rgba(255,255,255,0.35)" />
+          <rect x="6.1" y="11.8" width="2.8" height="7.8" rx="0.65" fill={skyDeep} />
+          <rect x="6.1" y="11.8" width="2.8" height="0.85" rx="0.65" fill="rgba(255,255,255,0.28)" />
+          <rect x="10" y="9.4" width="2.8" height="10.2" rx="0.65" fill={sky} />
+          <rect x="10" y="9.4" width="2.8" height="0.85" rx="0.65" fill="rgba(255,255,255,0.32)" />
+          <rect x="13.9" y="6.2" width="2.8" height="13.4" rx="0.65" fill={skyDeep} />
+          <rect x="13.9" y="6.2" width="2.8" height="0.85" rx="0.65" fill="rgba(255,255,255,0.3)" />
+
+          {/* Orange trend + arrow (reference) */}
+          <path
+            d="M2.8 16.2 6.4 13.1 10.4 11.8 14.2 8.6 19.2 3.2"
+            stroke={orange}
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            opacity="0.35"
+          />
+          <path
+            d="M2.8 16.2 6.4 13.1 10.4 11.8 14.2 8.6 19.2 3.2"
+            stroke={orangeDeep}
+            strokeWidth="1.55"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M16.2 3.0 19.4 3.2 19.6 6.4"
+            stroke={orangeDeep}
+            strokeWidth="1.55"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <circle cx="19.35" cy="3.25" r="1.45" fill={orange} opacity="0.85" />
+          <circle cx="19.35" cy="3.25" r="0.65" fill="#ffedd5" />
         </svg>
       </div>
 
-      {/* Bottom glow */}
       <div
-        className="absolute -bottom-2 left-1 right-1 h-3 rounded-full blur-lg opacity-35"
-        style={{ background: "radial-gradient(ellipse, #7c3aed, transparent 70%)" }}
+        className="absolute -bottom-2 left-1 right-1 h-3 rounded-full blur-lg opacity-40"
+        style={{
+          background: "radial-gradient(ellipse, rgba(124, 58, 237, 0.85), transparent 70%)",
+        }}
       />
     </div>
   );

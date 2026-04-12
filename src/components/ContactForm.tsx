@@ -66,7 +66,7 @@ export default function ContactForm() {
             name="name"
             required
             autoComplete="name"
-            className="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/3 text-white placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/60 transition-all duration-200 hover:border-white/15"
+            className="form-input px-4 py-3"
             placeholder="Your name"
           />
         </div>
@@ -79,7 +79,7 @@ export default function ContactForm() {
             id="contact-phone"
             name="phone"
             autoComplete="tel"
-            className="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/3 text-white placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/60 transition-all duration-200 hover:border-white/15"
+            className="form-input px-4 py-3"
             placeholder="+91-XXXXXXXXXX"
           />
         </div>
@@ -94,7 +94,7 @@ export default function ContactForm() {
           name="email"
           required
           autoComplete="email"
-          className="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/3 text-white placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/60 transition-all duration-200 hover:border-white/15"
+          className="form-input px-4 py-3"
           placeholder="you@company.com"
         />
       </div>
@@ -107,7 +107,7 @@ export default function ContactForm() {
           name="message"
           rows={5}
           required
-          className="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/3 text-white placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/60 transition-all duration-200 hover:border-white/15 resize-none"
+          className="form-input px-4 py-3 resize-none"
           placeholder="Tell me about your project and goals..."
         />
       </div>
@@ -122,7 +122,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200 w-full sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-[0_8px_30px_rgba(139,92,246,0.3)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200 w-full sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed hover:shadow-[0_8px_30px_rgba(30,64,175,0.3)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         {status === "sending" ? (
           <>

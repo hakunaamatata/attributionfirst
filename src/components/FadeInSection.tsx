@@ -27,7 +27,7 @@ export default function FadeInSection({ children, className = "" }: FadeInSectio
   return (
     <div
       ref={ref}
-      className={`${visible ? "animate-section-in" : "opacity-0 translate-y-5"} ${className}`.trim()}
+      className={`${visible ? "animate-section-in" : "translate-y-6 opacity-0"} ${className}`.trim()}
     >
       {children}
     </div>

@@ -24,7 +24,7 @@ export default function ContactPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} suppressHydrationWarning />
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg border-b border-white/8">
+      <section className="pt-40 pb-16 md:pt-44 md:pb-20 bg-bg border-b border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Let&apos;s Discuss Your Growth Strategy

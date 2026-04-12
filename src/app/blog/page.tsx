@@ -43,7 +43,7 @@ export default function BlogPage() {
       />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg border-b border-white/8">
+      <section className="pt-40 pb-16 md:pt-44 md:pb-20 bg-bg border-b border-white/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block bg-accent/20 text-accent text-xs font-semibold px-3 py-1.5 rounded-full mb-5 tracking-wide uppercase">
             Insights & Strategy
@@ -62,6 +62,12 @@ export default function BlogPage() {
       {/* Posts Grid */}
       <section className="py-16 md:py-24 bg-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center md:mb-14">
+            <h2 className="text-2xl font-bold text-primary md:text-3xl">Latest articles</h2>
+            <p className="mx-auto mt-3 max-w-lg text-text-secondary">
+              Deep dives on attribution, paid media, and measurement.
+            </p>
+          </div>
           {blogPosts.length === 0 ? (
             <p className="text-center text-text-secondary text-lg">
               New posts coming soon. Check back shortly.

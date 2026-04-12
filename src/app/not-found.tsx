@@ -24,14 +24,14 @@ export default function NotFound() {
           </Link>
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-2 border border-white/10 hover:border-accent/30 text-primary font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
+            className="inline-flex items-center justify-center gap-2 border border-border hover:border-accent/30 text-primary font-semibold px-6 py-3 rounded-xl transition-colors text-sm bg-[var(--app-cta-secondary-bg)]"
           >
             <Briefcase className="w-4 h-4" />
             View Services
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 border border-white/10 hover:border-accent/30 text-primary font-semibold px-6 py-3 rounded-xl transition-colors text-sm"
+            className="inline-flex items-center justify-center gap-2 border border-border hover:border-accent/30 text-primary font-semibold px-6 py-3 rounded-xl transition-colors text-sm bg-[var(--app-cta-secondary-bg)]"
           >
             <Phone className="w-4 h-4" />
             Contact

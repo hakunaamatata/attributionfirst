@@ -2,10 +2,10 @@ import { Star, Quote } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 
 const cardStyles = [
-  { accent: "border-t-violet-500/40", avatarBg: "bg-violet-500/15 border-violet-500/25 text-violet-400" },
-  { accent: "border-t-blue-500/40", avatarBg: "bg-blue-500/15 border-blue-500/25 text-blue-400" },
-  { accent: "border-t-emerald-500/40", avatarBg: "bg-emerald-500/15 border-emerald-500/25 text-emerald-400" },
-  { accent: "border-t-amber-500/40", avatarBg: "bg-amber-500/15 border-amber-500/25 text-amber-400" },
+  { accent: "border-t-accent/50", avatarBg: "bg-accent/12 border-accent/25 text-accent" },
+  { accent: "border-t-accent/45", avatarBg: "bg-accent/12 border-accent/25 text-accent" },
+  { accent: "border-t-accent/40", avatarBg: "bg-accent/12 border-accent/25 text-accent" },
+  { accent: "border-t-accent/35", avatarBg: "bg-accent/12 border-accent/25 text-accent" },
 ];
 
 export default function TestimonialsSection() {
@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
             return (
               <figure
                 key={i}
-                className={`group relative bg-bg-card border border-white/[0.06] ${style.accent} border-t-2 rounded-2xl p-6 md:p-7 hover:border-white/[0.1] hover:shadow-lg hover:shadow-black/20 hover:-translate-y-1 transition-all duration-300 flex flex-col`}
+                className={`group relative bg-bg-card border border-border ${style.accent} border-t-2 rounded-2xl p-6 md:p-7 hover:border-border hover:shadow-lg hover:shadow-black/20 light:hover:shadow-slate-900/10 hover:-translate-y-1 transition-all duration-300 flex flex-col`}
               >
                 {/* Quote icon */}
                 <div className="mb-5">

@@ -105,9 +105,9 @@ function RenderContent({ block }: { block: BlogContent }) {
 
     case "callout": {
       const styles = {
-        warning: "border-amber-500/30 bg-amber-500/10 text-amber-200",
-        info: "border-violet-500/20 bg-violet-500/10 text-violet-200",
-        success: "border-emerald-500/30 bg-emerald-500/10 text-emerald-200",
+        warning: "border-accent/35 bg-accent/10 text-primary",
+        info: "border-accent/25 bg-accent/8 text-primary",
+        success: "border-accent/40 bg-accent/12 text-primary",
       };
       return (
         <div
@@ -371,7 +371,7 @@ export default async function BlogPostPage({ params }: Props) {
       />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg border-b border-white/8">
+      <section className="pt-40 pb-16 md:pt-44 md:pb-20 bg-bg border-b border-white/8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-text-secondary text-sm mb-6">

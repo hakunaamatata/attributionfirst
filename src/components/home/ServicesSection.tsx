@@ -18,14 +18,16 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 ───────────────────────────────────────────────────────────────────── */
 type Theme = {
   cardBg: string;
-  glow1: string;          /* radial top-right */
-  glow2: string;          /* radial bottom-left */
+  topBar: string;
+  glow1: string;
+  glow2: string;
   border: string;
   hoverBorder: string;
   hoverShadow: string;
   iconRing: string;
   iconText: string;
   iconHover: string;
+  titleHover: string;
   featureBox: string;
   featureDot: string;
   tagBase: string;
@@ -40,101 +42,193 @@ type Theme = {
 const themes: Record<string, Theme> = {
   "performance-marketing": {
     cardBg: "bg-bg-card",
-    glow1: "rgba(59,130,246,0.1)",
-    glow2: "rgba(139,92,246,0.06)",
-    border: "border-white/8",
-    hoverBorder: "hover:border-violet-400/50",
-    hoverShadow: "hover:shadow-lg hover:shadow-accent/10",
-    iconRing: "bg-violet-500/10 border-violet-500/25",
-    iconText: "text-violet-500",
-    iconHover: "group-hover:bg-violet-500 group-hover:text-white group-hover:border-violet-500",
-    featureBox: "bg-white/4 border-white/8",
-    featureDot: "bg-violet-500",
-    tagBase: "bg-violet-500/10 border-violet-500/25 text-violet-300",
-    tagHover: "hover:bg-violet-500/15 hover:border-violet-500/30",
-    metricBg: "bg-violet-500/10",
-    metricBorder: "border-violet-500/25",
-    metricIcon: "text-violet-500",
-    badge: "bg-violet-500/10 border-violet-500/25 text-violet-300",
+    topBar: "bg-linear-to-r from-blue-600 to-indigo-600",
+    glow1: "rgba(37,99,235,0.14)",
+    glow2: "rgba(79,70,229,0.08)",
+    border: "border-border",
+    hoverBorder: "hover:border-blue-500/45 dark:hover:border-blue-400/40",
+    hoverShadow: "hover:shadow-lg hover:shadow-blue-500/15",
+    iconRing: "bg-blue-500/10 border-blue-500/25 dark:bg-blue-500/15 dark:border-blue-400/35",
+    iconText: "text-blue-600 dark:text-blue-400",
+    iconHover:
+      "group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 dark:group-hover:bg-blue-500 dark:group-hover:border-blue-500",
+    titleHover: "group-hover:text-blue-700 dark:group-hover:text-blue-300",
+    featureBox: "bg-bg-elevated/45 border-border",
+    featureDot: "bg-blue-500 dark:bg-blue-400",
+    tagBase: "bg-blue-500/10 border-blue-500/25 text-blue-900 dark:text-blue-300",
+    tagHover: "hover:bg-blue-500/15 hover:border-blue-500/35",
+    metricBg: "bg-blue-500/10",
+    metricBorder: "border-blue-500/25",
+    metricIcon: "text-blue-600 dark:text-blue-400",
+    badge: "bg-blue-500/10 border-blue-500/25 text-blue-900 dark:text-blue-300",
     badgeLabel: "Performance",
+  },
+  "seo-optimisation": {
+    cardBg: "bg-bg-card",
+    topBar: "bg-linear-to-r from-emerald-600 to-teal-600",
+    glow1: "rgba(5,150,105,0.14)",
+    glow2: "rgba(13,148,136,0.08)",
+    border: "border-border",
+    hoverBorder: "hover:border-emerald-500/45 dark:hover:border-emerald-400/40",
+    hoverShadow: "hover:shadow-lg hover:shadow-emerald-500/15",
+    iconRing: "bg-emerald-500/10 border-emerald-500/25 dark:bg-emerald-500/15 dark:border-emerald-400/35",
+    iconText: "text-emerald-600 dark:text-emerald-400",
+    iconHover:
+      "group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600 dark:group-hover:bg-emerald-500 dark:group-hover:border-emerald-500",
+    titleHover: "group-hover:text-emerald-700 dark:group-hover:text-emerald-300",
+    featureBox: "bg-bg-elevated/45 border-border",
+    featureDot: "bg-emerald-500 dark:bg-emerald-400",
+    tagBase: "bg-emerald-500/10 border-emerald-500/25 text-emerald-900 dark:text-emerald-300",
+    tagHover: "hover:bg-emerald-500/15 hover:border-emerald-500/35",
+    metricBg: "bg-emerald-500/10",
+    metricBorder: "border-emerald-500/25",
+    metricIcon: "text-emerald-600 dark:text-emerald-400",
+    badge: "bg-emerald-500/10 border-emerald-500/25 text-emerald-900 dark:text-emerald-300",
+    badgeLabel: "SEO",
+  },
+  "landing-page-optimization": {
+    cardBg: "bg-bg-card",
+    topBar: "bg-linear-to-r from-fuchsia-600 to-violet-600",
+    glow1: "rgba(192,38,211,0.12)",
+    glow2: "rgba(124,58,237,0.1)",
+    border: "border-border",
+    hoverBorder: "hover:border-fuchsia-500/45 dark:hover:border-fuchsia-400/40",
+    hoverShadow: "hover:shadow-lg hover:shadow-fuchsia-500/15",
+    iconRing: "bg-fuchsia-500/10 border-fuchsia-500/25 dark:bg-fuchsia-500/15 dark:border-fuchsia-400/35",
+    iconText: "text-fuchsia-600 dark:text-fuchsia-400",
+    iconHover:
+      "group-hover:bg-fuchsia-600 group-hover:text-white group-hover:border-fuchsia-600 dark:group-hover:bg-fuchsia-500 dark:group-hover:border-fuchsia-500",
+    titleHover: "group-hover:text-fuchsia-700 dark:group-hover:text-fuchsia-300",
+    featureBox: "bg-bg-elevated/45 border-border",
+    featureDot: "bg-fuchsia-500 dark:bg-fuchsia-400",
+    tagBase: "bg-fuchsia-500/10 border-fuchsia-500/25 text-fuchsia-900 dark:text-fuchsia-300",
+    tagHover: "hover:bg-fuchsia-500/15 hover:border-fuchsia-500/35",
+    metricBg: "bg-fuchsia-500/10",
+    metricBorder: "border-fuchsia-500/25",
+    metricIcon: "text-fuchsia-600 dark:text-fuchsia-400",
+    badge: "bg-fuchsia-500/10 border-fuchsia-500/25 text-fuchsia-900 dark:text-fuchsia-300",
+    badgeLabel: "Trending",
   },
   "google-ads-management": {
     cardBg: "bg-bg-card",
-    glow1: "rgba(139,92,246,0.1)",
-    glow2: "rgba(0,185,153,0.06)",
-    border: "border-white/8",
-    hoverBorder: "hover:border-accent/40",
-    hoverShadow: "hover:shadow-lg hover:shadow-accent/10",
-    iconRing: "bg-violet-500/10 border-violet-500/25",
-    iconText: "text-accent",
-    iconHover: "group-hover:bg-accent group-hover:text-white group-hover:border-accent",
-    featureBox: "bg-white/4 border-white/8",
-    featureDot: "bg-accent",
-    tagBase: "bg-violet-500/10 border-violet-500/25 text-violet-300",
-    tagHover: "hover:bg-violet-500/15 hover:border-violet-500/30",
-    metricBg: "bg-violet-500/10",
-    metricBorder: "border-violet-500/25",
-    metricIcon: "text-accent",
-    badge: "bg-emerald-500/15 border-emerald-500/30 text-emerald-300",
+    topBar: "bg-linear-to-r from-sky-600 to-blue-600",
+    glow1: "rgba(2,132,199,0.14)",
+    glow2: "rgba(37,99,235,0.08)",
+    border: "border-border",
+    hoverBorder: "hover:border-sky-500/45 dark:hover:border-sky-400/40",
+    hoverShadow: "hover:shadow-lg hover:shadow-sky-500/15",
+    iconRing: "bg-sky-500/10 border-sky-500/25 dark:bg-sky-500/15 dark:border-sky-400/35",
+    iconText: "text-sky-600 dark:text-sky-400",
+    iconHover:
+      "group-hover:bg-sky-600 group-hover:text-white group-hover:border-sky-600 dark:group-hover:bg-sky-500 dark:group-hover:border-sky-500",
+    titleHover: "group-hover:text-sky-700 dark:group-hover:text-sky-300",
+    featureBox: "bg-bg-elevated/45 border-border",
+    featureDot: "bg-sky-500 dark:bg-sky-400",
+    tagBase: "bg-sky-500/10 border-sky-500/25 text-sky-900 dark:text-sky-300",
+    tagHover: "hover:bg-sky-500/15 hover:border-sky-500/35",
+    metricBg: "bg-sky-500/10",
+    metricBorder: "border-sky-500/25",
+    metricIcon: "text-sky-600 dark:text-sky-400",
+    badge: "bg-sky-500/12 border-sky-500/25 text-sky-900 dark:text-sky-300",
     badgeLabel: "Google Ads",
   },
   "meta-ads-campaigns": {
     cardBg: "bg-bg-card",
-    glow1: "rgba(139,92,246,0.1)",
-    glow2: "rgba(99,102,241,0.06)",
-    border: "border-white/8",
-    hoverBorder: "hover:border-violet-400/50",
-    hoverShadow: "hover:shadow-lg hover:shadow-accent/10",
-    iconRing: "bg-violet-500/10 border-violet-500/25",
-    iconText: "text-violet-500",
-    iconHover: "group-hover:bg-violet-500 group-hover:text-white group-hover:border-violet-500",
-    featureBox: "bg-white/4 border-white/8",
-    featureDot: "bg-violet-500",
-    tagBase: "bg-violet-500/10 border-violet-500/25 text-violet-300",
-    tagHover: "hover:bg-violet-500/15 hover:border-violet-500/30",
+    topBar: "bg-linear-to-r from-violet-600 to-purple-600",
+    glow1: "rgba(124,58,237,0.14)",
+    glow2: "rgba(147,51,234,0.08)",
+    border: "border-border",
+    hoverBorder: "hover:border-violet-500/45 dark:hover:border-violet-400/40",
+    hoverShadow: "hover:shadow-lg hover:shadow-violet-500/15",
+    iconRing: "bg-violet-500/10 border-violet-500/25 dark:bg-violet-500/15 dark:border-violet-400/35",
+    iconText: "text-violet-600 dark:text-violet-400",
+    iconHover:
+      "group-hover:bg-violet-600 group-hover:text-white group-hover:border-violet-600 dark:group-hover:bg-violet-500 dark:group-hover:border-violet-500",
+    titleHover: "group-hover:text-violet-700 dark:group-hover:text-violet-300",
+    featureBox: "bg-bg-elevated/45 border-border",
+    featureDot: "bg-violet-500 dark:bg-violet-400",
+    tagBase: "bg-violet-500/10 border-violet-500/25 text-violet-900 dark:text-violet-300",
+    tagHover: "hover:bg-violet-500/15 hover:border-violet-500/35",
     metricBg: "bg-violet-500/10",
     metricBorder: "border-violet-500/25",
-    metricIcon: "text-violet-500",
-    badge: "bg-violet-500/10 border-violet-500/25 text-violet-300",
+    metricIcon: "text-violet-600 dark:text-violet-400",
+    badge: "bg-violet-500/10 border-violet-500/25 text-violet-900 dark:text-violet-300",
     badgeLabel: "Meta",
   },
   "lead-generation-funnels": {
     cardBg: "bg-bg-card",
-    glow1: "rgba(249,115,22,0.1)",
-    glow2: "rgba(234,88,12,0.06)",
-    border: "border-white/8",
-    hoverBorder: "hover:border-orange-400/50",
-    hoverShadow: "hover:shadow-lg hover:shadow-orange-500/10",
-    iconRing: "bg-orange-500/10 border-orange-500/25",
-    iconText: "text-orange-500",
-    iconHover: "group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500",
-    featureBox: "bg-white/4 border-white/8",
-    featureDot: "bg-orange-500",
-    tagBase: "bg-orange-500/10 border-orange-500/25 text-orange-300",
-    tagHover: "hover:bg-orange-500/15 hover:border-orange-500/30",
-    metricBg: "bg-orange-500/10",
-    metricBorder: "border-orange-500/25",
-    metricIcon: "text-orange-500",
-    badge: "bg-orange-500/10 border-orange-500/25 text-orange-300",
+    topBar: "bg-linear-to-r from-cyan-600 to-sky-500",
+    glow1: "rgba(8,145,178,0.14)",
+    glow2: "rgba(14,165,233,0.08)",
+    border: "border-border",
+    hoverBorder: "hover:border-cyan-500/45 dark:hover:border-cyan-400/40",
+    hoverShadow: "hover:shadow-lg hover:shadow-cyan-500/15",
+    iconRing: "bg-cyan-500/10 border-cyan-500/25 dark:bg-cyan-500/15 dark:border-cyan-400/35",
+    iconText: "text-cyan-600 dark:text-cyan-400",
+    iconHover:
+      "group-hover:bg-cyan-600 group-hover:text-white group-hover:border-cyan-600 dark:group-hover:bg-cyan-500 dark:group-hover:border-cyan-500",
+    titleHover: "group-hover:text-cyan-700 dark:group-hover:text-cyan-300",
+    featureBox: "bg-bg-elevated/45 border-border",
+    featureDot: "bg-cyan-500 dark:bg-cyan-400",
+    tagBase: "bg-cyan-500/10 border-cyan-500/25 text-cyan-900 dark:text-cyan-300",
+    tagHover: "hover:bg-cyan-500/15 hover:border-cyan-500/35",
+    metricBg: "bg-cyan-500/10",
+    metricBorder: "border-cyan-500/25",
+    metricIcon: "text-cyan-600 dark:text-cyan-400",
+    badge: "bg-cyan-500/10 border-cyan-500/25 text-cyan-900 dark:text-cyan-300",
     badgeLabel: "Funnels",
   },
+  "local-search-gmb-ads": {
+    cardBg: "bg-bg-card",
+    topBar: "bg-linear-to-r from-amber-600 to-orange-500",
+    glow1: "rgba(217,119,6,0.14)",
+    glow2: "rgba(234,88,12,0.08)",
+    border: "border-border",
+    hoverBorder: "hover:border-amber-500/45 dark:hover:border-amber-400/40",
+    hoverShadow: "hover:shadow-lg hover:shadow-amber-500/15",
+    iconRing: "bg-amber-500/10 border-amber-500/25 dark:bg-amber-500/15 dark:border-amber-400/35",
+    iconText: "text-amber-600 dark:text-amber-400",
+    iconHover:
+      "group-hover:bg-amber-600 group-hover:text-white group-hover:border-amber-600 dark:group-hover:bg-amber-500 dark:group-hover:border-amber-500",
+    titleHover: "group-hover:text-amber-700 dark:group-hover:text-amber-300",
+    featureBox: "bg-bg-elevated/45 border-border",
+    featureDot: "bg-amber-500 dark:bg-amber-400",
+    tagBase: "bg-amber-500/10 border-amber-500/25 text-amber-950 dark:text-amber-300",
+    tagHover: "hover:bg-amber-500/15 hover:border-amber-500/35",
+    metricBg: "bg-amber-500/10",
+    metricBorder: "border-amber-500/25",
+    metricIcon: "text-amber-600 dark:text-amber-400",
+    badge: "bg-amber-500/10 border-amber-500/25 text-amber-950 dark:text-amber-300",
+    badgeLabel: "Local",
+  },
 };
+
+function serviceTheme(slug: string): Theme {
+  return themes[slug] ?? themes["performance-marketing"];
+}
 
 /* ─────────────────────────────────────────────────────────────────────
    Standard card — same depth as featured cards
 ───────────────────────────────────────────────────────────────────── */
 function StandardCard({ service }: { service: (typeof services)[number] }) {
   const Icon = iconMap[service.icon] || Target;
-  const t = themes[service.slug] ?? themes["performance-marketing"];
+  const t = serviceTheme(service.slug);
   const features = service.features.slice(0, 4);
 
   return (
-    <div className={`group relative ${t.cardBg} border ${t.border} ${t.hoverBorder} ${t.hoverShadow} rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300 h-full flex flex-col cursor-default`}>
+    <div
+      className={`group relative ${t.cardBg} border ${t.border} ${t.hoverBorder} ${t.hoverShadow} rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300 h-full flex flex-col cursor-default`}
+    >
+      <div className={`absolute left-0 right-0 top-0 z-20 h-1 ${t.topBar} rounded-t-2xl`} aria-hidden />
       {/* dual radial glows */}
-      <div className="absolute inset-0 pointer-events-none"
-        style={{ background: `radial-gradient(ellipse at top right, ${t.glow1} 0%, transparent 55%), radial-gradient(ellipse at bottom left, ${t.glow2} 0%, transparent 55%)` }} />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: `radial-gradient(ellipse at top right, ${t.glow1} 0%, transparent 55%), radial-gradient(ellipse at bottom left, ${t.glow2} 0%, transparent 55%)`,
+        }}
+      />
 
-      <div className="relative z-10 p-6 flex flex-col flex-1">
+      <div className="relative z-10 flex flex-1 flex-col p-6">
         {/* icon + badge */}
         <div className="flex items-start justify-between mb-5">
           <div className={`inline-flex items-center justify-center w-12 h-12 ${t.iconRing} border ${t.iconText} ${t.iconHover} rounded-xl transition-all duration-300`}>
@@ -146,7 +240,7 @@ function StandardCard({ service }: { service: (typeof services)[number] }) {
         </div>
 
         {/* title + description */}
-        <h3 className={`text-base font-bold text-primary mb-2 ${t.iconText.replace("text-", "group-hover:text-")} transition-colors leading-snug`}>
+        <h3 className={`text-base font-bold text-primary mb-2 leading-snug transition-colors ${t.titleHover}`}>
           {service.title}
         </h3>
         <p className="text-text-secondary text-xs leading-relaxed mb-5">
@@ -154,7 +248,7 @@ function StandardCard({ service }: { service: (typeof services)[number] }) {
         </p>
 
         {/* divider */}
-        <div className="border-t border-white/8 mb-4" />
+        <div className="border-t border-border mb-4" />
 
         {/* features with icon boxes */}
         <ul className="space-y-2 mb-4 flex-1">
@@ -196,36 +290,49 @@ function StandardCard({ service }: { service: (typeof services)[number] }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   Local Search & GMB Ads card — cyan/sky theme
+   Local Search & GMB Ads
 ───────────────────────────────────────────────────────────────────── */
-function LocalCard({ service }: { service: (typeof services)[number] }) {
+function LocalCard({ service, theme: t }: { service: (typeof services)[number]; theme: Theme }) {
   const features = service.features.slice(0, 4);
   return (
-    <div className="group relative rounded-2xl overflow-hidden border border-white/8 hover:border-cyan-400/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300 h-full flex flex-col bg-bg-card">
-      <div className="relative z-10 p-7 flex flex-col flex-1">
-        <div className="flex items-start justify-between mb-5">
-          <div className="inline-flex items-center justify-center w-12 h-12 bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 rounded-xl group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300">
-            <MapPin className="w-6 h-6" />
+    <div
+      className={`group relative ${t.cardBg} overflow-hidden rounded-2xl border ${t.border} ${t.hoverBorder} ${t.hoverShadow} flex h-full flex-col transition-all duration-300 hover:-translate-y-1`}
+    >
+      <div className={`absolute left-0 right-0 top-0 z-20 h-1 ${t.topBar} rounded-t-2xl`} aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: `radial-gradient(ellipse at top right, ${t.glow1} 0%, transparent 55%), radial-gradient(ellipse at bottom left, ${t.glow2} 0%, transparent 55%)`,
+        }}
+      />
+      <div className="relative z-10 flex flex-1 flex-col p-7">
+        <div className="mb-5 flex items-start justify-between">
+          <div
+            className={`inline-flex h-12 w-12 items-center justify-center rounded-xl border ${t.iconRing} ${t.iconText} ${t.iconHover} transition-all duration-300`}
+          >
+            <MapPin className="h-6 w-6" />
           </div>
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-cyan-300 text-[10px] font-bold tracking-widest uppercase">
-            <Zap className="w-2.5 h-2.5" /> Local
+          <span
+            className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest ${t.badge}`}
+          >
+            <Zap className="h-2.5 w-2.5" /> {t.badgeLabel}
           </span>
         </div>
 
-        <h3 className="text-lg font-extrabold text-primary mb-2 leading-tight group-hover:text-cyan-400 transition-colors">
+        <h3 className={`mb-2 text-lg font-extrabold leading-tight text-primary transition-colors ${t.titleHover}`}>
           {service.title}
         </h3>
-        <p className="text-text-secondary text-xs leading-relaxed mb-5">
-          {service.description}
-        </p>
+        <p className="mb-5 text-xs leading-relaxed text-text-secondary">{service.description}</p>
 
-        <div className="border-t border-white/8 mb-4" />
+        <div className="mb-4 border-t border-border" />
 
-        <ul className="space-y-2 mb-4 flex-1">
+        <ul className="mb-4 flex-1 space-y-2">
           {features.map((f) => (
-            <li key={f} className="flex items-start gap-2.5 text-text-secondary text-xs leading-snug">
-              <span className="w-4 h-4 rounded-md bg-white/4 border border-white/8 flex items-center justify-center shrink-0 mt-0.5">
-                <span className="w-1 h-1 rounded-full bg-cyan-500" />
+            <li key={f} className="flex items-start gap-2.5 text-xs leading-snug text-text-secondary">
+              <span
+                className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-md border ${t.featureBox}`}
+              >
+                <span className={`h-1 w-1 rounded-full ${t.featureDot}`} />
               </span>
               {f}
             </li>
@@ -233,10 +340,13 @@ function LocalCard({ service }: { service: (typeof services)[number] }) {
         </ul>
 
         {service.tags && (
-          <div className="flex flex-wrap gap-1.5 mb-3">
+          <div className="mb-3 flex flex-wrap gap-1.5">
             {service.tags.map((tag) => (
-              <span key={tag.label} title={tag.tooltip}
-                className="cursor-help inline-flex items-center px-2 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-500/25 text-cyan-300 text-[11px] font-semibold hover:bg-cyan-500/15 transition-colors">
+              <span
+                key={tag.label}
+                title={tag.tooltip}
+                className={`inline-flex cursor-help items-center rounded-md px-2 py-0.5 text-[11px] font-semibold transition-colors ${t.tagBase} ${t.tagHover}`}
+              >
                 {tag.label}
               </span>
             ))}
@@ -244,9 +354,9 @@ function LocalCard({ service }: { service: (typeof services)[number] }) {
         )}
 
         {service.metric && (
-          <div className="flex items-start gap-2 bg-cyan-500/10 border border-cyan-500/25 rounded-lg px-3 py-2">
-            <TrendingUp className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
-            <p className="text-text-secondary text-[11px] leading-snug">{service.metric}</p>
+          <div className={`flex items-start gap-2 rounded-lg border px-3 py-2 ${t.metricBg} ${t.metricBorder}`}>
+            <TrendingUp className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${t.metricIcon}`} />
+            <p className="text-[11px] leading-snug text-text-secondary">{service.metric}</p>
           </div>
         )}
       </div>
@@ -255,36 +365,49 @@ function LocalCard({ service }: { service: (typeof services)[number] }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   SEO Optimisation card — violet theme
+   SEO Optimisation
 ───────────────────────────────────────────────────────────────────── */
-function SEOCard({ service }: { service: (typeof services)[number] }) {
+function SEOCard({ service, theme: t }: { service: (typeof services)[number]; theme: Theme }) {
   const features = service.features.slice(0, 5);
   return (
-    <div className="group relative rounded-2xl overflow-hidden border border-white/8 hover:border-violet-400/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 h-full flex flex-col bg-bg-card">
-      <div className="relative z-10 p-7 flex flex-col flex-1">
-        <div className="flex items-start justify-between mb-5">
-          <div className="inline-flex items-center justify-center w-12 h-12 bg-violet-500/10 border border-violet-500/25 text-violet-500 rounded-xl group-hover:bg-violet-500 group-hover:text-white transition-all duration-300">
-            <Search className="w-6 h-6" />
+    <div
+      className={`group relative ${t.cardBg} overflow-hidden rounded-2xl border ${t.border} ${t.hoverBorder} ${t.hoverShadow} flex h-full flex-col transition-all duration-300 hover:-translate-y-1`}
+    >
+      <div className={`absolute left-0 right-0 top-0 z-20 h-1 ${t.topBar} rounded-t-2xl`} aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: `radial-gradient(ellipse at top right, ${t.glow1} 0%, transparent 55%), radial-gradient(ellipse at bottom left, ${t.glow2} 0%, transparent 55%)`,
+        }}
+      />
+      <div className="relative z-10 flex flex-1 flex-col p-7">
+        <div className="mb-5 flex items-start justify-between">
+          <div
+            className={`inline-flex h-12 w-12 items-center justify-center rounded-xl border ${t.iconRing} ${t.iconText} ${t.iconHover} transition-all duration-300`}
+          >
+            <Search className="h-6 w-6" />
           </div>
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-300 text-[10px] font-bold tracking-widest uppercase">
-            <Zap className="w-2.5 h-2.5" /> SEO
+          <span
+            className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest ${t.badge}`}
+          >
+            <Zap className="h-2.5 w-2.5" /> {t.badgeLabel}
           </span>
         </div>
 
-        <h3 className="text-lg font-extrabold text-primary mb-2 leading-tight group-hover:text-violet-400 transition-colors">
+        <h3 className={`mb-2 text-lg font-extrabold leading-tight text-primary transition-colors ${t.titleHover}`}>
           {service.title}
         </h3>
-        <p className="text-text-secondary text-xs leading-relaxed mb-5">
-          {service.description}
-        </p>
+        <p className="mb-5 text-xs leading-relaxed text-text-secondary">{service.description}</p>
 
-        <div className="border-t border-white/8 mb-4" />
+        <div className="mb-4 border-t border-border" />
 
-        <ul className="space-y-2 mb-4 flex-1">
+        <ul className="mb-4 flex-1 space-y-2">
           {features.map((f) => (
-            <li key={f} className="flex items-start gap-2.5 text-text-secondary text-xs leading-snug">
-              <span className="w-4 h-4 rounded-md bg-white/4 border border-white/8 flex items-center justify-center shrink-0 mt-0.5">
-                <span className="w-1 h-1 rounded-full bg-violet-500" />
+            <li key={f} className="flex items-start gap-2.5 text-xs leading-snug text-text-secondary">
+              <span
+                className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-md border ${t.featureBox}`}
+              >
+                <span className={`h-1 w-1 rounded-full ${t.featureDot}`} />
               </span>
               {f}
             </li>
@@ -292,10 +415,13 @@ function SEOCard({ service }: { service: (typeof services)[number] }) {
         </ul>
 
         {service.tags && (
-          <div className="flex flex-wrap gap-1.5 mb-3">
+          <div className="mb-3 flex flex-wrap gap-1.5">
             {service.tags.map((tag) => (
-              <span key={tag.label} title={tag.tooltip}
-                className="cursor-help inline-flex items-center px-2 py-0.5 rounded-md bg-violet-500/10 border border-violet-500/25 text-violet-300 text-[11px] font-semibold hover:bg-violet-500/15 transition-colors">
+              <span
+                key={tag.label}
+                title={tag.tooltip}
+                className={`inline-flex cursor-help items-center rounded-md px-2 py-0.5 text-[11px] font-semibold transition-colors ${t.tagBase} ${t.tagHover}`}
+              >
                 {tag.label}
               </span>
             ))}
@@ -303,9 +429,9 @@ function SEOCard({ service }: { service: (typeof services)[number] }) {
         )}
 
         {service.metric && (
-          <div className="flex items-start gap-2 bg-violet-500/10 border border-violet-500/25 rounded-lg px-3 py-2">
-            <TrendingUp className="w-3.5 h-3.5 text-violet-500 shrink-0 mt-0.5" />
-            <p className="text-text-secondary text-[11px] leading-snug">{service.metric}</p>
+          <div className={`flex items-start gap-2 rounded-lg border px-3 py-2 ${t.metricBg} ${t.metricBorder}`}>
+            <TrendingUp className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${t.metricIcon}`} />
+            <p className="text-[11px] leading-snug text-text-secondary">{service.metric}</p>
           </div>
         )}
       </div>
@@ -314,36 +440,49 @@ function SEOCard({ service }: { service: (typeof services)[number] }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   Landing Page + AI SEO featured card
+   Landing Page + AI SEO
 ───────────────────────────────────────────────────────────────────── */
-function LandingAICard({ service }: { service: (typeof services)[number] }) {
+function LandingAICard({ service, theme: t }: { service: (typeof services)[number]; theme: Theme }) {
   const features = service.features.slice(0, 4);
   return (
-    <div className="group relative rounded-2xl overflow-hidden border border-white/8 hover:border-accent/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 h-full flex flex-col bg-bg-card">
-      <div className="relative z-10 p-7 flex flex-col flex-1">
-        <div className="flex items-start justify-between mb-5">
-          <div className="inline-flex items-center justify-center w-12 h-12 bg-violet-500/10 border border-violet-500/25 text-accent rounded-xl group-hover:bg-accent group-hover:text-white transition-all duration-300">
-            <Bot className="w-6 h-6" />
+    <div
+      className={`group relative ${t.cardBg} overflow-hidden rounded-2xl border ${t.border} ${t.hoverBorder} ${t.hoverShadow} flex h-full flex-col transition-all duration-300 hover:-translate-y-1`}
+    >
+      <div className={`absolute left-0 right-0 top-0 z-20 h-1 ${t.topBar} rounded-t-2xl`} aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: `radial-gradient(ellipse at top right, ${t.glow1} 0%, transparent 55%), radial-gradient(ellipse at bottom left, ${t.glow2} 0%, transparent 55%)`,
+        }}
+      />
+      <div className="relative z-10 flex flex-1 flex-col p-7">
+        <div className="mb-5 flex items-start justify-between">
+          <div
+            className={`inline-flex h-12 w-12 items-center justify-center rounded-xl border ${t.iconRing} ${t.iconText} ${t.iconHover} transition-all duration-300`}
+          >
+            <Bot className="h-6 w-6" />
           </div>
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-violet-300 text-[10px] font-bold tracking-widest uppercase">
-            <TrendingUp className="w-2.5 h-2.5" /> Trending
+          <span
+            className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest ${t.badge}`}
+          >
+            <TrendingUp className="h-2.5 w-2.5" /> {t.badgeLabel}
           </span>
         </div>
 
-        <h3 className="text-lg font-extrabold text-primary mb-2 leading-tight group-hover:text-accent transition-colors">
+        <h3 className={`mb-2 text-lg font-extrabold leading-tight text-primary transition-colors ${t.titleHover}`}>
           {service.title}
         </h3>
-        <p className="text-text-secondary text-xs leading-relaxed mb-5">
-          {service.description}
-        </p>
+        <p className="mb-5 text-xs leading-relaxed text-text-secondary">{service.description}</p>
 
-        <div className="border-t border-white/8 mb-4" />
+        <div className="mb-4 border-t border-border" />
 
-        <ul className="space-y-2 mb-4 flex-1">
+        <ul className="mb-4 flex-1 space-y-2">
           {features.map((f) => (
-            <li key={f} className="flex items-start gap-2.5 text-text-secondary text-xs leading-snug">
-              <span className="w-4 h-4 rounded-md bg-white/4 border border-white/8 flex items-center justify-center shrink-0 mt-0.5">
-                <span className="w-1 h-1 rounded-full bg-accent" />
+            <li key={f} className="flex items-start gap-2.5 text-xs leading-snug text-text-secondary">
+              <span
+                className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-md border ${t.featureBox}`}
+              >
+                <span className={`h-1 w-1 rounded-full ${t.featureDot}`} />
               </span>
               {f}
             </li>
@@ -352,11 +491,16 @@ function LandingAICard({ service }: { service: (typeof services)[number] }) {
 
         {service.tags && (
           <div className="mb-3">
-            <p className="text-text-tertiary text-[10px] uppercase tracking-widest font-semibold mb-2">AI Disciplines</p>
+            <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-text-tertiary">
+              AI Disciplines
+            </p>
             <div className="flex flex-wrap gap-1.5">
               {service.tags.map((tag) => (
-                <span key={tag.label} title={tag.tooltip}
-                  className="cursor-help inline-flex items-center px-2.5 py-1 rounded-lg bg-violet-500/10 border border-violet-500/25 text-violet-300 text-[11px] font-bold tracking-wide hover:bg-accent hover:text-white hover:border-accent transition-all duration-200">
+                <span
+                  key={tag.label}
+                  title={tag.tooltip}
+                  className={`inline-flex cursor-help items-center rounded-lg border px-2.5 py-1 text-[11px] font-bold tracking-wide transition-all duration-200 ${t.tagBase} ${t.tagHover}`}
+                >
                   {tag.label}
                 </span>
               ))}
@@ -365,9 +509,9 @@ function LandingAICard({ service }: { service: (typeof services)[number] }) {
         )}
 
         {service.metric && (
-          <div className="flex items-start gap-2 bg-violet-500/10 border border-violet-500/25 rounded-xl px-3 py-2.5">
-            <TrendingUp className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-            <p className="text-text-secondary text-xs font-medium leading-snug">{service.metric}</p>
+          <div className={`flex items-start gap-2 rounded-xl border px-3 py-2.5 ${t.metricBg} ${t.metricBorder}`}>
+            <TrendingUp className={`mt-0.5 h-4 w-4 shrink-0 ${t.metricIcon}`} />
+            <p className="text-xs font-medium leading-snug text-text-secondary">{service.metric}</p>
           </div>
         )}
       </div>
@@ -394,12 +538,15 @@ export default function ServicesSection() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  const specialSlugs = ["local-search-gmb-ads", "seo-optimisation", "landing-page-optimization"];
+  /** Performance Marketing first, then SEO + Landing (previously at end), then remaining services. */
   const orderedServices = [
-    ...services.filter((s) => !specialSlugs.includes(s.slug)),
-    services.find((s) => s.slug === "local-search-gmb-ads")!,
+    services.find((s) => s.slug === "performance-marketing")!,
     services.find((s) => s.slug === "seo-optimisation")!,
     services.find((s) => s.slug === "landing-page-optimization")!,
+    services.find((s) => s.slug === "google-ads-management")!,
+    services.find((s) => s.slug === "meta-ads-campaigns")!,
+    services.find((s) => s.slug === "lead-generation-funnels")!,
+    services.find((s) => s.slug === "local-search-gmb-ads")!,
   ];
 
   const scrollToIdx = useCallback((idx: number) => {
@@ -456,11 +603,11 @@ export default function ServicesSection() {
         <div className="flex justify-end mb-4">
           <div className="flex items-center gap-2 shrink-0">
             <button onClick={() => scrollToIdx(activeIdx - 1)} disabled={!canPrev} aria-label="Previous"
-              className="w-10 h-10 rounded-xl border border-white/10 bg-white/6 text-text-tertiary flex items-center justify-center hover:bg-accent/10 hover:border-accent/30 hover:text-accent disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-200">
+              className="w-10 h-10 rounded-xl border border-border bg-white/6 text-text-tertiary flex items-center justify-center hover:bg-accent/10 hover:border-accent/30 hover:text-accent disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-200">
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button onClick={() => scrollToIdx(activeIdx + 1)} disabled={!canNext} aria-label="Next"
-              className="w-10 h-10 rounded-xl border border-white/10 bg-white/6 text-text-tertiary flex items-center justify-center hover:bg-accent/10 hover:border-accent/30 hover:text-accent disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-200">
+              className="w-10 h-10 rounded-xl border border-border bg-white/6 text-text-tertiary flex items-center justify-center hover:bg-accent/10 hover:border-accent/30 hover:text-accent disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-200">
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
@@ -487,19 +634,22 @@ export default function ServicesSection() {
             window.addEventListener("mouseup", onUp);
           }}
         >
-          {orderedServices.map((service) => (
-            <div key={service.slug} className="snap-start shrink-0" style={{ width: cardW }}>
-              {service.slug === "local-search-gmb-ads" ? (
-                <LocalCard service={service} />
-              ) : service.slug === "seo-optimisation" ? (
-                <SEOCard service={service} />
-              ) : service.slug === "landing-page-optimization" ? (
-                <LandingAICard service={service} />
-              ) : (
-                <StandardCard service={service} />
-              )}
-            </div>
-          ))}
+          {orderedServices.map((service) => {
+            const theme = serviceTheme(service.slug);
+            return (
+              <div key={service.slug} className="snap-start shrink-0" style={{ width: cardW }}>
+                {service.slug === "local-search-gmb-ads" ? (
+                  <LocalCard service={service} theme={theme} />
+                ) : service.slug === "seo-optimisation" ? (
+                  <SEOCard service={service} theme={theme} />
+                ) : service.slug === "landing-page-optimization" ? (
+                  <LandingAICard service={service} theme={theme} />
+                ) : (
+                  <StandardCard service={service} />
+                )}
+              </div>
+            );
+          })}
           <div className="shrink-0 w-4" />
         </div>
 
@@ -509,7 +659,7 @@ export default function ServicesSection() {
             {orderedServices.map((_, i) => (
               <button key={i} onClick={() => scrollToIdx(i)} aria-label={`Go to slide ${i + 1}`}
                 className="relative flex items-center justify-center w-6 h-6">
-                <span className={`block rounded-full transition-all duration-300 ${i === activeIdx ? "w-6 h-2 bg-accent" : "w-2 h-2 bg-white/20 hover:bg-white/30"}`} />
+                <span className={`block rounded-full transition-all duration-300 ${i === activeIdx ? "w-6 h-2 bg-accent" : "w-2 h-2 bg-text-muted/25 hover:bg-text-muted/40"}`} />
               </button>
             ))}
           </div>

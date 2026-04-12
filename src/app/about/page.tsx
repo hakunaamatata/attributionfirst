@@ -17,7 +17,7 @@ const experience = [
     company: "Thomas Cook India",
     period: "Oct 2024 - Present",
     location: "Lower Parel, Mumbai",
-    accent: { dot: "bg-emerald-400", ring: "border-emerald-400/30", badge: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20", glow: "shadow-emerald-500/20", line: "from-emerald-400/60" },
+    accent: { dot: "bg-accent", ring: "border-accent/30", badge: "bg-accent/10 text-accent border-accent/20", glow: "shadow-accent/20", line: "from-accent/60" },
     current: true,
     highlights: [
       "Developed and implemented digital strategies across multiple platforms",
@@ -32,7 +32,7 @@ const experience = [
     company: "Crimson Interactive",
     period: "Jan 2024 - Oct 2024",
     location: "Goregaon, Mumbai",
-    accent: { dot: "bg-violet-400", ring: "border-violet-400/30", badge: "bg-violet-500/10 text-violet-400 border-violet-500/20", glow: "shadow-violet-500/20", line: "from-violet-400/40" },
+    accent: { dot: "bg-accent", ring: "border-accent/30", badge: "bg-accent/10 text-accent border-accent/20", glow: "shadow-accent/20", line: "from-accent/40" },
     current: false,
     highlights: [
       "Developed comprehensive PPC strategies aligned with business goals",
@@ -62,7 +62,7 @@ const experience = [
     company: "Self-employed",
     period: "Mar 2020 - Apr 2021",
     location: "Mumbai",
-    accent: { dot: "bg-amber-400", ring: "border-amber-400/30", badge: "bg-amber-500/10 text-amber-400 border-amber-500/20", glow: "shadow-amber-500/20", line: "from-amber-400/20" },
+    accent: { dot: "bg-accent", ring: "border-accent/30", badge: "bg-accent/10 text-accent border-accent/20", glow: "shadow-accent/20", line: "from-accent/20" },
     current: false,
     highlights: [
       "Content writing and blog creation for multiple companies",
@@ -73,22 +73,26 @@ const experience = [
   },
 ];
 
+const certStyle = "text-accent bg-accent/10 border-accent/20";
+
 const certifications = [
-  { name: "Google Ads Search Certification", color: "text-blue-400 bg-blue-500/10 border-blue-500/20" },
-  { name: "Google Analytics 4 Certification (Udemy)", color: "text-amber-400 bg-amber-500/10 border-amber-500/20" },
-  { name: "Microsoft Ads Certified Professional", color: "text-cyan-400 bg-cyan-500/10 border-cyan-500/20" },
-  { name: "Advanced Google Ads (LinkedIn)", color: "text-blue-400 bg-blue-500/10 border-blue-500/20" },
-  { name: "Meta Social Media Marketing Professional (Coursera)", color: "text-violet-400 bg-violet-500/10 border-violet-500/20" },
-  { name: "Advanced Tracking & Measurement Program (Measure Marketer)", color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20" },
-  { name: "Digital Marketing Course (Freelancer Academy)", color: "text-rose-400 bg-rose-500/10 border-rose-500/20" },
+  { name: "Google Ads Search Certification", color: certStyle },
+  { name: "Google Analytics 4 Certification (Udemy)", color: certStyle },
+  { name: "Microsoft Ads Certified Professional", color: certStyle },
+  { name: "Advanced Google Ads (LinkedIn)", color: certStyle },
+  { name: "Meta Social Media Marketing Professional (Coursera)", color: certStyle },
+  { name: "Advanced Tracking & Measurement Program (Measure Marketer)", color: certStyle },
+  { name: "Digital Marketing Course (Freelancer Academy)", color: certStyle },
 ];
 
+const skillCat = "border-accent/30 hover:border-accent/60 hover:bg-accent/5";
+
 const skillCategories = [
-  { label: "Paid Ads", color: "border-violet-500/30 hover:border-violet-400/60 hover:bg-violet-500/5", items: ["Google Ads", "Meta Ads", "Bing Ads", "Yahoo Ads"] },
-  { label: "Analytics", color: "border-blue-500/30 hover:border-blue-400/60 hover:bg-blue-500/5", items: ["GA4", "GTM", "SEMrush", "Firebase"] },
-  { label: "Strategy", color: "border-emerald-500/30 hover:border-emerald-400/60 hover:bg-emerald-500/5", items: ["PPC", "SEM", "CRO", "A/B Testing", "Paid Ads Strategy", "Paid Ads Funnel"] },
-  { label: "CRM & Tools", color: "border-amber-500/30 hover:border-amber-400/60 hover:bg-amber-500/5", items: ["Salesforce CRM", "Oracle CRM", "Google My Business Ads", "App Install Campaigns", "Canva"] },
-  { label: "Optimization", color: "border-rose-500/30 hover:border-rose-400/60 hover:bg-rose-500/5", items: ["Post-Click Optimization", "Conversion Rate Optimization"] },
+  { label: "Paid Ads", color: skillCat, items: ["Google Ads", "Meta Ads", "Bing Ads", "Yahoo Ads"] },
+  { label: "Analytics", color: skillCat, items: ["GA4", "GTM", "SEMrush", "Firebase"] },
+  { label: "Strategy", color: skillCat, items: ["PPC", "SEM", "CRO", "A/B Testing", "Paid Ads Strategy", "Paid Ads Funnel"] },
+  { label: "CRM & Tools", color: skillCat, items: ["Salesforce CRM", "Oracle CRM", "Google My Business Ads", "App Install Campaigns", "Canva"] },
+  { label: "Optimization", color: skillCat, items: ["Post-Click Optimization", "Conversion Rate Optimization"] },
 ];
 
 export default function AboutPage() {
@@ -121,7 +125,7 @@ export default function AboutPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} suppressHydrationWarning />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} suppressHydrationWarning />
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-bg border-b border-white/8">
+      <section className="pt-40 pb-16 md:pt-44 md:pb-20 bg-bg border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12 items-center">
             <div className="flex justify-center">
@@ -189,7 +193,7 @@ export default function AboutPage() {
 
                   {/* Card */}
                   <div className="flex-1 -mt-1 group">
-                    <div className={`bg-bg-card rounded-2xl border border-white/8 hover:border-white/15 p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${exp.accent.glow}`}>
+                    <div className={`bg-bg-card rounded-2xl border border-border hover:border-white/15 p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${exp.accent.glow}`}>
                       {/* Header */}
                       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5">
                         <div>
@@ -198,8 +202,8 @@ export default function AboutPage() {
                               {exp.role}
                             </h3>
                             {exp.current && (
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold tracking-wider uppercase">
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-bold tracking-wider uppercase">
+                                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                                 Current
                               </span>
                             )}
@@ -254,7 +258,7 @@ export default function AboutPage() {
             {certifications.map((cert, i) => (
               <div
                 key={cert.name}
-                className="group bg-bg rounded-xl border border-white/8 hover:border-white/15 p-5 flex items-center gap-4 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+                className="group bg-bg rounded-xl border border-border hover:border-white/15 p-5 flex items-center gap-4 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 animate-fade-in-up"
                 style={{ animationDelay: `${i * 80}ms`, animationFillMode: "backwards" }}
               >
                 <div className={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 ${cert.color}`}>
@@ -281,7 +285,7 @@ export default function AboutPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {skillCategories.map((cat) => (
-              <div key={cat.label} className="bg-bg-card rounded-2xl border border-white/8 p-5">
+              <div key={cat.label} className="bg-bg-card rounded-2xl border border-border p-5">
                 <h3 className="text-xs font-semibold uppercase tracking-widest text-text-tertiary mb-4">{cat.label}</h3>
                 <div className="flex flex-wrap gap-2">
                   {cat.items.map((skill) => (
@@ -312,9 +316,9 @@ export default function AboutPage() {
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-6">
-            <div className="group bg-bg rounded-2xl border border-white/8 hover:border-violet-500/30 p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-violet-500/10">
-              <div className="w-12 h-12 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mb-4">
-                <GraduationCap className="w-6 h-6 text-violet-400" />
+            <div className="group bg-bg rounded-2xl border border-border hover:border-accent/30 p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/10">
+              <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-4">
+                <GraduationCap className="w-6 h-6 text-accent" />
               </div>
               <h3 className="font-bold text-primary mb-1 text-lg">
                 Bachelor of Engineering
@@ -327,7 +331,7 @@ export default function AboutPage() {
                 2014 – 2018 · Pune, India
               </p>
             </div>
-            <div className="group bg-bg rounded-2xl border border-white/8 hover:border-blue-500/30 p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/10">
+            <div className="group bg-bg rounded-2xl border border-border hover:border-blue-500/30 p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/10">
               <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4">
                 <GraduationCap className="w-6 h-6 text-blue-400" />
               </div>
@@ -345,7 +349,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-bg-card border-b border-white/8">
+      <section className="py-16 md:py-24 bg-bg-card border-b border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
             Let&apos;s Work Together

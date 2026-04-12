@@ -4,7 +4,10 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { siteConfig } from "@/data/siteConfig";
+
+const themeInitScript = `(function(){try{var t=localStorage.getItem('theme');var h=document.documentElement;h.classList.remove('light','dark');if(t==='light')h.classList.add('light');else if(t==='dark')h.classList.add('dark');else if(t==='system'){if(window.matchMedia('(prefers-color-scheme: dark)').matches)h.classList.add('dark');else h.classList.add('light');}else h.classList.add('dark');}catch(e){document.documentElement.classList.add('dark');}})();`;
 
 const inter = Inter({
   variable: "--font-inter",
@@ -76,6 +79,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {/* Sitewide WebSite + Organization Schema */}
         <script
           type="application/ld+json"
@@ -119,18 +123,20 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
-        {/* Google Tag Manager (moved to afterInteractive) */}
-        <script
-          dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-542SQV8N');` }}
-        />
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-542SQV8N" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:bg-accent focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold">
-          Skip to main content
-        </a>
-        <Navbar />
-        <main id="main-content">{children}</main>
-        <Footer />
-        <FloatingCTA />
+        <ThemeProvider>
+          {/* Google Tag Manager (moved to afterInteractive) */}
+          <script
+            dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-542SQV8N');` }}
+          />
+          <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-542SQV8N" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:bg-accent focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold">
+            Skip to main content
+          </a>
+          <Navbar />
+          <main id="main-content">{children}</main>
+          <Footer />
+          <FloatingCTA />
+        </ThemeProvider>
       </body>
     </html>
   );
