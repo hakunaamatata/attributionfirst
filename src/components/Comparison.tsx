@@ -3,16 +3,7 @@
 import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
 import SectionLabel from "./SectionLabel";
-
-const traditionalSteps = ["Clicks", "Leads", "Reported ROAS"];
-const attributionSteps = [
-  "Clicks",
-  "Leads",
-  "Qualified Leads",
-  "Opportunities",
-  "Customers",
-  "Revenue",
-];
+import { comparisonSteps, homepageCopy } from "@/data/siteData";
 
 function FlowColumn({
   title,
@@ -76,24 +67,32 @@ function FlowColumn({
 }
 
 export default function Comparison() {
+  const { simpleQuestions } = homepageCopy;
+
   return (
     <section className="section-padding bg-charcoal-light">
       <div className="container-wide">
-        <SectionLabel>Why Attribution First</SectionLabel>
+        <SectionLabel>Clarity</SectionLabel>
         <FadeIn delay={0.1}>
-          <h2 className="headline mt-5 max-w-3xl">
-            More leads don&apos;t always mean more growth.
-          </h2>
+          <h2 className="headline mt-5 max-w-3xl">{simpleQuestions.headline}</h2>
+        </FadeIn>
+        <FadeIn delay={0.12}>
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
+            {simpleQuestions.subheading} {simpleQuestions.closing}
+          </p>
         </FadeIn>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
           <FadeIn delay={0.15}>
-            <FlowColumn title="Traditional Marketing" steps={traditionalSteps} />
+            <FlowColumn
+              title="Volume-focused reporting"
+              steps={comparisonSteps.traditional}
+            />
           </FadeIn>
           <FadeIn delay={0.25}>
             <FlowColumn
-              title="Attribution First"
-              steps={attributionSteps}
+              title="What we measure"
+              steps={comparisonSteps.attribution}
               dominant
             />
           </FadeIn>

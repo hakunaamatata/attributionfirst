@@ -5,14 +5,15 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "./FadeIn";
 import SectionLabel from "./SectionLabel";
-import { profiles } from "@/data/siteData";
+import { homepageCopy, profiles } from "@/data/siteData";
 
 type ProfileKey = keyof typeof profiles;
-const profileKeys: ProfileKey[] = ["junaid", "nouman"];
+const profileKeys: ProfileKey[] = ["michael", "junaid", "nouman"];
 
 export default function Founder() {
-  const [active, setActive] = useState<ProfileKey>("junaid");
+  const [active, setActive] = useState<ProfileKey>("michael");
   const profile = profiles[active];
+  const { team } = homepageCopy;
 
   return (
     <section id="about" className="section-padding relative">
@@ -20,22 +21,19 @@ export default function Founder() {
         <SectionLabel>About</SectionLabel>
         <FadeIn delay={0.05}>
           <h2 className="headline mt-5 max-w-2xl">
-            Two specialists,{" "}
-            <span className="gradient-text">one growth system.</span>
+            {team.headline.split(".")[0]}.
+            <span className="gradient-text"> {team.headline.split(". ").slice(1).join(". ")}</span>
           </h2>
           <p className="mt-4 max-w-xl text-sm leading-[1.7] text-muted">
-            Junaid owns acquisition, attribution, and performance marketing.
-            Nouman owns the websites, landing pages, and SEO those campaigns
-            convert on. Together: traffic → tracking → experience → revenue.
+            {team.subheading} {team.intro}
           </p>
         </FadeIn>
 
-        {/* Profile tabs */}
         <FadeIn delay={0.1}>
           <div
             role="tablist"
             aria-label="Select team member"
-            className="mt-10 inline-flex rounded-full border border-border bg-charcoal-elevated p-1"
+            className="mt-10 inline-flex flex-wrap rounded-full border border-border bg-charcoal-elevated p-1"
           >
             {profileKeys.map((key) => {
               const p = profiles[key];
@@ -84,18 +82,28 @@ export default function Founder() {
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="mt-12 grid items-start gap-16 lg:grid-cols-2 lg:gap-24"
           >
-            {/* Photo */}
             <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl lg:mx-0">
               <div className="absolute inset-0 border border-border bg-charcoal-elevated" />
               <div className="absolute inset-0 bg-gradient-to-br from-accent/8 via-transparent to-indigo-500/8" />
-              <Image
-                src={profile.image}
-                alt={profile.imageAlt}
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 400px"
-                priority={active === "junaid"}
-              />
+              {profile.image ? (
+                <Image
+                  src={profile.image}
+                  alt={profile.imageAlt}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 400px"
+                  priority={active === "junaid"}
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="font-display text-6xl font-bold text-accent/30">
+                    {profile.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </span>
+                </div>
+              )}
               <div className="absolute top-5 right-5 rounded-full border border-accent/30 bg-charcoal/90 px-4 py-2 backdrop-blur-sm">
                 <p className="font-display text-lg font-bold text-accent">
                   {profile.statFloat.value}
@@ -112,7 +120,6 @@ export default function Founder() {
               </div>
             </div>
 
-            {/* Details */}
             <div>
               <h3 className="font-display text-3xl font-semibold tracking-tight text-white md:text-4xl">
                 {profile.name}
@@ -173,17 +180,19 @@ export default function Founder() {
 
               <div className="mt-10 flex flex-wrap gap-4">
                 <a href="#contact" className="btn-primary inline-flex">
-                  Work With {profile.name.split(" ")[0]}
+                  Talk to us
                   <span aria-hidden="true">→</span>
                 </a>
-                <a
-                  href={profile.resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary inline-flex"
-                >
-                  Download Resume
-                </a>
+                {profile.resumeUrl && (
+                  <a
+                    href={profile.resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-secondary inline-flex"
+                  >
+                    Download Resume
+                  </a>
+                )}
                 {profile.externalUrl && (
                   <a
                     href={profile.externalUrl}
@@ -199,6 +208,12 @@ export default function Founder() {
             </div>
           </motion.div>
         </AnimatePresence>
+
+        <FadeIn delay={0.2}>
+          <p className="mt-12 max-w-2xl text-sm font-medium text-white/90">
+            {team.closing}
+          </p>
+        </FadeIn>
       </div>
     </section>
   );

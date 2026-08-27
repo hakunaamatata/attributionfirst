@@ -47,17 +47,13 @@ export default function CTA() {
             </p>
           </FadeIn>
 
-          <div className="mt-6 space-y-4">
-            {cta.body.map((paragraph, i) => (
-              <FadeIn key={i} delay={0.12 + i * 0.05}>
-                <p className="text-sm leading-[1.7] text-muted md:text-base">
-                  {paragraph}
-                </p>
-              </FadeIn>
-            ))}
-          </div>
+          <FadeIn delay={0.15}>
+            <p className="mt-4 text-sm leading-[1.7] text-muted md:text-base">
+              {cta.body.join(" ")}
+            </p>
+          </FadeIn>
 
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.15}>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-dim">
               <a
                 href={`mailto:${siteConfig.email}`}
@@ -72,10 +68,12 @@ export default function CTA() {
               >
                 {siteConfig.phone}
               </a>
+              <span className="hidden sm:inline">·</span>
+              <span>{siteConfig.location}</span>
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.25}>
+          <FadeIn delay={0.2}>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
                 href={siteConfig.whatsapp}

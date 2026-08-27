@@ -3,26 +3,24 @@
 import { useState } from "react";
 import FadeIn from "./FadeIn";
 import SectionLabel from "./SectionLabel";
-import { services } from "@/data/siteData";
+import { homepageCopy, services } from "@/data/siteData";
 
 export default function Services() {
   const [active, setActive] = useState(0);
+  const { fit } = homepageCopy;
 
   return (
     <section id="services" className="section-padding bg-charcoal-light">
       <div className="container-wide">
         <div className="grid gap-16 lg:grid-cols-[0.4fr_0.6fr]">
           <div className="lg:sticky lg:top-32 lg:self-start">
-            <SectionLabel>Services</SectionLabel>
+            <SectionLabel>Who It&apos;s For</SectionLabel>
             <FadeIn delay={0.1}>
-              <h2 className="headline mt-5">
-                Everything to turn spend into growth.
-              </h2>
+              <h2 className="headline mt-5">{fit.headline}</h2>
             </FadeIn>
             <FadeIn delay={0.15}>
               <p className="mt-5 text-sm leading-[1.7] text-muted">
-                Performance marketing, attribution, SEO and conversion —
-                engineered for brands in India and the UAE.
+                {fit.intro} {fit.closing}
               </p>
             </FadeIn>
           </div>

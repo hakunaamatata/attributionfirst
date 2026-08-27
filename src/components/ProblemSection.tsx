@@ -4,55 +4,23 @@ import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
 import SectionLabel from "./SectionLabel";
 import TiltCard from "./TiltCard";
-
-const cards = [
-  {
-    num: "01",
-    title: "Platform Metrics",
-    description:
-      "Google and Meta tell you which campaigns received conversions.",
-    span: "lg:col-span-1",
-  },
-  {
-    num: "02",
-    title: "Real Business Data",
-    description:
-      "Your CRM tells you which leads actually became customers.",
-    span: "lg:col-span-1",
-  },
-  {
-    num: "03",
-    title: "The Missing Layer",
-    description:
-      "Attribution connects marketing activity to actual revenue.",
-    span: "lg:col-span-1",
-    accent: true,
-  },
-];
-
-const flowSteps = [
-  "Ad Click",
-  "Lead",
-  "Opportunity",
-  "Customer",
-  "Revenue",
-];
+import { homepageCopy, problemCards, problemFlowSteps } from "@/data/siteData";
 
 export default function ProblemSection() {
+  const { volumeProblem } = homepageCopy;
+
   return (
     <section className="section-padding relative overflow-hidden bg-charcoal-light">
       <div className="absolute top-0 right-0 h-px w-1/2 bg-gradient-to-l from-accent/20 to-transparent" />
 
       <div className="container-wide">
-        <SectionLabel>The Problem</SectionLabel>
+        <SectionLabel>The Challenge</SectionLabel>
         <FadeIn delay={0.1}>
-          <h2 className="headline mt-5 max-w-3xl">
-            Your ad platforms don&apos;t tell the whole story.
-          </h2>
+          <h2 className="headline mt-5 max-w-3xl">{volumeProblem.headline}</h2>
         </FadeIn>
 
         <div className="mt-16 grid gap-5 lg:grid-cols-3">
-          {cards.map((card, i) => (
+          {problemCards.map((card, i) => (
             <FadeIn key={card.title} delay={i * 0.1}>
               <TiltCard
                 className={`h-full p-8 ${card.accent ? "border-accent/20" : ""}`}
@@ -75,14 +43,14 @@ export default function ProblemSection() {
           <div className="relative mt-16 overflow-hidden rounded-2xl border border-border bg-charcoal p-8 md:p-12">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(62,232,255,0.04)_0%,transparent_70%)]" />
             <p className="relative mb-8 text-center text-[11px] tracking-[0.2em] text-muted-dim uppercase">
-              The complete journey
+              From search to sale
             </p>
             <div className="relative flex flex-col items-center gap-3 md:flex-row md:justify-center md:gap-0">
-              {flowSteps.map((step, i) => (
+              {problemFlowSteps.map((step, i) => (
                 <div key={step} className="flex items-center">
                   <motion.div
                     className={`rounded-full border px-5 py-2.5 text-sm font-medium ${
-                      step === "Revenue"
+                      step === "Sale"
                         ? "border-accent/40 bg-accent-muted text-accent"
                         : "border-border bg-charcoal-elevated text-white"
                     }`}
@@ -93,7 +61,7 @@ export default function ProblemSection() {
                   >
                     {step}
                   </motion.div>
-                  {i < flowSteps.length - 1 && (
+                  {i < problemFlowSteps.length - 1 && (
                     <>
                       <motion.div
                         className="mx-3 hidden h-px w-10 bg-gradient-to-r from-border via-accent/30 to-border md:block lg:w-16"

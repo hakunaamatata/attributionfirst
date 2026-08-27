@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
 import SectionLabel from "./SectionLabel";
 import { AnimatedStat, AnimatedProgressBar } from "./CaseStudyStats";
-import { caseStudies, type CaseStudyStat } from "@/data/siteData";
+import { caseStudies, homepageCopy, type CaseStudyStat } from "@/data/siteData";
 
 function StatTile({
   stat,
@@ -37,6 +37,8 @@ function StatTile({
 }
 
 export default function CaseStudies() {
+  const { spotlight } = homepageCopy;
+
   return (
     <section id="case-studies" className="section-padding relative overflow-hidden bg-charcoal-light">
       <div className="pointer-events-none absolute top-1/2 right-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-accent/3 blur-[120px]" />
@@ -45,15 +47,12 @@ export default function CaseStudies() {
         <SectionLabel>Case Studies</SectionLabel>
         <FadeIn delay={0.1}>
           <h2 className="headline mt-5 max-w-3xl">
-            When measurement improves,{" "}
-            <span className="gradient-text">performance follows.</span>
+            {spotlight.headline}
           </h2>
         </FadeIn>
         <FadeIn delay={0.15}>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
-            Real results from Thomas Cook India, ServerFactory and more —
-            connecting ad platforms to CRM revenue, not platform-reported
-            conversions.
+            {spotlight.subheading} {spotlight.story}
           </p>
         </FadeIn>
 
@@ -91,6 +90,7 @@ export default function CaseStudies() {
                     <div className="mt-8 rounded-xl border border-accent/20 bg-accent-muted p-6">
                       <AnimatedStat
                         value={study.highlight.value}
+                        prefix={study.highlight.prefix}
                         suffix={study.highlight.suffix}
                         decimals={study.highlight.decimals}
                         className="font-display text-5xl font-bold text-accent md:text-6xl"

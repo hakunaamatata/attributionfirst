@@ -3,37 +3,24 @@
 import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
 import SectionLabel from "./SectionLabel";
-
-const journeyStages = [
-  "Impression",
-  "Click",
-  "Session",
-  "Lead",
-  "Qualified Lead",
-  "Opportunity",
-  "Customer",
-  "Revenue",
-];
+import { homepageCopy, philosophyJourneyStages } from "@/data/siteData";
 
 export default function PhilosophySection() {
+  const { intent } = homepageCopy;
+
   return (
     <section id="attribution" className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(62,232,255,0.05)_0%,transparent_55%)]" />
 
       <div className="container-wide relative">
-        <SectionLabel>Attribution Philosophy</SectionLabel>
+        <SectionLabel>Our Approach</SectionLabel>
         <FadeIn delay={0.1}>
-          <h2 className="headline mt-5 max-w-4xl">
-            From clicks to customers.
-            <br />
-            <span className="text-muted">From customers to revenue.</span>
-          </h2>
+          <h2 className="headline mt-5 max-w-4xl">{intent.headline}</h2>
         </FadeIn>
 
         <FadeIn delay={0.15}>
           <p className="mt-6 max-w-xl text-base leading-[1.7] text-muted">
-            We connect your advertising platforms, analytics, website and CRM
-            so you can see the complete customer journey.
+            {intent.paragraphs.join(" ")}
           </p>
         </FadeIn>
 
@@ -41,7 +28,7 @@ export default function PhilosophySection() {
           <div className="relative mt-16">
             <div className="absolute top-1/2 right-0 left-0 hidden h-px -translate-y-1/2 bg-border md:block" />
             <div className="flex gap-3 overflow-x-auto pb-4 md:justify-between md:overflow-visible">
-              {journeyStages.map((stage, i) => (
+              {philosophyJourneyStages.map((stage, i) => (
                 <motion.div
                   key={stage}
                   className="relative flex shrink-0 flex-col items-center"
@@ -81,8 +68,8 @@ export default function PhilosophySection() {
         </FadeIn>
 
         <FadeIn delay={0.3}>
-          <a href="#services" className="btn-ghost mt-10 inline-flex">
-            Explore Attribution
+          <a href="#process" className="btn-ghost mt-10 inline-flex">
+            See Our Process
             <span aria-hidden="true">→</span>
           </a>
         </FadeIn>

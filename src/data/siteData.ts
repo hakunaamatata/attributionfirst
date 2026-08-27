@@ -24,6 +24,7 @@ export interface CaseStudy {
   summary: string;
   highlight: {
     value: number;
+    prefix?: string;
     suffix: string;
     label: string;
     decimals: number;
@@ -221,17 +222,17 @@ export const serverFactoryHighlights = [
 ];
 
 export interface Profile {
-  id: "junaid" | "nouman";
+  id: "michael" | "junaid" | "nouman";
   name: string;
   title: string;
   focus: string;
-  image: string;
+  image?: string;
   imageAlt: string;
   bio: string[];
   credentials: { value: string; label: string }[];
   skills: string[];
   experience: { role: string; company: string; period: string }[];
-  resumeUrl: string;
+  resumeUrl?: string;
   externalUrl?: string;
   externalLabel?: string;
   statFloat: { value: string; label: string };
@@ -239,91 +240,193 @@ export interface Profile {
 }
 
 export const heroHighlights = [
-  "₹7Cr+ Ad Spend Managed",
-  "2,000+ Qualified Leads",
-  "35% ROI Increase",
+  "$1.2m Sales",
+  "100+ Qualified Leads",
+  "$80 per $1 Ad Spend",
 ];
 
 export const metrics = [
-  { value: "₹7Cr+", label: "Ad Spend Managed", animate: false },
-  { value: "2000+", label: "Qualified Leads", animate: true },
-  { value: "35%", label: "ROI Increase", animate: true },
-  { value: "2x", label: "Revenue Growth", animate: false },
+  { value: "$15k", label: "Media Spend", animate: false },
+  { value: "100+", label: "Qualified Leads", animate: true },
+  { value: "$4.7m", label: "Quoted Pipeline", animate: false },
+  { value: "$1.2m", label: "Closed Sales", animate: false },
 ];
 
 export const pillars = [
   {
     num: "01",
-    label: "Acquire",
+    label: "Find",
     description:
-      "Google Ads, Meta Ads & Bing Ads — multi-platform campaigns engineered for maximum ROI and scalable revenue growth.",
+      "Where are your customers searching? What indicates genuine commercial intent? Where have competitors left opportunities open?",
   },
   {
     num: "02",
-    label: "Convert",
+    label: "Reach",
     description:
-      "Lead generation funnels from ad click to CRM — GA4, GTM, Salesforce integration with form friction controls and server-side tracking.",
+      "Tightly targeted paid-search campaigns designed to put you in front of the right people at the right moment.",
   },
   {
     num: "03",
-    label: "Dominate",
+    label: "Convert",
     description:
-      "Technical SEO, landing page optimisation & AI SEO (AEO/GEO) — get cited in ChatGPT, Perplexity, and Google AI Overviews.",
+      "Dedicated landing pages that speak directly to what each customer is looking for — and give them a clear reason to contact you.",
   },
+];
+
+export const problemCards = [
+  {
+    num: "01",
+    title: "Volume Marketing",
+    description:
+      "Most digital marketing is built around volume. More traffic. More impressions. More clicks. More leads.",
+    accent: false,
+  },
+  {
+    num: "02",
+    title: "High-Value B2B",
+    description:
+      "If you sell enterprise technology, specialist equipment or engineering solutions, those numbers can be almost meaningless.",
+    accent: false,
+  },
+  {
+    num: "03",
+    title: "Finding the Right Ones",
+    description:
+      "You may only need a handful of new customers for a campaign to transform your year. We identify where genuine buying intent already exists.",
+    accent: true,
+  },
+];
+
+export const problemFlowSteps = [
+  "Search",
+  "Intent",
+  "Enquiry",
+  "Opportunity",
+  "Sale",
+];
+
+export const philosophyJourneyStages = [
+  "Search",
+  "Intent",
+  "Campaign",
+  "Click",
+  "Enquiry",
+  "Opportunity",
+  "Sale",
+  "Revenue",
 ];
 
 export const services = [
   {
     num: "01",
-    title: "Performance Marketing",
+    title: "High customer value",
     description:
-      "Full-funnel paid advertising across Google and Meta. ₹7Cr+ in ad spend managed with conversion tracking and attribution.",
+      "An individual customer is worth a significant amount to your business.",
   },
   {
     num: "02",
-    title: "Google Ads Management",
+    title: "Active search demand",
     description:
-      "Search, Performance Max, Shopping & remarketing. 35% ROI increase and 40% cost reduction across campaigns.",
+      "People actively search online for your products, services or the problems you solve.",
   },
   {
     num: "03",
-    title: "Meta Ads Campaigns",
+    title: "Specialist products",
     description:
-      "Lead generation, retargeting, lookalike audiences and Conversions API. 2× revenue uplift through audience optimisation.",
+      "What you sell is specialist, technical or complex — and needs the right audience.",
   },
   {
     num: "04",
-    title: "Lead Generation Funnels",
+    title: "Quality over volume",
     description:
-      "End-to-end funnel design from ad click to CRM. 2,000+ qualified leads across B2B and B2C verticals.",
+      "Quality matters considerably more than lead volume for your sales process.",
   },
   {
     num: "05",
-    title: "Marketing Attribution",
+    title: "Sales conversations",
     description:
-      "GA4, GTM, CRM integration, conversion tracking and revenue attribution — connect ad spend to real business outcomes.",
+      "A sales conversation usually happens after the initial enquiry, not at first click.",
   },
   {
     num: "06",
-    title: "SEO Optimisation",
+    title: "Revenue measurement",
     description:
-      "Technical SEO, on-page optimisation, schema markup and Core Web Vitals. 40% organic impressions improvement.",
+      "You want to understand whether advertising is producing revenue, not merely traffic.",
   },
   {
     num: "07",
-    title: "Local Search & GMB Ads",
+    title: "Enterprise technology",
     description:
-      "Google Business Profile and Map ads for local dominance. 25% boost in local branch calls via geo-targeted campaigns.",
+      "We work especially well with enterprise technology and infrastructure companies.",
   },
   {
     num: "08",
-    title: "Landing Pages & AI SEO",
+    title: "Specialist manufacturing",
     description:
-      "High-converting landing pages optimised for AI search. 2–3× more impressions from Google AI Overview placements.",
+      "Engineering, B2B equipment and other high-value specialist markets.",
   },
 ];
 
+export const processSteps = [
+  {
+    number: "01",
+    title: "Find",
+    description:
+      "Where are your prospective customers searching? What are they searching for? Which searches indicate genuine commercial intent? We start by finding the answers.",
+  },
+  {
+    number: "02",
+    title: "Reach",
+    description:
+      "Once we know where the demand is, we build tightly targeted paid-search campaigns designed to put you in front of the right people at the right moment.",
+  },
+  {
+    number: "03",
+    title: "Convert",
+    description:
+      "Getting the click is only half the job. We create dedicated landing pages that speak directly to what that customer is looking for.",
+  },
+  {
+    number: "04",
+    title: "Measure & improve",
+    description:
+      "We follow what happens — not just impressions, clicks or form submissions, but genuine opportunities and actual business.",
+  },
+];
+
+export const comparisonSteps = {
+  traditional: ["Impressions", "Clicks", "Leads"],
+  attribution: [
+    "Qualified Leads",
+    "Opportunities",
+    "Customers",
+    "Sales",
+    "Revenue",
+  ],
+};
+
 export const caseStudies: CaseStudy[] = [
+  {
+    company: "Server Factory",
+    category: "B2B Lead Generation",
+    period: "3 month campaign",
+    spend: "$15k media spend",
+    summary:
+      "For a UK enterprise IT infrastructure company, we identified high-intent searches for specific products, built tightly targeted Google Ads campaigns and created dedicated landing pages. The campaigns generated real enquiries that became high-value sales.",
+    highlight: { value: 1.2, prefix: "$", suffix: "m", label: "Closed sales", decimals: 1 },
+    stats: [
+      { value: 100, suffix: "+", label: "Qualified leads", sub: "High-intent enquiries" },
+      { value: 4.7, prefix: "$", suffix: "m", label: "Quoted", sub: "Pipeline value", decimals: 1 },
+      { value: 80, prefix: "$", suffix: "", label: "Sales per ad $", sub: "Return on media spend" },
+      { value: 150, prefix: "$", suffix: "", label: "Cost per lead", sub: "Or less, qualified" },
+    ],
+    bars: [
+      { label: "Qualified leads", before: 20, after: 100, unit: "+" },
+      { label: "Pipeline quoted ($m)", before: 0.5, after: 4.7, prefix: "$" },
+      { label: "Closed sales ($m)", before: 0.1, after: 1.2, prefix: "$" },
+    ],
+    pdfUrl: "/case-studies/scaling-b2b-lead-generation-serverfactory.pdf",
+  },
   {
     company: "Thomas Cook India App",
     category: "App Acquisition + Attribution",
@@ -344,27 +447,6 @@ export const caseStudies: CaseStudy[] = [
       { label: "Android CPI (₹)", before: 39.75, after: 7.94, prefix: "₹", invert: true },
     ],
     pdfUrl: "/case-studies/scaling-app-acquisition-13x-halving-cpa.pdf",
-  },
-  {
-    company: "ServerFactory",
-    category: "B2B Lead Generation",
-    period: "1-month engagement",
-    spend: "USA & UAE markets",
-    summary:
-      "Hybrid Google Ads architecture segmented by geography and intent. Captured 50+ high-quality B2B leads for enterprise GPU servers with 70%+ qualified lead rate.",
-    highlight: { value: 70, suffix: "%+", label: "Qualified lead rate", decimals: 0 },
-    stats: [
-      { value: 50, suffix: "+", label: "High-quality leads", sub: "In 1 month" },
-      { value: 85, prefix: "$", label: "UAE cost/conv", sub: "Search campaigns" },
-      { value: 18, prefix: "$", label: "PMax cost/conv", sub: "Top-funnel demand" },
-      { value: 93.7, suffix: "%", label: "Engaged sessions", sub: "UAE traffic quality", decimals: 1 },
-    ],
-    bars: [
-      { label: "Qualified lead rate", before: 40, after: 70, unit: "%" },
-      { label: "UAE cost/conv ($)", before: 120, after: 85, prefix: "$", invert: true },
-      { label: "Engaged session rate", before: 75, after: 93.7, unit: "%" },
-    ],
-    pdfUrl: "/case-studies/scaling-b2b-lead-generation-serverfactory.pdf",
   },
   {
     company: "Thomas Cook",
@@ -422,63 +504,93 @@ export const testimonials = [
 
 export const insights = [
   {
-    title: "Why Your ROAS Is Declining: The Real Problem Isn't Your Paid Ads Expert",
-    category: "Attribution & Measurement",
-    readTime: "12 min",
+    title: "Where are our customers?",
+    category: "Commercial Questions",
+    readTime: "2 min",
   },
   {
-    title: "Why Platform ROAS Can Mislead You",
-    category: "Revenue Attribution",
-    readTime: "6 min",
+    title: "What are they looking for?",
+    category: "Search Intent",
+    readTime: "3 min",
   },
   {
-    title: "Last-Click Attribution Is Not Enough",
-    category: "Marketing Attribution",
+    title: "How much does it cost to reach them?",
+    category: "Paid Search",
+    readTime: "3 min",
+  },
+  {
+    title: "Are those enquiries any good?",
+    category: "Lead Quality",
+    readTime: "4 min",
+  },
+  {
+    title: "Are they turning into sales?",
+    category: "Revenue",
+    readTime: "4 min",
+  },
+  {
+    title: "When one customer is worth a lot",
+    category: "High-Value B2B",
     readTime: "5 min",
-  },
-  {
-    title: "How to Connect Google Ads With CRM Revenue",
-    category: "Google Ads",
-    readTime: "8 min",
-  },
-  {
-    title: "GA4 vs CRM: Which One Should You Trust?",
-    category: "GA4",
-    readTime: "7 min",
-  },
-  {
-    title: "How AI Search Is Changing SEO",
-    category: "AI SEO",
-    readTime: "6 min",
   },
 ];
 
-export const profiles: Record<"junaid" | "nouman", Profile> = {
-  junaid: {
-    id: "junaid",
-    name: "Junaid Ahmed Kazi",
-    title: "Performance Marketing Expert",
-    focus: "Marketing & Attribution",
-    image: "/images/profileImage.jpeg",
-    imageAlt: "Junaid Ahmed Kazi - Performance Marketing Expert",
+export const profiles: Record<"michael" | "junaid" | "nouman", Profile> = {
+  michael: {
+    id: "michael",
+    name: "Michael Simkin",
+    title: "Commercial Strategy & Positioning",
+    focus: "Strategy & Research",
+    imageAlt: "Michael Simkin - Commercial Strategy",
     bio: [
-      "Digital marketing professional with over 5 years of experience in data-driven marketing strategy and campaign execution. Expert in Google Ads and Meta Ads with a track record of delivering 35% ROI increases and 40% ad spend reductions while maintaining lead quality.",
-      "Currently serving as Assistant Manager - Digital at Thomas Cook India, where I develop cross-platform campaigns, optimise user acquisition through Firebase Analytics integration, and manage performance across Google, Meta, and App install campaigns.",
+      "Michael works with businesses to understand where their commercial opportunities lie, what customers actually care about and how complex propositions can be communicated clearly.",
     ],
     credentials: [
-      { value: "5+ Years", label: "Experience" },
-      { value: "₹7Cr+", label: "Ad Spend Managed" },
-      { value: "Thomas Cook India", label: "Current Role" },
+      { value: "Strategy", label: "Commercial positioning" },
+      { value: "Research", label: "Customer insight" },
+      { value: "Messaging", label: "Complex propositions" },
+    ],
+    skills: [
+      "Commercial Strategy",
+      "Positioning",
+      "Customer Research",
+      "Messaging",
+      "B2B Propositions",
+    ],
+    experience: [
+      {
+        role: "Commercial strategy, positioning & customer research",
+        company: "Attribution First",
+        period: "Present",
+      },
+    ],
+    externalUrl: "https://www.linkedin.com/in/michael-simkin-gladhat",
+    externalLabel: "LinkedIn",
+    statFloat: { value: "Strategy", label: "Commercial & positioning" },
+    availability: "UK & international B2B",
+  },
+  junaid: {
+    id: "junaid",
+    name: "Junaid Kazi",
+    title: "Paid Search & Performance Marketing",
+    focus: "Paid Search",
+    image: "/images/profileImage.jpeg",
+    imageAlt: "Junaid Kazi - Paid Search & Performance Marketing",
+    bio: [
+      "Junaid brings extensive experience managing and optimising paid-search campaigns, including work for Thomas Cook and high-value international B2B campaigns.",
+    ],
+    credentials: [
+      { value: "Thomas Cook", label: "Enterprise campaigns" },
+      { value: "B2B", label: "High-value markets" },
+      { value: "Google Ads", label: "Paid search" },
     ],
     skills: [
       "Google Ads",
-      "Meta Ads",
-      "Bing Ads",
-      "GA4",
-      "GTM",
-      "Firebase",
-      "Salesforce CRM",
-      "CRO",
+      "Paid Search",
+      "B2B Campaigns",
+      "Landing Pages",
+      "Conversion Tracking",
+      "International Markets",
     ],
     experience: [
       {
@@ -498,38 +610,33 @@ export const profiles: Record<"junaid" | "nouman", Profile> = {
       },
     ],
     resumeUrl: "/resume/Myresume_JunaidahmedKazi.pdf",
-    externalUrl: "https://www.linkedin.com/in/junaid-kazi-b205b0222",
+    externalUrl: "https://www.linkedin.com/in/junaid-kazi-b205b0222/",
     externalLabel: "LinkedIn",
-    statFloat: { value: "₹7Cr+", label: "Ad Spend Managed" },
-    availability: "India & UAE · B2B & Travel",
+    statFloat: { value: "B2B", label: "Paid search specialist" },
+    availability: "India, UK & UAE · B2B",
   },
   nouman: {
     id: "nouman",
-    name: "Nouman Khatib",
-    title: "Senior Full Stack Developer",
-    focus: "Technology & Websites",
+    name: "Noumaan Khatib",
+    title: "Search, Technology & Conversion",
+    focus: "Technology & SEO",
     image: "/images/nouman-profile.jpeg",
-    imageAlt: "Nouman Khatib - Senior Full Stack Developer",
+    imageAlt: "Noumaan Khatib - Search, Technology & Conversion",
     bio: [
-      "Senior Full Stack Developer with 8+ years building the websites, landing pages, and technical SEO foundation that performance marketing campaigns run on — fast, structured, and built to convert.",
-      "8+ years engineering distributed systems at enterprise scale (100M+ daily requests, 500M+ users at Reliance Jio) — pages built to hold up under real traffic, not just look good in a demo.",
+      "Noumaan brings more than ten years' experience across development, SEO, and landing-page optimisation, connecting campaigns with the technical infrastructure needed to turn searches into enquiries.",
     ],
     credentials: [
-      { value: "8+ Years", label: "Experience" },
-      { value: "100M+", label: "Daily Auth Requests" },
-      { value: "Reliance Jio", label: "Enterprise Scale" },
+      { value: "10+ Years", label: "Experience" },
+      { value: "SEO", label: "Search & technical" },
+      { value: "Next.js", label: "Landing pages" },
     ],
     skills: [
       "Next.js",
-      "React",
       "Technical SEO",
       "Landing Pages",
       "Core Web Vitals",
-      "Node.js",
-      "TypeScript",
-      "GA4 + GTM",
-      "GraphQL",
-      "Kubernetes",
+      "Conversion Optimisation",
+      "Search Infrastructure",
     ],
     experience: [
       {
@@ -537,22 +644,12 @@ export const profiles: Record<"junaid" | "nouman", Profile> = {
         company: "Reliance Jio",
         period: "Nov 2016 – Present",
       },
-      {
-        role: "JioID — Universal Identity Platform",
-        company: "Reliance Jio",
-        period: "2019 – Present",
-      },
-      {
-        role: "UIFP — Identity & Fingerprinting",
-        company: "Reliance Jio",
-        period: "2021 – Present",
-      },
     ],
     resumeUrl: "/resume/Nouman_Khatib_Resume.pdf",
-    externalUrl: "https://nouman-portfolio-ashen.vercel.app",
-    externalLabel: "Portfolio",
-    statFloat: { value: "8+ Yrs", label: "Websites, SEO & Landing Pages" },
-    availability: "Next.js · Technical SEO · CRO Pages",
+    externalUrl: "https://www.linkedin.com/in/nouman-khatib-495830100/",
+    externalLabel: "LinkedIn",
+    statFloat: { value: "10+ Yrs", label: "Search & conversion" },
+    availability: "Landing pages · SEO · CRO",
   },
 };
 

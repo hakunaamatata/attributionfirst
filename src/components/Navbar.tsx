@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/data/siteData";
 
 const navLinks = [
-  { label: "Approach", href: "#approach" },
-  { label: "Process", href: "#process" },
-  { label: "Results", href: "#results" },
-  { label: "Team", href: "#team" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "#services" },
+  { label: "Approach", href: "#attribution" },
+  { label: "Case Studies", href: "#case-studies" },
+  { label: "About", href: "#about" },
+  { label: "Insights", href: "#insights" },
 ];
 
 export default function Navbar() {

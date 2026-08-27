@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import FadeIn from "./FadeIn";
 import SectionLabel from "./SectionLabel";
-import { homepageCopy } from "@/data/siteData";
+import { homepageCopy, processSteps } from "@/data/siteData";
 
 export default function Process() {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,7 +18,7 @@ export default function Process() {
   return (
     <section id="process" className="section-padding relative" ref={ref}>
       <div className="container-wide">
-        <SectionLabel>Process</SectionLabel>
+        <SectionLabel>How It Works</SectionLabel>
         <FadeIn delay={0.1}>
           <h2 className="headline mt-5 max-w-2xl">{process.headline}</h2>
         </FadeIn>
@@ -31,7 +31,7 @@ export default function Process() {
             />
           </div>
 
-          {process.steps.map((step, i) => (
+          {processSteps.map((step, i) => (
             <FadeIn key={step.number} delay={i * 0.12}>
               <div className="relative md:pt-2">
                 <div className="mb-6 flex items-center gap-4 md:flex-col md:items-start md:gap-0">
@@ -51,7 +51,7 @@ export default function Process() {
         </div>
 
         <FadeIn delay={0.4}>
-          <p className="mt-16 max-w-3xl text-base leading-[1.75] text-muted">
+          <p className="mt-16 max-w-3xl text-sm leading-[1.75] text-muted">
             {process.closing}
           </p>
         </FadeIn>
