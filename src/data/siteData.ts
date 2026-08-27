@@ -38,21 +38,21 @@ export const siteConfig = {
   name: "Attribution First",
   founder: "Junaid Ahmed Kazi",
   title: "Performance Marketing Expert",
-  tagline: "Finding high-value B2B customers through search",
+  tagline: "Helping specialist B2B businesses turn search demand into revenue",
   email: "junaidkazi66@gmail.com",
   phone: "+91-9545087538",
   phoneTel: "tel:+919545087538",
   whatsapp:
-    "https://wa.me/919545087538?text=Hi%2C%20I%27d%20like%20to%20talk%20about%20finding%20new%20customers",
+    "https://wa.me/919545087538?text=Hi%2C%20I%27d%20like%20to%20discuss%20how%20you%20can%20help%20us%20find%20new%20customers",
   linkedin: "https://www.linkedin.com/in/junaid-kazi-b205b0222",
   location: "Nerul, Mumbai - 400706",
   siteUrl: "https://www.attributionfirst.co.in",
   description:
-    "We help high-value B2B businesses find the right customers at the right moment — when they are actively searching for what you sell. Intent-based paid search, landing pages, and measurement that ties to real revenue.",
+    "Attribution First helps high-value B2B businesses reach buyers who are actively searching. We combine commercial strategy, paid search and conversion technology to turn intent into qualified enquiries and measurable revenue.",
   profileImage: "/images/profileImage.jpeg",
   resumeUrl: "/resume/Myresume_JunaidahmedKazi.pdf",
   noumanPortfolioUrl: "https://nouman-portfolio-ashen.vercel.app",
-  primaryCta: "Talk to us about finding new customers",
+  primaryCta: "Book a commercial review",
 };
 
 export interface TeamMember {
@@ -92,119 +92,116 @@ export const teamMembers: TeamMember[] = [
 
 export const homepageCopy = {
   hero: {
-    label: "High-value B2B marketing",
-    headline: "Potential customers are looking for you.",
+    label: "B2B Customer Acquisition",
+    headline: "Your next customer is already searching.",
     subheading:
-      "The question is whether they find you or your competitors.",
+      "The question is whether they find you — or your competitor.",
     body: [
-      "If you sell a high-value, specialist or technical product, you don't necessarily need thousands of new leads.",
-      "You need to find the right people at the right moment: when they are actively looking for what you sell.",
-      "We help you find them.",
+      "If you sell a specialist, technical or high-value B2B product, you rarely need more leads. You need the right leads — at the moment buyers are actively looking.",
+      "We help you reach them, convert them, and measure what actually drives revenue.",
     ],
   },
   volumeProblem: {
-    headline: "When one new customer is worth a lot, finding the right ones is vital.",
+    headline:
+      "When one customer can change your year, volume metrics stop being useful.",
     paragraphs: [
-      "Most digital marketing is built around volume. More traffic. More impressions. More clicks. More leads.",
-      "But if you sell enterprise technology, specialist equipment, engineering solutions or another high-value B2B product, those numbers can be almost meaningless.",
-      "You may only need a handful of new customers for a campaign to transform your year. The challenge is finding them.",
-      "We identify where genuine buying intent already exists, put your business in front of those buyers, and build the path from search to enquiry to sale.",
+      "Most agencies optimise for traffic, impressions and lead count. That works when every sale looks the same. It breaks down when you sell enterprise technology, specialist equipment or complex engineering solutions.",
+      "In high-value B2B, a handful of the right enquiries can outperform thousands of the wrong ones. The hard part is knowing where genuine demand exists — and getting in front of it before your competitors do.",
+      "We map buying intent in your market, build campaigns around it, and connect the path from search to enquiry to closed business.",
     ],
   },
   intent: {
-    headline: "Tapping the demand for what you sell",
+    headline: "We start with demand, not ad spend.",
     paragraphs: [
-      "Someone searches Google for a product because they need it. Someone else searches for a problem because they need a solution. Those searches tell us something important: intent.",
-      "We research how your prospective customers search, what they are looking for, where the strongest commercial opportunities lie and what your competitors are doing.",
-      "Then we build campaigns around what we find. Not more advertising, but better-targeted advertising.",
+      "When someone searches for a product or a problem, they are telling you what they need. That signal — search intent — is where we begin.",
+      "We analyse how your buyers search, where the strongest commercial opportunities sit, and how competitors are positioned. Then we build campaigns around what the data shows — sharper targeting, not bigger budgets.",
     ],
   },
   process: {
-    headline: "From search to sale",
+    headline: "A clear path from search to sale",
     closing:
-      "We want to know which campaigns are producing genuine opportunities and, wherever your sales data allows it, which are producing actual business. Then we put more effort into what works and less into what doesn't.",
+      "We track performance against commercial outcomes — qualified opportunities and, wherever your sales data allows, closed revenue. What works gets more investment. What doesn't, gets cut.",
     steps: [
       {
         number: "01",
         title: "Find",
         description:
-          "Where are your prospective customers searching? What are they searching for? Which searches indicate genuine commercial intent? Where are competitors strong, and where have they left opportunities open? We start by finding the answers.",
+          "We identify where your buyers search, which queries signal real purchase intent, and where competitors have left gaps you can own.",
       },
       {
         number: "02",
         title: "Reach",
         description:
-          "Once we know where the demand is, we build tightly targeted paid-search campaigns designed to put you in front of the right people at the right moment.",
+          "Precision paid-search campaigns put your business in front of the right audience at the moment they are looking — not a broad audience hoping someone converts.",
       },
       {
         number: "03",
         title: "Convert",
         description:
-          "Getting the click is only half the job. We create dedicated landing pages that speak directly to what that customer is looking for and give them a clear reason to contact you.",
+          "Purpose-built landing pages match the search that brought someone in, answer what they care about, and make the next step obvious.",
       },
       {
         number: "04",
         title: "Measure & improve",
         description:
-          "And then we follow what happens. Not just impressions. Not just clicks. Not just form submissions.",
+          "We report on what matters: enquiry quality, pipeline contribution and revenue impact — not vanity metrics that look good in a dashboard but don't pay salaries.",
       },
     ],
   },
   spotlight: {
-    headline: "What does success look like?",
-    subheading: "It isn't a dashboard full of green arrows. It's sales.",
+    headline: "Results that show up in your pipeline, not just your analytics.",
+    subheading: "Success is closed business — not green arrows on a chart.",
     story:
-      "For Server Factory, a UK enterprise IT infrastructure company, the challenge was finding organisations actively looking for high-value enterprise hardware. We identified high-intent searches for specific products, built tightly targeted Google Ads campaigns and created dedicated landing pages around those searches. The campaigns didn't simply generate traffic. They generated real enquiries that became high-value sales.",
-    period: "3 month campaign",
+      "Server Factory, a UK enterprise IT infrastructure provider, needed to reach organisations actively buying high-value hardware. We mapped high-intent product searches, launched tightly segmented Google Ads campaigns, and built landing pages aligned to each query. The result: qualified enquiries that converted into substantial sales — not just website traffic.",
+    period: "3-month campaign",
     disclaimer:
-      "Media spend shown excludes strategy, campaign management, creative/landing-page work and other associated costs.",
+      "Media spend excludes strategy, campaign management, creative and landing-page development.",
     ctaLabel: "Read the Server Factory case study",
     pdfUrl: "/case-studies/scaling-b2b-lead-generation-serverfactory.pdf",
   },
   fit: {
-    headline: "This approach isn't right for every business.",
-    intro: "It works particularly well when:",
+    headline: "Built for businesses where every customer matters.",
+    intro: "Our approach works best when:",
     criteria: [
-      "an individual customer is worth a significant amount to your business",
-      "people actively search online for your products, services or the problems you solve",
-      "what you sell is specialist, technical or complex",
-      "quality matters considerably more than lead volume",
-      "a sales conversation usually happens after the initial enquiry",
-      "you want to understand whether your advertising is producing revenue, not merely traffic",
+      "a single customer represents significant revenue for your business",
+      "buyers actively search for your products, services or the problems you solve",
+      "your offer is specialist, technical or requires explanation before purchase",
+      "lead quality matters more than lead quantity",
+      "sales typically follow a conversation, not an instant checkout",
+      "you need to know whether marketing is generating revenue, not just activity",
     ],
     closing:
-      "We work especially well with companies in enterprise technology, specialist manufacturing, infrastructure, engineering, B2B equipment and other high-value specialist markets.",
+      "We work with companies in enterprise technology, specialist manufacturing, infrastructure, engineering and B2B equipment — anywhere the commercial stakes justify precision over volume.",
   },
   simpleQuestions: {
-    headline: "You shouldn't need to become a PPC expert.",
-    subheading: "You should be able to ask much simpler questions:",
+    headline: "You shouldn't need a PPC glossary to understand your marketing.",
+    subheading: "You should be able to ask straightforward questions:",
     questions: [
-      "Where are our customers?",
-      "What are they looking for?",
-      "How much does it cost to reach them?",
-      "Are those enquiries any good?",
-      "Are they turning into sales?",
+      "Where are our buyers searching?",
+      "What are they looking for — and what is it costing to reach them?",
+      "Are the enquiries commercially credible?",
+      "Which campaigns are actually producing sales?",
+      "Where should we invest more — and where should we stop?",
     ],
     closing:
-      "Those are the questions we care about too. The technical complexity sits with us.",
+      "Those are the questions we answer. The platform complexity, tracking and optimisation sit with us.",
   },
   team: {
-    headline: "Three disciplines. One commercial problem.",
+    headline: "Three disciplines. One commercial objective.",
     subheading:
-      "Finding customers online requires more than knowing how to operate Google Ads.",
-    intro:
-      "Our team combines three key areas of expertise:",
+      "Winning in search requires more than campaign management — it requires strategy, execution and the technology to connect both.",
+    intro: "Our team covers:",
     closing:
-      "Three different disciplines, one objective: find the right customers and turn demand into business.",
+      "Commercial insight, paid search and conversion infrastructure — aligned to one goal: turning existing demand into new business.",
   },
   cta: {
-    headline: "Before you spend more, let's see what's already there.",
+    headline: "Before you increase spend, let's see what's already there.",
     subheading:
-      "If you sell something valuable and suspect there are more customers searching for it than you're currently reaching, that's a useful place to start.",
+      "If you sell something valuable and believe more buyers are searching than you're currently reaching, that's the right place to start.",
     body: [
-      "We'll look at your market, what you're currently doing and whether we can see an opportunity worth pursuing.",
-      "No generic digital-marketing package. No obligation to buy ten different services.",
-      "Just a commercial conversation about whether we think we can help you find more customers.",
+      "We'll review your market, assess what you're doing today, and give you an honest view on whether there's a commercial opportunity worth pursuing.",
+      "No packaged pitch. No pressure to buy services you don't need.",
+      "Just a direct conversation about whether we can help you win more of the demand that already exists.",
     ],
   },
 };
@@ -240,16 +237,16 @@ export interface Profile {
 }
 
 export const heroHighlights = [
-  "$1.2m Sales",
-  "100+ Qualified Leads",
-  "$80 per $1 Ad Spend",
+  "$1.2m in closed sales",
+  "100+ qualified leads",
+  "$80 return per $1 ad spend",
 ];
 
 export const metrics = [
-  { value: "$15k", label: "Media Spend", animate: false },
-  { value: "100+", label: "Qualified Leads", animate: true },
-  { value: "$4.7m", label: "Quoted Pipeline", animate: false },
-  { value: "$1.2m", label: "Closed Sales", animate: false },
+  { value: "$15k", label: "Media investment", animate: false },
+  { value: "100+", label: "Qualified enquiries", animate: true },
+  { value: "$4.7m", label: "Pipeline quoted", animate: false },
+  { value: "$1.2m", label: "Revenue closed", animate: false },
 ];
 
 export const pillars = [
@@ -257,42 +254,42 @@ export const pillars = [
     num: "01",
     label: "Find",
     description:
-      "Where are your customers searching? What indicates genuine commercial intent? Where have competitors left opportunities open?",
+      "Pinpoint where buyers search, which queries signal real intent, and where competitors have left commercial gaps.",
   },
   {
     num: "02",
     label: "Reach",
     description:
-      "Tightly targeted paid-search campaigns designed to put you in front of the right people at the right moment.",
+      "Run precision paid-search campaigns that place you in front of the right audience at the point of need.",
   },
   {
     num: "03",
     label: "Convert",
     description:
-      "Dedicated landing pages that speak directly to what each customer is looking for — and give them a clear reason to contact you.",
+      "Build landing experiences that match search intent and give serious buyers a clear reason to get in touch.",
   },
 ];
 
 export const problemCards = [
   {
     num: "01",
-    title: "Volume Marketing",
+    title: "The volume trap",
     description:
-      "Most digital marketing is built around volume. More traffic. More impressions. More clicks. More leads.",
+      "Most marketing is judged on traffic and lead count. Useful for high-volume models — misleading when each sale is worth serious money.",
     accent: false,
   },
   {
     num: "02",
-    title: "High-Value B2B",
+    title: "High-stakes B2B",
     description:
-      "If you sell enterprise technology, specialist equipment or engineering solutions, those numbers can be almost meaningless.",
+      "Enterprise technology, specialist equipment and engineering solutions don't scale on generic demand generation. Precision wins.",
     accent: false,
   },
   {
     num: "03",
-    title: "Finding the Right Ones",
+    title: "Intent over volume",
     description:
-      "You may only need a handful of new customers for a campaign to transform your year. We identify where genuine buying intent already exists.",
+      "A small number of well-qualified enquiries can transform a quarter. We find where that intent already exists — and help you capture it.",
     accent: true,
   },
 ];
@@ -302,7 +299,7 @@ export const problemFlowSteps = [
   "Intent",
   "Enquiry",
   "Opportunity",
-  "Sale",
+  "Revenue",
 ];
 
 export const philosophyJourneyStages = [
@@ -321,49 +318,49 @@ export const services = [
     num: "01",
     title: "High customer value",
     description:
-      "An individual customer is worth a significant amount to your business.",
+      "Each new customer represents meaningful revenue — so acquisition cost and lead quality both matter.",
   },
   {
     num: "02",
     title: "Active search demand",
     description:
-      "People actively search online for your products, services or the problems you solve.",
+      "Your buyers are already searching for products, services or solutions you can provide.",
   },
   {
     num: "03",
-    title: "Specialist products",
+    title: "Complex propositions",
     description:
-      "What you sell is specialist, technical or complex — and needs the right audience.",
+      "What you sell is specialist or technical, and needs the right message for the right audience.",
   },
   {
     num: "04",
-    title: "Quality over volume",
+    title: "Quality over quantity",
     description:
-      "Quality matters considerably more than lead volume for your sales process.",
+      "Your sales team would rather have ten credible enquiries than a hundred that go nowhere.",
   },
   {
     num: "05",
-    title: "Sales conversations",
+    title: "Consultative sales",
     description:
-      "A sales conversation usually happens after the initial enquiry, not at first click.",
+      "A conversation — not a checkout — is how deals get done in your business.",
   },
   {
     num: "06",
-    title: "Revenue measurement",
+    title: "Revenue accountability",
     description:
-      "You want to understand whether advertising is producing revenue, not merely traffic.",
+      "You need marketing measured against pipeline and sales, not platform metrics alone.",
   },
   {
     num: "07",
-    title: "Enterprise technology",
+    title: "Enterprise & infrastructure",
     description:
-      "We work especially well with enterprise technology and infrastructure companies.",
+      "Technology, systems and infrastructure businesses with long sales cycles and high deal values.",
   },
   {
     num: "08",
     title: "Specialist manufacturing",
     description:
-      "Engineering, B2B equipment and other high-value specialist markets.",
+      "Engineering, industrial equipment and other B2B markets where expertise drives purchase decisions.",
   },
 ];
 
@@ -372,36 +369,35 @@ export const processSteps = [
     number: "01",
     title: "Find",
     description:
-      "Where are your prospective customers searching? What are they searching for? Which searches indicate genuine commercial intent? We start by finding the answers.",
+      "Map where buyers search, which terms indicate purchase intent, and where competitors are vulnerable.",
   },
   {
     number: "02",
     title: "Reach",
     description:
-      "Once we know where the demand is, we build tightly targeted paid-search campaigns designed to put you in front of the right people at the right moment.",
+      "Launch tightly segmented paid-search campaigns that reach the right people at the right moment.",
   },
   {
     number: "03",
     title: "Convert",
     description:
-      "Getting the click is only half the job. We create dedicated landing pages that speak directly to what that customer is looking for.",
+      "Deploy landing pages built around specific searches — clear messaging, credible proof, a frictionless enquiry path.",
   },
   {
     number: "04",
     title: "Measure & improve",
     description:
-      "We follow what happens — not just impressions, clicks or form submissions, but genuine opportunities and actual business.",
+      "Report on enquiry quality, pipeline and revenue. Scale what converts. Cut what doesn't.",
   },
 ];
 
 export const comparisonSteps = {
-  traditional: ["Impressions", "Clicks", "Leads"],
+  traditional: ["Impressions", "Clicks", "Form fills"],
   attribution: [
-    "Qualified Leads",
-    "Opportunities",
-    "Customers",
-    "Sales",
-    "Revenue",
+    "Qualified enquiries",
+    "Sales conversations",
+    "Pipeline value",
+    "Closed revenue",
   ],
 };
 
@@ -412,13 +408,13 @@ export const caseStudies: CaseStudy[] = [
     period: "3 month campaign",
     spend: "$15k media spend",
     summary:
-      "For a UK enterprise IT infrastructure company, we identified high-intent searches for specific products, built tightly targeted Google Ads campaigns and created dedicated landing pages. The campaigns generated real enquiries that became high-value sales.",
-    highlight: { value: 1.2, prefix: "$", suffix: "m", label: "Closed sales", decimals: 1 },
+      "A UK enterprise IT infrastructure provider needed to reach organisations actively purchasing high-value hardware. We mapped product-level search intent, launched segmented Google Ads campaigns, and built landing pages matched to each query — delivering qualified enquiries that converted into seven-figure pipeline and closed sales.",
+    highlight: { value: 1.2, prefix: "$", suffix: "m", label: "Revenue closed", decimals: 1 },
     stats: [
-      { value: 100, suffix: "+", label: "Qualified leads", sub: "High-intent enquiries" },
-      { value: 4.7, prefix: "$", suffix: "m", label: "Quoted", sub: "Pipeline value", decimals: 1 },
-      { value: 80, prefix: "$", suffix: "", label: "Sales per ad $", sub: "Return on media spend" },
-      { value: 150, prefix: "$", suffix: "", label: "Cost per lead", sub: "Or less, qualified" },
+      { value: 100, suffix: "+", label: "Qualified enquiries", sub: "Commercially credible leads" },
+      { value: 4.7, prefix: "$", suffix: "m", label: "Pipeline quoted", sub: "Opportunities created", decimals: 1 },
+      { value: 80, prefix: "$", suffix: "", label: "Revenue per ad dollar", sub: "Return on media spend" },
+      { value: 150, prefix: "$", suffix: "", label: "Cost per lead", sub: "Qualified, or below" },
     ],
     bars: [
       { label: "Qualified leads", before: 20, after: 100, unit: "+" },
@@ -504,34 +500,34 @@ export const testimonials = [
 
 export const insights = [
   {
-    title: "Where are our customers?",
-    category: "Commercial Questions",
-    readTime: "2 min",
+    title: "Why lead volume is the wrong metric for high-value B2B",
+    category: "Strategy",
+    readTime: "5 min",
   },
   {
-    title: "What are they looking for?",
-    category: "Search Intent",
-    readTime: "3 min",
-  },
-  {
-    title: "How much does it cost to reach them?",
+    title: "How to identify search intent worth paying for",
     category: "Paid Search",
-    readTime: "3 min",
+    readTime: "6 min",
   },
   {
-    title: "Are those enquiries any good?",
+    title: "What a qualified enquiry actually looks like",
     category: "Lead Quality",
     readTime: "4 min",
   },
   {
-    title: "Are they turning into sales?",
-    category: "Revenue",
-    readTime: "4 min",
+    title: "Connecting ad spend to pipeline — not just platform ROAS",
+    category: "Measurement",
+    readTime: "7 min",
   },
   {
-    title: "When one customer is worth a lot",
-    category: "High-Value B2B",
+    title: "When to invest more in search — and when to stop",
+    category: "Commercial",
     readTime: "5 min",
+  },
+  {
+    title: "Landing pages that convert specialist B2B buyers",
+    category: "Conversion",
+    readTime: "6 min",
   },
 ];
 
@@ -543,7 +539,7 @@ export const profiles: Record<"michael" | "junaid" | "nouman", Profile> = {
     focus: "Strategy & Research",
     imageAlt: "Michael Simkin - Commercial Strategy",
     bio: [
-      "Michael works with businesses to understand where their commercial opportunities lie, what customers actually care about and how complex propositions can be communicated clearly.",
+      "Michael helps B2B businesses define where their commercial opportunities lie, understand what buyers actually value, and translate complex propositions into clear, compelling messaging.",
     ],
     credentials: [
       { value: "Strategy", label: "Commercial positioning" },
@@ -577,7 +573,7 @@ export const profiles: Record<"michael" | "junaid" | "nouman", Profile> = {
     image: "/images/profileImage.jpeg",
     imageAlt: "Junaid Kazi - Paid Search & Performance Marketing",
     bio: [
-      "Junaid brings extensive experience managing and optimising paid-search campaigns, including work for Thomas Cook and high-value international B2B campaigns.",
+      "Junaid designs and manages paid-search programmes for high-value B2B markets — including enterprise campaigns for Thomas Cook and international lead generation across the UK, US and UAE.",
     ],
     credentials: [
       { value: "Thomas Cook", label: "Enterprise campaigns" },
@@ -623,7 +619,7 @@ export const profiles: Record<"michael" | "junaid" | "nouman", Profile> = {
     image: "/images/nouman-profile.jpeg",
     imageAlt: "Noumaan Khatib - Search, Technology & Conversion",
     bio: [
-      "Noumaan brings more than ten years' experience across development, SEO, and landing-page optimisation, connecting campaigns with the technical infrastructure needed to turn searches into enquiries.",
+      "Noumaan builds the search and conversion infrastructure behind effective campaigns — landing pages, technical SEO and performance engineering that turns traffic into credible enquiries.",
     ],
     credentials: [
       { value: "10+ Years", label: "Experience" },

@@ -1,16 +1,16 @@
 const items = [
-  "High-Value B2B",
+  "B2B Customer Acquisition",
   "Search Intent",
   "Google Ads",
   "Paid Search",
   "Landing Pages",
+  "Pipeline & Revenue",
   "Server Factory",
   "Enterprise Technology",
-  "Qualified Leads",
+  "Attribution First",
   "Michael Simkin",
   "Junaid Kazi",
   "Noumaan Khatib",
-  "Attribution First",
 ];
 
 export default function Marquee() {

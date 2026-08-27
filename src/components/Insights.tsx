@@ -3,18 +3,16 @@
 import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
 import SectionLabel from "./SectionLabel";
-import { homepageCopy, insights } from "@/data/siteData";
+import { insights } from "@/data/siteData";
 
 export default function Insights() {
-  const { simpleQuestions } = homepageCopy;
-
   return (
     <section id="insights" className="section-padding bg-charcoal-light">
       <div className="container-wide">
         <SectionLabel>Insights</SectionLabel>
         <FadeIn delay={0.1}>
           <h2 className="headline mt-5 max-w-2xl">
-            {simpleQuestions.subheading.replace(":", "")}
+            Thinking beyond the dashboard.
           </h2>
         </FadeIn>
 

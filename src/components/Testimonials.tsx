@@ -12,7 +12,9 @@ export default function Testimonials() {
       <div className="container-wide">
         <FadeIn>
           <p className="section-label">Testimonials</p>
-          <h2 className="headline mt-5 max-w-xl">Trusted by growth teams.</h2>
+          <h2 className="headline mt-5 max-w-xl">
+            What clients and colleagues say.
+          </h2>
         </FadeIn>
 
         <div className="mt-14 flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible">

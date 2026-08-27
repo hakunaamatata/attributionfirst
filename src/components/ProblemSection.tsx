@@ -50,7 +50,7 @@ export default function ProblemSection() {
                 <div key={step} className="flex items-center">
                   <motion.div
                     className={`rounded-full border px-5 py-2.5 text-sm font-medium ${
-                      step === "Sale"
+                      step === "Revenue"
                         ? "border-accent/40 bg-accent-muted text-accent"
                         : "border-border bg-charcoal-elevated text-white"
                     }`}

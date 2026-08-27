@@ -38,7 +38,7 @@ function FlowColumn({
             <motion.div
               className={`rounded-full border px-6 py-2.5 text-sm font-medium ${
                 dominant
-                  ? step === "Revenue"
+                  ? step === "Closed revenue"
                     ? "border-accent/50 bg-accent-muted text-accent"
                     : "border-border bg-charcoal text-white"
                   : "border-border/40 bg-charcoal/50 text-muted"
@@ -85,13 +85,13 @@ export default function Comparison() {
         <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
           <FadeIn delay={0.15}>
             <FlowColumn
-              title="Volume-focused reporting"
+              title="Typical agency reporting"
               steps={comparisonSteps.traditional}
             />
           </FadeIn>
           <FadeIn delay={0.25}>
             <FlowColumn
-              title="What we measure"
+              title="How we measure success"
               steps={comparisonSteps.attribution}
               dominant
             />

@@ -18,21 +18,21 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Attribution First | Find High-Value B2B Customers Through Search",
+  title: "Attribution First | B2B Customer Acquisition Through Search",
   description: siteConfig.description,
   keywords: [
+    "B2B customer acquisition",
     "high-value B2B marketing",
-    "paid search",
-    "buying intent",
+    "paid search consultancy",
+    "search intent marketing",
     "Google Ads B2B",
     "enterprise lead generation",
-    "specialist B2B marketing",
     "landing page optimisation",
-    "search intent marketing",
+    "marketing measurement",
   ],
   authors: teamMembers.map((m) => ({ name: m.name })),
   openGraph: {
-    title: "Attribution First | Find High-Value B2B Customers Through Search",
+    title: "Attribution First | B2B Customer Acquisition Through Search",
     description: siteConfig.description,
     type: "website",
     locale: "en_GB",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Attribution First | Find High-Value B2B Customers Through Search",
+    title: "Attribution First | B2B Customer Acquisition Through Search",
     description: siteConfig.description,
   },
   robots: {
