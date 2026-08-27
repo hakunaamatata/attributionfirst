@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Syne } from "next/font/google";
 import NoiseOverlay from "@/components/NoiseOverlay";
-import { siteConfig } from "@/data/siteData";
+import { siteConfig, teamMembers } from "@/data/siteData";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -18,30 +18,29 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Attribution First | Performance Marketing & Attribution",
+  title: "Attribution First | Find High-Value B2B Customers Through Search",
   description: siteConfig.description,
   keywords: [
-    "B2B performance marketing",
-    "AI search optimization",
-    "GEO",
-    "Google Ads",
-    "Bing Ads",
-    "GA4 server tracking",
-    "marketing attribution",
-    "technical SEO",
-    "conversion rate optimization",
+    "high-value B2B marketing",
+    "paid search",
+    "buying intent",
+    "Google Ads B2B",
+    "enterprise lead generation",
+    "specialist B2B marketing",
+    "landing page optimisation",
+    "search intent marketing",
   ],
-  authors: [{ name: "Junaid Ahmed Kazi" }],
+  authors: teamMembers.map((m) => ({ name: m.name })),
   openGraph: {
-    title: "Attribution First | Performance Marketing & Attribution",
+    title: "Attribution First | Find High-Value B2B Customers Through Search",
     description: siteConfig.description,
     type: "website",
-    locale: "en_IN",
+    locale: "en_GB",
     siteName: "Attribution First",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Attribution First | Performance Marketing & Attribution",
+    title: "Attribution First | Find High-Value B2B Customers Through Search",
     description: siteConfig.description,
   },
   robots: {
@@ -56,26 +55,26 @@ const jsonLd = {
   name: "Attribution First",
   description: siteConfig.description,
   url: siteConfig.siteUrl,
-  founder: {
+  employee: teamMembers.map((m) => ({
     "@type": "Person",
-    name: siteConfig.founder,
-    jobTitle: siteConfig.title,
-  },
-  areaServed: "IN",
+    name: m.name,
+    jobTitle: m.role,
+    sameAs: m.linkedin,
+  })),
+  areaServed: ["GB", "IN", "US", "AE"],
   serviceType: [
-    "Performance Marketing",
-    "Marketing Attribution",
-    "Google Ads Management",
-    "Meta Ads Management",
-    "SEO",
-    "Conversion Rate Optimization",
+    "Paid Search Marketing",
+    "B2B Lead Generation",
+    "Landing Page Optimisation",
+    "Commercial Strategy",
+    "Search Intent Research",
   ],
   knowsAbout: [
-    "Marketing Attribution",
-    "Google Analytics 4",
-    "Google Tag Manager",
-    "CRM Integration",
-    "Revenue Attribution",
+    "Google Ads",
+    "B2B Marketing",
+    "Search Intent",
+    "Landing Page Conversion",
+    "High-Value Lead Generation",
   ],
 };
 

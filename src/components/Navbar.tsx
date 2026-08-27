@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { siteConfig } from "@/data/siteData";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Attribution", href: "#attribution" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "About", href: "#about" },
-  { label: "Insights", href: "#insights" },
+  { label: "Approach", href: "#approach" },
+  { label: "Process", href: "#process" },
+  { label: "Results", href: "#results" },
+  { label: "Team", href: "#team" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -70,7 +71,7 @@ export default function Navbar() {
 
         <div className="hidden lg:block">
           <a href="#contact" className="btn-primary text-[13px]">
-            Book a Call
+            Talk to us
             <span aria-hidden="true">→</span>
           </a>
         </div>
@@ -131,7 +132,7 @@ export default function Navbar() {
               className="btn-primary mt-10 w-fit"
               onClick={() => setMobileOpen(false)}
             >
-              Book a Strategy Call →
+              {siteConfig.primaryCta} →
             </a>
           </motion.div>
         )}

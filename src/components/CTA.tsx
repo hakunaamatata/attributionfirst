@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
-import { siteConfig } from "@/data/siteData";
+import { homepageCopy, siteConfig } from "@/data/siteData";
 
 export default function CTA() {
+  const { cta } = homepageCopy;
+
   return (
     <section id="contact" className="section-padding relative overflow-hidden">
       <div className="absolute inset-0">
@@ -35,18 +37,27 @@ export default function CTA() {
         <div className="mx-auto max-w-3xl rounded-3xl border border-border bg-charcoal-elevated/50 p-10 text-center backdrop-blur-sm md:p-16">
           <FadeIn>
             <h2 className="font-display text-3xl font-semibold tracking-tight text-white md:text-4xl lg:text-5xl">
-              Ready to know what&apos;s actually driving growth?
+              {cta.headline}
             </h2>
           </FadeIn>
 
           <FadeIn delay={0.1}>
             <p className="mt-5 text-base leading-[1.7] text-muted md:text-lg">
-              Let&apos;s connect your marketing data to the revenue that
-              matters. Response within 24 hours.
+              {cta.subheading}
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.15}>
+          <div className="mt-6 space-y-4">
+            {cta.body.map((paragraph, i) => (
+              <FadeIn key={i} delay={0.12 + i * 0.05}>
+                <p className="text-sm leading-[1.7] text-muted md:text-base">
+                  {paragraph}
+                </p>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn delay={0.2}>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-dim">
               <a
                 href={`mailto:${siteConfig.email}`}
@@ -61,24 +72,22 @@ export default function CTA() {
               >
                 {siteConfig.phone}
               </a>
-              <span className="hidden sm:inline">·</span>
-              <span>{siteConfig.location}</span>
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.25}>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a href={siteConfig.whatsapp} className="btn-primary" target="_blank" rel="noopener noreferrer">
-                Talk to Junaid
-                <span aria-hidden="true">→</span>
-              </a>
               <a
-                href={siteConfig.noumanPortfolioUrl}
-                className="btn-secondary"
+                href={siteConfig.whatsapp}
+                className="btn-primary"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Talk to Nouman
+                {siteConfig.primaryCta}
+                <span aria-hidden="true">→</span>
+              </a>
+              <a href={`mailto:${siteConfig.email}`} className="btn-secondary">
+                Email us
               </a>
             </div>
           </FadeIn>

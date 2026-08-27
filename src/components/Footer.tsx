@@ -1,11 +1,10 @@
 import { siteConfig } from "@/data/siteData";
 
 const footerLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Attribution", href: "#attribution" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "About", href: "#about" },
-  { label: "Insights", href: "#insights" },
+  { label: "Approach", href: "#approach" },
+  { label: "Process", href: "#process" },
+  { label: "Results", href: "#results" },
+  { label: "Team", href: "#team" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -24,9 +23,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
-              Performance marketing & attribution infrastructure for scaling
-              brands. Google Ads, Meta Ads, and measurement systems that
-              connect ad spend to real revenue.
+              {siteConfig.description}
             </p>
             <a
               href={`mailto:${siteConfig.email}`}
@@ -62,15 +59,6 @@ export default function Footer() {
             </p>
             <div className="mt-5 space-y-3">
               <a
-                href={siteConfig.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-muted transition-colors hover:text-white"
-              >
-                LinkedIn
-                <span className="text-muted-dim">↗</span>
-              </a>
-              <a
                 href={siteConfig.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -80,12 +68,10 @@ export default function Footer() {
                 <span className="text-muted-dim">↗</span>
               </a>
               <a
-                href={siteConfig.noumanPortfolioUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`mailto:${siteConfig.email}`}
                 className="flex items-center gap-2 text-sm text-muted transition-colors hover:text-white"
               >
-                Nouman&apos;s Portfolio
+                Email
                 <span className="text-muted-dim">↗</span>
               </a>
             </div>
@@ -94,8 +80,7 @@ export default function Footer() {
 
         <div className="divider-glow mt-14" />
         <p className="mt-8 text-xs text-muted-dim">
-          © {new Date().getFullYear()} Attribution First · {siteConfig.founder}.
-          All rights reserved.
+          © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
         </p>
       </div>
     </footer>
