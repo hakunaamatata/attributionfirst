@@ -48,7 +48,7 @@ export const siteConfig = {
   location: "Nerul, Mumbai - 400706",
   siteUrl: "https://www.attributionfirst.co.in",
   description:
-    "Attribution First helps high-value B2B businesses reach buyers who are actively searching. We combine commercial strategy, paid search and conversion technology to turn intent into qualified enquiries and measurable revenue.",
+    "Attribution First helps high-value B2B businesses understand which marketing activity drives revenue — combining commercial strategy, precision paid search, and conversion technology to turn search demand into measurable pipeline.",
   profileImage: "/images/profileImage.jpeg",
   resumeUrl: "/resume/Myresume_JunaidahmedKazi.pdf",
   noumanPortfolioUrl: "https://nouman-portfolio-ashen.vercel.app",

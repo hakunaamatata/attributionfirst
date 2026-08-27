@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
-import { DM_Sans, Syne } from "next/font/google";
+import { Manrope } from "next/font/google";
 import NoiseOverlay from "@/components/NoiseOverlay";
 import { siteConfig, teamMembers } from "@/data/siteData";
 import "./globals.css";
 
-const dmSans = DM_Sans({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-manrope",
   display: "swap",
-});
-
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-syne",
-  display: "swap",
-  weight: ["500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -22,12 +16,10 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "B2B customer acquisition",
-    "high-value B2B marketing",
+    "revenue attribution",
     "paid search consultancy",
     "search intent marketing",
     "Google Ads B2B",
-    "enterprise lead generation",
-    "landing page optimisation",
     "marketing measurement",
   ],
   authors: teamMembers.map((m) => ({ name: m.name })),
@@ -43,10 +35,7 @@ export const metadata: Metadata = {
     title: "Attribution First | B2B Customer Acquisition Through Search",
     description: siteConfig.description,
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 const jsonLd = {
@@ -61,30 +50,13 @@ const jsonLd = {
     jobTitle: m.role,
     sameAs: m.linkedin,
   })),
-  areaServed: ["GB", "IN", "US", "AE"],
-  serviceType: [
-    "Paid Search Marketing",
-    "B2B Lead Generation",
-    "Landing Page Optimisation",
-    "Commercial Strategy",
-    "Search Intent Research",
-  ],
-  knowsAbout: [
-    "Google Ads",
-    "B2B Marketing",
-    "Search Intent",
-    "Landing Page Conversion",
-    "High-Value Lead Generation",
-  ],
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${syne.variable}`}>
+    <html lang="en" className={manrope.variable}>
       <head>
         <script
           type="application/ld+json"
