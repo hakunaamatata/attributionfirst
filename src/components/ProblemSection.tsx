@@ -41,7 +41,7 @@ export default function ProblemSection() {
 
         <FadeIn delay={0.3}>
           <div className="relative mt-16 overflow-hidden rounded-2xl border border-border bg-charcoal p-8 md:p-12">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(62,232,255,0.04)_0%,transparent_70%)]" />
+            <div className="absolute inset-0 accent-radial-center" />
             <p className="relative mb-8 text-center text-[11px] tracking-[0.2em] text-muted-dim uppercase">
               From search to sale
             </p>

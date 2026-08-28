@@ -2,11 +2,12 @@ import { siteConfig } from "@/data/siteData";
 
 const footerLinks = [
   { label: "Services", href: "#services" },
-  { label: "Approach", href: "#attribution" },
+  { label: "Approach", href: "#approach" },
   { label: "Case Studies", href: "#case-studies" },
   { label: "About", href: "#about" },
   { label: "Insights", href: "#insights" },
-  { label: "Contact", href: "#contact" },
+  { label: "Blog", href: siteConfig.blogUrl },
+  { label: "Contact", href: siteConfig.contactUrl },
 ];
 
 export default function Footer() {

@@ -7,7 +7,7 @@ import { testimonials } from "@/data/siteData";
 export default function Testimonials() {
   return (
     <section className="section-padding relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(62,232,255,0.03)_0%,transparent_50%)]" />
+      <div className="absolute inset-0 accent-radial-right" />
 
       <div className="container-wide">
         <FadeIn>

@@ -1,199 +1,406 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useId, useRef } from "react";
 
-const nodes = [
-  { id: "ads", label: "Google Ads", icon: "G" },
-  { id: "landing", label: "Landing Page", icon: "▦" },
-  { id: "lead", label: "Lead", icon: "◎" },
-  { id: "crm", label: "CRM", icon: "⬡" },
-  { id: "revenue", label: "Revenue", icon: "↗" },
+const ease = [0.16, 1, 0.3, 1] as const;
+
+const pipelineNodes = [
+  { id: "ads", label: "Google Ads", y: 11 },
+  { id: "landing", label: "Landing Page", y: 29 },
+  { id: "lead", label: "Lead", y: 47 },
+  { id: "crm", label: "CRM", y: 65 },
+  { id: "revenue", label: "Revenue", y: 83 },
 ];
 
-const metrics = [
-  { label: "Revenue", value: 124, prefix: "$", suffix: "K", x: "4%", y: "16%", spark: "M0 20 L8 14 L16 18 L24 8 L32 12" },
-  { label: "ROAS", value: 5.8, prefix: "", suffix: "x", x: "68%", y: "22%", spark: "M0 16 L10 12 L20 14 L30 6" },
-  { label: "CAC", value: 24, prefix: "↓ ", suffix: "%", x: "2%", y: "58%", spark: "M0 8 L12 14 L24 10 L32 18" },
-  { label: "SQLs", value: 38, prefix: "+", suffix: "%", x: "66%", y: "64%", spark: "M0 18 L10 10 L20 14 L30 4" },
+const metricCards = [
+  {
+    id: "revenue-metric",
+    side: "left" as const,
+    y: 7,
+    label: "Revenue",
+    value: "$124K",
+    spark: "M0 14 L9 12 L18 10 L27 8 L36 6 L48 4",
+    connectY: 11,
+    delay: 1.05,
+  },
+  {
+    id: "roas",
+    side: "right" as const,
+    y: 30,
+    label: "ROAS",
+    value: "5.8×",
+    spark: "M0 14 L9 11 L18 9 L27 7 L36 5 L48 3",
+    connectY: 38,
+    delay: 1.2,
+  },
+  {
+    id: "cac",
+    side: "left" as const,
+    y: 52,
+    label: "CAC",
+    value: "↓ 24%",
+    spark: "M0 4 L9 6 L18 8 L27 10 L36 12 L48 14",
+    connectY: 56,
+    delay: 1.35,
+  },
+  {
+    id: "sqls",
+    side: "right" as const,
+    y: 58,
+    label: "SQLs",
+    value: "+38%",
+    spark: "M0 13 L9 11 L18 8 L27 6 L36 5 L48 3",
+    connectY: 65,
+    delay: 1.5,
+  },
 ];
 
-function Sparkline({ d }: { d: string }) {
+const junctionYs = [20, 38, 56, 74];
+
+function NodeIcon({ id }: { id: string }) {
+  const props = {
+    className: "h-4 w-4 text-accent",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.25,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+
+  switch (id) {
+    case "ads":
+      return (
+        <svg viewBox="0 0 16 16" {...props}>
+          <path d="M2 8h1.8l1-2.8 1.8 5.6 1.6-3.6 1.2 2.4H14" />
+        </svg>
+      );
+    case "landing":
+      return (
+        <svg viewBox="0 0 16 16" {...props}>
+          <rect x="3.5" y="2.5" width="9" height="11" rx="1.2" />
+          <path d="M5.5 6h5M5.5 8.5h3.2" />
+        </svg>
+      );
+    case "lead":
+      return (
+        <svg viewBox="0 0 16 16" {...props}>
+          <circle cx="8" cy="5.5" r="2.1" />
+          <path d="M4.2 13c.7-2 2.2-3 3.8-3s3.1 1 3.8 3" />
+        </svg>
+      );
+    case "crm":
+      return (
+        <svg viewBox="0 0 16 16" {...props}>
+          <ellipse cx="8" cy="4.5" rx="4.2" ry="1.6" />
+          <path d="M3.8 4.5v3.8c0 .9 1.9 1.6 4.2 1.6s4.2-.7 4.2-1.6V4.5" />
+          <path d="M3.8 8.3v3.2c0 .9 1.9 1.6 4.2 1.6s4.2-.7 4.2-1.6V8.3" />
+        </svg>
+      );
+    case "revenue":
+      return (
+        <svg viewBox="0 0 16 16" {...props}>
+          <path d="M3 12V6.8M6.2 12V4.8M9.4 12V8.2M12.6 12V3.5" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+function Sparkline({
+  path,
+  delay,
+  inView,
+  gradientId,
+}: {
+  path: string;
+  delay: number;
+  inView: boolean;
+  gradientId: string;
+}) {
+  const areaPath = `${path} L48 16 L0 16 Z`;
+
   return (
-    <svg width="36" height="20" viewBox="0 0 36 20" className="mt-2 opacity-60">
-      <path d={d} fill="none" stroke="#67D8F5" strokeWidth="1.5" strokeLinecap="round" />
+    <svg viewBox="0 0 48 16" className="mt-2.5 h-[18px] w-full" preserveAspectRatio="none" aria-hidden>
+      <defs>
+        <linearGradient id={`${gradientId}-line`} x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="var(--lime)" stopOpacity="0.2" />
+          <stop offset="100%" stopColor="var(--lime)" stopOpacity="1" />
+        </linearGradient>
+        <linearGradient id={`${gradientId}-area`} x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="var(--lime)" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="var(--lime)" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <motion.path
+        d={areaPath}
+        fill={`url(#${gradientId}-area)`}
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8, delay: delay + 0.4, ease }}
+      />
+      <motion.path
+        d={path}
+        fill="none"
+        stroke={`url(#${gradientId}-line)`}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        filter="drop-shadow(0 0 3px var(--accent-glow))"
+        initial={{ pathLength: 0, opacity: 0.35 }}
+        animate={inView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0.35 }}
+        transition={{ duration: 1.2, delay, ease }}
+      />
     </svg>
   );
 }
 
 function MetricCard({
-  label,
-  value,
-  prefix,
-  suffix,
-  x,
-  y,
-  spark,
-  delay,
-}: (typeof metrics)[0] & { delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    const timeout = setTimeout(() => {
-      const start = performance.now();
-      const duration = 1800;
-      const tick = (now: number) => {
-        const p = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 4);
-        setDisplay(value * eased);
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    }, delay * 1000);
-    return () => clearTimeout(timeout);
-  }, [inView, value, delay]);
-
-  const formatted = value % 1 !== 0 ? display.toFixed(1) : Math.round(display).toString();
+  card,
+  inView,
+}: {
+  card: (typeof metricCards)[number];
+  inView: boolean;
+}) {
+  const gradientId = useId().replace(/:/g, "");
 
   return (
     <motion.div
-      ref={ref}
-      className="absolute z-10 rounded-xl border border-white/[0.08] bg-charcoal-elevated/95 px-3.5 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-      style={{ left: x, top: y }}
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.8 + delay, ease: [0.16, 1, 0.3, 1] }}
+      className={`attribution-metric-card absolute z-20 w-[100px] sm:w-[112px] md:w-[124px] ${
+        card.side === "left" ? "left-[6%] md:left-[7%]" : "right-[6%] md:right-[7%]"
+      }`}
+      style={{ top: `${card.y}%` }}
+      initial={{ opacity: 0, x: card.side === "left" ? -14 : 14, y: 8 }}
+      animate={inView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: card.side === "left" ? -14 : 14, y: 8 }}
+      transition={{ duration: 0.7, delay: card.delay, ease }}
     >
-      <p className="text-[10px] tracking-wide text-muted-dim uppercase">{label}</p>
-      <p className="font-display text-sm font-semibold text-accent">
-        {prefix}
-        {formatted}
-        {suffix}
-      </p>
-      <Sparkline d={spark} />
+      <div className="rounded-xl border border-border bg-charcoal-elevated/80 p-3 shadow-[0_16px_40px_rgba(0,0,0,0.6)] backdrop-blur-md">
+        <p className="text-[9px] font-medium tracking-[0.14em] text-muted-dim uppercase">{card.label}</p>
+        <p className="mt-1 text-[15px] font-semibold tracking-tight text-white">{card.value}</p>
+        <Sparkline path={card.spark} delay={card.delay + 0.12} inView={inView} gradientId={gradientId} />
+      </div>
     </motion.div>
   );
 }
 
-export default function AttributionFlow() {
-  return (
-    <div className="relative h-[480px] w-full md:h-[540px] lg:h-[580px]">
-      <motion.div
-        className="absolute inset-0 overflow-hidden rounded-2xl border border-white/[0.08] bg-charcoal-light shadow-[0_40px_100px_rgba(0,0,0,0.55)]"
-        initial={{ opacity: 0, scale: 0.97 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="absolute inset-0 atmosphere-glow" />
-        <div className="absolute inset-0 grid-bg opacity-40" />
+function FlowDiagram({ inView }: { inView: boolean }) {
+  const centerX = 50;
 
-        <div className="absolute top-0 right-0 left-0 flex items-center justify-between border-b border-white/[0.06] px-5 py-3.5">
+  return (
+    <svg
+      className="pointer-events-none absolute inset-0 z-[4] h-full w-full"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      aria-hidden
+    >
+      <defs>
+        <linearGradient id="pipeGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="var(--lime)" stopOpacity="0.15" />
+          <stop offset="45%" stopColor="var(--lime)" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="var(--lime)" stopOpacity="1" />
+        </linearGradient>
+        <filter id="lineGlow">
+          <feGaussianBlur stdDeviation="0.35" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      <line
+        x1={centerX}
+        y1={pipelineNodes[0].y}
+        x2={centerX}
+        y2={pipelineNodes[pipelineNodes.length - 1].y}
+        stroke="rgba(255,255,255,0.07)"
+        strokeWidth="0.35"
+      />
+
+      <motion.line
+        x1={centerX}
+        y1={pipelineNodes[0].y}
+        x2={centerX}
+        y2={pipelineNodes[pipelineNodes.length - 1].y}
+        stroke="url(#pipeGlow)"
+        strokeWidth="0.55"
+        filter="url(#lineGlow)"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={inView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+        transition={{ duration: 1.2, delay: 0.4, ease }}
+      />
+
+      {junctionYs.map((y, i) => (
+        <motion.circle
+          key={y}
+          cx={centerX}
+          cy={y}
+          r="0.85"
+          fill="var(--lime)"
+          filter="url(#lineGlow)"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={
+            inView
+              ? { opacity: [0.5, 1, 0.5], scale: [0.85, 1.15, 0.85] }
+              : { opacity: 0, scale: 0 }
+          }
+          transition={{
+            opacity: { duration: 2.4, repeat: Infinity, delay: 0.6 + i * 0.2 },
+            scale: { duration: 2.4, repeat: Infinity, delay: 0.6 + i * 0.2 },
+          }}
+        />
+      ))}
+
+      {metricCards.map((card, i) => {
+        const endX = card.side === "left" ? 24 : 76;
+        return (
+          <g key={card.id}>
+            <line
+              x1={centerX}
+              y1={card.connectY}
+              x2={endX}
+              y2={card.y + 5}
+              stroke="var(--accent-glow-soft)"
+              strokeWidth="0.3"
+            />
+            <motion.line
+              x1={centerX}
+              y1={card.connectY}
+              x2={endX}
+              y2={card.y + 5}
+              stroke="var(--accent-glow)"
+              strokeWidth="0.4"
+              strokeDasharray="1.5 2.5"
+              filter="url(#lineGlow)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={inView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+              transition={{ duration: 0.9, delay: 0.85 + i * 0.1, ease }}
+            />
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+function FlowParticle({ delay }: { delay: number }) {
+  return (
+    <motion.div
+      className="absolute left-1/2 z-[6] h-[7px] w-[7px] -translate-x-1/2 rounded-full bg-accent attribution-particle-glow"
+      animate={{
+        top: ["11%", "83%"],
+        opacity: [0, 1, 1, 0],
+        scale: [0.5, 1, 1, 0.5],
+      }}
+      transition={{
+        duration: 4.2,
+        repeat: Infinity,
+        delay,
+        ease: "linear",
+        times: [0, 0.06, 0.94, 1],
+      }}
+    />
+  );
+}
+
+function PipelineNode({
+  node,
+  index,
+  inView,
+}: {
+  node: (typeof pipelineNodes)[number];
+  index: number;
+  inView: boolean;
+}) {
+  const isRevenue = node.id === "revenue";
+
+  return (
+    <motion.div
+      className="absolute left-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
+      style={{ top: `${node.y}%` }}
+      initial={{ opacity: 0, y: 8 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+      transition={{ duration: 0.55, delay: 0.3 + index * 0.09, ease }}
+    >
+      <div
+        className={`relative flex min-w-[132px] items-center gap-2 rounded-xl border px-3 py-2.5 sm:min-w-[148px] sm:gap-2.5 md:min-w-[158px] md:gap-3 md:px-4 ${
+          isRevenue
+            ? "attribution-revenue-node border-accent/60 bg-charcoal-elevated"
+            : "attribution-node-surface border backdrop-blur-sm"
+        }`}
+      >
+        {isRevenue && <span className="attribution-revenue-halo" aria-hidden />}
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-border bg-charcoal-light">
+          <NodeIcon id={node.id} />
+        </span>
+        <span className="text-[13px] font-medium whitespace-nowrap text-white">{node.label}</span>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function AttributionFlow({ compact = false }: { compact?: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+
+  return (
+    <div
+      ref={ref}
+      className={`relative w-full ${compact ? "h-[360px] md:h-[440px]" : "h-[480px] md:h-[560px] lg:h-[600px]"}`}
+    >
+      <div className="attribution-window absolute inset-0 overflow-hidden rounded-2xl border border-border shadow-[0_40px_100px_rgba(0,0,0,0.75)]">
+        <div className="attribution-surface-glow absolute inset-0" />
+        <div className="attribution-noise absolute inset-0 opacity-[0.35]" />
+        <div
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(0,0,0,0.55)_100%)]" />
+
+        <header className="relative z-30 flex items-center justify-between border-b border-white/[0.08] px-4 py-3.5 md:px-5">
           <div className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-[#ff5f57]/80" />
-            <span className="h-2 w-2 rounded-full bg-[#febc2e]/80" />
-            <span className="h-2 w-2 rounded-full bg-[#28c840]/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]/85" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]/85" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]/85" />
           </div>
-          <span className="text-[10px] font-medium tracking-[0.18em] text-muted-dim uppercase">
+          <span className="absolute left-1/2 -translate-x-1/2 text-[10px] font-medium tracking-[0.22em] text-muted-dim uppercase">
             Revenue Attribution
           </span>
           <div className="flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-live" />
+            <span className="h-1.5 w-1.5 rounded-full bg-accent attribution-live-dot" />
             <span className="text-[10px] font-medium text-accent">Live</span>
+          </div>
+        </header>
+
+        <div className="relative h-[calc(100%-90px)]">
+          <FlowDiagram inView={inView} />
+
+          {metricCards.map((card) => (
+            <MetricCard key={card.id} card={card} inView={inView} />
+          ))}
+
+          <div className="relative h-full">
+            {[0, 1.4].map((delay) => (
+              <FlowParticle key={delay} delay={delay} />
+            ))}
+
+            {pipelineNodes.map((node, i) => (
+              <PipelineNode key={node.id} node={node} index={i} inView={inView} />
+            ))}
           </div>
         </div>
 
-        <div className="relative mx-auto mt-8 h-[calc(100%-88px)] max-w-[280px] px-4">
-          <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#67D8F5" stopOpacity="0.15" />
-                <stop offset="100%" stopColor="#67D8F5" stopOpacity="0.7" />
-              </linearGradient>
-            </defs>
-            {[12, 30, 48, 66].map((y, i) => (
-              <g key={y}>
-                <line x1="50" y1={y + 5} x2="50" y2={y + 22} stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" />
-                <motion.line
-                  x1="50"
-                  y1={y + 5}
-                  x2="50"
-                  y2={y + 22}
-                  stroke="url(#lineGrad)"
-                  strokeWidth="0.6"
-                  strokeDasharray="2 3"
-                  className="animate-flow-dash"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6 + i * 0.15 }}
-                />
-                {[0, 1, 2].map((p) => (
-                  <motion.circle
-                    key={p}
-                    r="0.8"
-                    fill="#67D8F5"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 1, 1, 0], cy: [y + 6, y + 20] }}
-                    transition={{
-                      duration: 2.5,
-                      delay: 1 + i * 0.4 + p * 0.7,
-                      repeat: Infinity,
-                      repeatDelay: 1.5,
-                      ease: "linear",
-                    }}
-                    cx="50"
-                  />
-                ))}
-              </g>
-            ))}
-          </svg>
-
-          {nodes.map((node, i) => (
-            <motion.div
-              key={node.id}
-              className="absolute left-1/2 -translate-x-1/2"
-              style={{ top: `${10 + i * 19}%` }}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div
-                className={`flex min-w-[148px] items-center gap-2.5 rounded-lg border px-3.5 py-2.5 ${
-                  node.id === "revenue"
-                    ? "border-accent/40 bg-charcoal-elevated shadow-[0_0_24px_rgba(103,216,245,0.15)]"
-                    : "border-white/[0.08] bg-charcoal-elevated/90"
-                }`}
-              >
-                <span
-                  className={`flex h-6 w-6 shrink-0 items-center justify-center rounded text-[10px] font-bold ${
-                    node.id === "ads"
-                      ? "bg-white/10 text-white"
-                      : "bg-white/[0.04] text-muted"
-                  }`}
-                >
-                  {node.id === "ads" ? (
-                    <span className="text-[9px]">G</span>
-                  ) : (
-                    node.icon
-                  )}
-                </span>
-                <span className="text-xs font-medium text-white">{node.label}</span>
-              </div>
-            </motion.div>
-          ))}
-
-          {metrics.map((m, i) => (
-            <MetricCard key={m.label} {...m} delay={i * 0.12} />
-          ))}
-        </div>
-
-        <div className="absolute right-5 bottom-3.5 left-5 flex items-center justify-between text-[10px] text-muted-dim">
+        <footer className="absolute right-4 bottom-3.5 left-4 flex items-center justify-between text-[10px] text-muted-dim/90 md:right-5 md:left-5">
           <span>Last synced · 2s ago</span>
           <span>7 touchpoints tracked</span>
-        </div>
-      </motion.div>
+        </footer>
+      </div>
     </div>
   );
 }

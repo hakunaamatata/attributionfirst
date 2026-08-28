@@ -10,7 +10,7 @@ export default function PhilosophySection() {
 
   return (
     <section id="attribution" className="section-padding relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(62,232,255,0.05)_0%,transparent_55%)]" />
+      <div className="absolute inset-0 accent-radial-left" />
 
       <div className="container-wide relative">
         <SectionLabel>Our Approach</SectionLabel>

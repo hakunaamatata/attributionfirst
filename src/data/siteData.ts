@@ -47,12 +47,55 @@ export const siteConfig = {
   linkedin: "https://www.linkedin.com/in/junaid-kazi-b205b0222",
   location: "Nerul, Mumbai - 400706",
   siteUrl: "https://www.attributionfirst.co.in",
+  blogUrl: "/blog",
+  contactUrl: "/contact",
   description:
     "Attribution First helps high-value B2B businesses understand which marketing activity drives revenue — combining commercial strategy, precision paid search, and conversion technology to turn search demand into measurable pipeline.",
   profileImage: "/images/profileImage.jpeg",
   resumeUrl: "/resume/Myresume_JunaidahmedKazi.pdf",
   noumanPortfolioUrl: "https://nouman-portfolio-ashen.vercel.app",
   primaryCta: "Book a commercial review",
+  callUrl: "tel:+919545087538",
+  whatsappUrl:
+    "https://wa.me/919545087538?text=Hi%2C%20I%27d%20like%20to%20discuss%20how%20you%20can%20help%20us%20find%20new%20customers",
+};
+
+export const contactPageCopy = {
+  label: "Contact",
+  headline: "Let's Discuss Your Growth Strategy",
+  subheading:
+    "Ready to generate more leads, rebuild your website, or both? Get in touch and let's create a plan.",
+  formHeading: "Send a Message",
+  directHeading: "Direct Contact",
+  pathways: [
+    {
+      heading: "Need Growth?",
+      sub: "Talk to Junaid",
+      description: "Google Ads, Meta Ads, lead generation, and attribution.",
+      cta: { label: "Book a Call", href: "tel:+919545087538" },
+    },
+    {
+      heading: "Need a Website?",
+      sub: "Talk to Nouman",
+      description: "Websites, landing pages, and technical SEO.",
+      cta: { label: "View Portfolio", href: "https://nouman-portfolio-ashen.vercel.app" },
+    },
+    {
+      heading: "Need Both?",
+      sub: "Build the Full System",
+      description: "Acquisition, attribution, website, and conversion — together.",
+      cta: { label: "Book Strategy Call", href: "tel:+919545087538" },
+    },
+  ],
+};
+
+export const blogPageCopy = {
+  label: "Insights on Growth, Attribution & Technology",
+  headline: "Marketing Attribution Blog",
+  subheading:
+    "No fluff. Just actionable frameworks on attribution, paid media, and the measurement infrastructure that separates scaling brands from stagnating ones.",
+  listHeading: "Latest Articles",
+  listSubheading: "Deep dives on attribution, paid media, and measurement.",
 };
 
 export interface TeamMember {
@@ -92,14 +135,17 @@ export const teamMembers: TeamMember[] = [
 
 export const homepageCopy = {
   hero: {
-    label: "B2B Customer Acquisition",
-    headline: "Your next customer is already searching.",
+    label: "Revenue Attribution & B2B Search",
+    headline: "Turn search demand into measurable revenue.",
+    highlightWords: ["measurable", "revenue"],
     subheading:
-      "The question is whether they find you — or your competitor.",
+      "We make sure they find you — and show you exactly what happens next.",
     body: [
-      "If you sell a specialist, technical or high-value B2B product, you rarely need more leads. You need the right leads — at the moment buyers are actively looking.",
-      "We help you reach them, convert them, and measure what actually drives revenue.",
+      "For specialist and high-value B2B businesses, we turn search demand into measurable commercial outcomes.",
+      "From Google Ads and landing pages to CRM, pipeline and revenue, we connect the full journey so you can see what's working, what's wasting budget and what's actually driving growth.",
     ],
+    secondaryCta: "See how it works",
+    secondaryCtaHref: "#approach-scroll",
   },
   volumeProblem: {
     headline:
@@ -194,14 +240,35 @@ export const homepageCopy = {
     closing:
       "Commercial insight, paid search and conversion infrastructure — aligned to one goal: turning existing demand into new business.",
   },
+  insightsList: {
+    label: "Latest articles",
+    headline: "Ideas for teams who measure what matters",
+    description:
+      "Strategy, search, lead quality and measurement — practical reads for high-value B2B commercial teams.",
+  },
   cta: {
+    label: "Start here",
     headline: "Before you increase spend, let's see what's already there.",
     subheading:
       "If you sell something valuable and believe more buyers are searching than you're currently reaching, that's the right place to start.",
-    body: [
-      "We'll review your market, assess what you're doing today, and give you an honest view on whether there's a commercial opportunity worth pursuing.",
-      "No packaged pitch. No pressure to buy services you don't need.",
-      "Just a direct conversation about whether we can help you win more of the demand that already exists.",
+    reviewSteps: [
+      {
+        title: "Your market",
+        description: "Where demand exists — and whether search is the right channel to capture it.",
+      },
+      {
+        title: "What you're doing today",
+        description: "Campaigns, tracking, and conversion paths — assessed without the agency gloss.",
+      },
+      {
+        title: "Commercial opportunity",
+        description: "An honest view on whether there's pipeline worth pursuing before you scale spend.",
+      },
+    ],
+    assurances: [
+      "No packaged pitch",
+      "No pressure to buy services you don't need",
+      "A direct conversation about winning more existing demand",
     ],
   },
 };
@@ -237,9 +304,22 @@ export interface Profile {
 }
 
 export const heroHighlights = [
-  "$1.2m in closed sales",
-  "100+ qualified leads",
-  "$80 return per $1 ad spend",
+  "$1.2m closed revenue",
+  "100+ qualified enquiries",
+  "Full-funnel attribution",
+];
+
+export const marqueeServices = [
+  "Paid Search",
+  "Google Ads",
+  "Search Intent Research",
+  "Landing Page Optimisation",
+  "CRM Attribution",
+  "Revenue Measurement",
+  "B2B Lead Generation",
+  "Conversion Tracking",
+  "Pipeline Reporting",
+  "Campaign Strategy",
 ];
 
 export const metrics = [

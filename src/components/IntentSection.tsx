@@ -9,7 +9,7 @@ export default function IntentSection() {
 
   return (
     <section className="section-padding relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(62,232,255,0.05)_0%,transparent_55%)]" />
+      <div className="absolute inset-0 accent-radial-right-soft" />
       <div className="container-wide relative">
         <SectionLabel>Our approach</SectionLabel>
         <FadeIn delay={0.1}>

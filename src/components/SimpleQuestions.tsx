@@ -10,7 +10,7 @@ export default function SimpleQuestions() {
 
   return (
     <section className="section-padding relative overflow-hidden bg-charcoal-light">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(62,232,255,0.04)_0%,transparent_60%)]" />
+      <div className="absolute inset-0 accent-radial-center" />
       <div className="container-wide relative">
         <SectionLabel>Clarity</SectionLabel>
         <FadeIn delay={0.1}>

@@ -7,7 +7,7 @@ import { metrics } from "@/data/siteData";
 export default function Metrics() {
   return (
     <section className="section-padding relative overflow-hidden border-y border-border">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(62,232,255,0.04)_0%,transparent_60%)]" />
+      <div className="absolute inset-0 accent-radial-center" />
 
       <div className="container-wide relative">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">

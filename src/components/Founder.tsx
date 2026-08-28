@@ -58,9 +58,9 @@ export default function Founder() {
                       transition={{ type: "spring", duration: 0.5, bounce: 0.15 }}
                     />
                   )}
-                  <span className="relative flex items-center gap-2">
+                  <span className="relative flex flex-col items-start gap-0.5 sm:flex-row sm:items-center sm:gap-2">
                     {p.name.split(" ")[0]}
-                    <span className="hidden text-[10px] font-normal text-muted-dim sm:inline">
+                    <span className="text-[10px] font-normal leading-tight text-muted-dim sm:text-inherit">
                       · {p.focus}
                     </span>
                   </span>
