@@ -33,7 +33,12 @@ export default function Footer() {
             >
               {siteConfig.email}
             </a>
-            <p className="mt-2 text-sm text-muted-dim">{siteConfig.phone}</p>
+            <a
+              href={siteConfig.phoneTel}
+              className="mt-2 inline-block text-sm text-muted-dim transition-colors hover:text-white"
+            >
+              {siteConfig.phone}
+            </a>
             <p className="mt-1 text-sm text-muted-dim">{siteConfig.location}</p>
           </div>
 
@@ -92,7 +97,7 @@ export default function Footer() {
         </div>
 
         <div className="divider-glow mt-14" />
-        <p className="mt-8 text-xs text-muted-dim">
+        <p className="mt-8 text-xs text-muted-dim" suppressHydrationWarning>
           © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
         </p>
       </div>

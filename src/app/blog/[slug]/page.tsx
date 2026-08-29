@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import BlogContentRenderer from "@/components/BlogContent";
 import SectionLabel from "@/components/SectionLabel";
 import { blogPosts } from "@/data/blog";
 import { siteConfig } from "@/data/siteData";
+import { absoluteUrl, buildPageMetadata } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -14,25 +14,19 @@ export async function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return { title: "Article Not Found" };
 
-  const url = `${siteConfig.siteUrl}/blog/${slug}`;
-  return {
+  return buildPageMetadata({
     title: post.metaTitle,
     description: post.metaDescription,
-    alternates: { canonical: url },
-    openGraph: {
-      type: "article",
-      url,
-      title: post.metaTitle,
-      description: post.metaDescription,
-      publishedTime: post.publishedAt,
-      modifiedTime: post.updatedAt ?? post.publishedAt,
-    },
-  };
+    path: `/blog/${slug}`,
+    type: "article",
+    publishedTime: post.publishedAt,
+    modifiedTime: post.updatedAt ?? post.publishedAt,
+  });
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -40,26 +34,35 @@ export default async function BlogPostPage({ params }: Props) {
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) notFound();
 
-  const url = `${siteConfig.siteUrl}/blog/${slug}`;
+  const url = absoluteUrl(`/blog/${slug}`);
 
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: post.metaTitle,
+    headline: post.title,
+    alternativeHeadline: post.metaTitle,
     description: post.metaDescription,
     url,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt ?? post.publishedAt,
+    articleSection: post.category,
+    wordCount: post.readingTime * 200,
     author: {
       "@type": "Person",
       name: siteConfig.founder,
-      url: siteConfig.siteUrl,
+      url: siteConfig.linkedin,
+      jobTitle: siteConfig.title,
     },
     publisher: {
       "@type": "Organization",
       name: siteConfig.name,
       url: siteConfig.siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/logo.png"),
+      },
     },
+    image: absoluteUrl("/opengraph-image"),
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
 

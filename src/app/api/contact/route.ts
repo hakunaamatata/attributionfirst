@@ -47,7 +47,6 @@ export async function POST(req: Request) {
   const recipient = process.env.NEXT_PUBLIC_CONTACT_FORM_EMAIL ?? "junaidkazi66@gmail.com";
 
   if (!apiKey) {
-    console.error("RESEND_API_KEY is not configured");
     return NextResponse.json(
       { error: "Contact form is not configured yet. Please email us directly." },
       { status: 503 }
@@ -82,8 +81,6 @@ export async function POST(req: Request) {
   });
 
   if (!res.ok) {
-    const err = await res.text();
-    console.error("Resend API error:", err);
     return NextResponse.json({ error: "Failed to send message. Please try again." }, { status: 500 });
   }
 

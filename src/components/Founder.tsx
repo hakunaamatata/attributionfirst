@@ -33,7 +33,7 @@ export default function Founder() {
           <div
             role="tablist"
             aria-label="Select team member"
-            className="mt-10 inline-flex flex-wrap rounded-full border border-border bg-charcoal-elevated p-1"
+            className="mt-10 flex w-full rounded-full border border-border bg-charcoal-light/80 p-1 sm:inline-flex sm:w-auto"
           >
             {profileKeys.map((key) => {
               const p = profiles[key];
@@ -47,21 +47,28 @@ export default function Founder() {
                   aria-selected={isActive}
                   aria-controls={`about-panel-${key}`}
                   onClick={() => setActive(key)}
-                  className={`relative rounded-full px-6 py-2.5 text-sm font-medium transition-colors ${
-                    isActive ? "text-charcoal" : "text-muted hover:text-white"
+                  className={`relative min-w-0 flex-1 rounded-full px-2 py-2 text-center text-xs font-medium transition-colors sm:flex-none sm:px-6 sm:py-2.5 sm:text-sm ${
+                    isActive ? "text-white" : "text-muted hover:text-white"
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeProfileTab"
-                      className="absolute inset-0 rounded-full bg-white"
+                      className="absolute inset-0 rounded-full border border-border-active bg-accent-muted shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_0_20px_var(--accent-glow-soft)]"
                       transition={{ type: "spring", duration: 0.5, bounce: 0.15 }}
                     />
                   )}
-                  <span className="relative flex flex-col items-start gap-0.5 sm:flex-row sm:items-center sm:gap-2">
-                    {p.name.split(" ")[0]}
-                    <span className="text-[10px] font-normal leading-tight text-muted-dim sm:text-inherit">
-                      · {p.focus}
+                  <span className="relative flex flex-col items-center gap-0.5 sm:flex-row sm:items-center sm:gap-2">
+                    <span className={`whitespace-nowrap ${isActive ? "font-semibold" : ""}`}>
+                      {p.name.split(" ")[0]}
+                    </span>
+                    <span
+                      className={`text-[9px] font-normal leading-tight sm:text-[11px] ${
+                        isActive ? "text-accent" : "text-muted-dim"
+                      }`}
+                    >
+                      <span className="hidden sm:inline">· </span>
+                      {p.focus}
                     </span>
                   </span>
                 </button>

@@ -312,6 +312,35 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.process-step-track {
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 1.25rem;
+  padding-inline: 1.25rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  cursor: grab;
+}
+
+.process-step-track:active {
+  cursor: grabbing;
+}
+
+.process-step-track::-webkit-scrollbar {
+  display: none;
+}
+
+.process-step-btn {
+  min-width: min(72vw, 220px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-step-track {
+    scroll-snap-type: none;
+  }
+}
+
 .process-detail-glow {
   background: radial-gradient(
     ellipse at 85% 0%,

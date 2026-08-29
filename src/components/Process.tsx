@@ -82,6 +82,9 @@ export default function Process() {
   const { process } = homepageCopy;
   const steps = process.steps;
   const sectionRef = useRef<HTMLElement>(null);
+  const stepTrackRef = useRef<HTMLDivElement>(null);
+  const stepButtonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const isProgrammaticScroll = useRef(false);
   const manualPauseTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [active, setActive] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -121,6 +124,104 @@ export default function Process() {
     return () => clearInterval(timer);
   }, [isInView, isPaused, active, steps.length]);
 
+  useEffect(() => {
+    const button = stepButtonRefs.current[active];
+    const track = stepTrackRef.current;
+    if (!button || !track) return;
+
+    const trackRect = track.getBoundingClientRect();
+    const buttonRect = button.getBoundingClientRect();
+    const offset =
+      buttonRect.left -
+      trackRect.left -
+      trackRect.width / 2 +
+      buttonRect.width / 2;
+
+    isProgrammaticScroll.current = true;
+    track.scrollTo({
+      left: track.scrollLeft + offset,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+    });
+    window.setTimeout(() => {
+      isProgrammaticScroll.current = false;
+    }, 350);
+  }, [active]);
+
+  useEffect(() => {
+    const track = stepTrackRef.current;
+    if (!track) return;
+
+    let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    const onScroll = () => {
+      if (isProgrammaticScroll.current) return;
+
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const trackCenter = track.scrollLeft + track.clientWidth / 2;
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        stepButtonRefs.current.forEach((button, index) => {
+          if (!button) return;
+          const buttonCenter = button.offsetLeft + button.offsetWidth / 2;
+          const distance = Math.abs(trackCenter - buttonCenter);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+
+        setActive((prev) => {
+          if (prev === closestIndex) return prev;
+          setManualPaused(true);
+          if (manualPauseTimeout.current) clearTimeout(manualPauseTimeout.current);
+          manualPauseTimeout.current = setTimeout(() => setManualPaused(false), MANUAL_PAUSE_MS);
+          return closestIndex;
+        });
+      }, 80);
+    };
+
+    track.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      track.removeEventListener("scroll", onScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+    };
+  }, []);
+
+  useEffect(() => {
+    const track = stepTrackRef.current;
+    if (!track) return;
+
+    const onWheel = (event: WheelEvent) => {
+      const delta =
+        Math.abs(event.deltaY) > Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+      if (!delta) return;
+
+      const maxScrollLeft = track.scrollWidth - track.clientWidth;
+      if (maxScrollLeft <= 0) return;
+
+      const scrollingForward = delta > 0;
+      const atStart = track.scrollLeft <= 0;
+      const atEnd = track.scrollLeft >= maxScrollLeft - 1;
+
+      if ((scrollingForward && atEnd) || (!scrollingForward && atStart)) {
+        return;
+      }
+
+      event.preventDefault();
+      setManualPaused(true);
+      if (manualPauseTimeout.current) clearTimeout(manualPauseTimeout.current);
+      manualPauseTimeout.current = setTimeout(() => setManualPaused(false), MANUAL_PAUSE_MS);
+      track.scrollLeft += delta;
+    };
+
+    track.addEventListener("wheel", onWheel, { passive: false });
+    return () => track.removeEventListener("wheel", onWheel);
+  }, []);
+
   return (
     <section
       id="process"
@@ -155,7 +256,84 @@ export default function Process() {
         </div>
 
         <div className="mt-14 md:mt-16">
-          <div className="relative hidden md:block">
+          <div className="relative -mx-5 lg:mx-0 lg:hidden">
+            <div className="pointer-events-none absolute top-0 bottom-0 left-0 z-10 w-8 bg-gradient-to-r from-charcoal to-transparent" />
+            <div className="pointer-events-none absolute top-0 right-0 bottom-0 z-10 w-8 bg-gradient-to-l from-charcoal to-transparent" />
+
+            <div
+              ref={stepTrackRef}
+              className="process-step-track flex gap-3 overflow-x-auto pb-2"
+              role="tablist"
+              aria-label="Process steps"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {steps.map((step, i) => {
+                const meta = stepMeta[i];
+                const isActive = active === i;
+                const isComplete = i < active;
+
+                return (
+                  <button
+                    key={step.number}
+                    ref={(node) => {
+                      stepButtonRefs.current[i] = node;
+                    }}
+                    type="button"
+                    role="tab"
+                    onClick={() => goTo(i, true)}
+                    aria-selected={isActive}
+                    aria-current={isActive ? "step" : undefined}
+                    className={`process-step-btn relative shrink-0 snap-center overflow-hidden rounded-xl border px-4 py-3 text-left transition-all duration-500 ${
+                      isActive
+                        ? "border-border-active bg-charcoal-elevated/90 shadow-[0_0_24px_var(--accent-glow-soft)]"
+                        : isComplete
+                          ? "border-border-hover bg-charcoal-light/80"
+                          : "border-border bg-charcoal-light/50"
+                    }`}
+                  >
+                    {isActive && isInView && !isPaused && (
+                      <motion.span
+                        key={`step-progress-${active}`}
+                        className="absolute bottom-0 left-0 right-0 h-0.5 origin-left bg-accent"
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: AUTO_ADVANCE_MS / 1000, ease: "linear" }}
+                        aria-hidden="true"
+                      />
+                    )}
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                          isActive ? "border-border-active bg-charcoal-light" : "border-border"
+                        }`}
+                      >
+                        <StepIcon id={meta.id} />
+                      </div>
+                      <div className="min-w-0">
+                        <span
+                          className={`text-[10px] tracking-[0.14em] uppercase transition-colors ${
+                            isActive ? "text-accent" : "text-muted-dim"
+                          }`}
+                        >
+                          {step.number}
+                        </span>
+                        <p
+                          className={`font-display text-sm font-semibold whitespace-nowrap transition-colors ${
+                            isActive ? "text-white" : "text-white/75"
+                          }`}
+                        >
+                          {step.title}
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="relative hidden lg:block">
             <div className="absolute top-6 right-0 left-0 h-px bg-border" />
             <motion.div
               className="absolute top-6 left-0 h-px origin-left bg-accent"
@@ -211,66 +389,6 @@ export default function Process() {
                 );
               })}
             </div>
-          </div>
-
-          <div className="flex flex-col gap-2 pb-1 md:hidden">
-            {steps.map((step, i) => {
-              const meta = stepMeta[i];
-              const isActive = active === i;
-              const isComplete = i < active;
-
-              return (
-                <button
-                  key={step.number}
-                  type="button"
-                  onClick={() => goTo(i, true)}
-                  aria-current={isActive ? "step" : undefined}
-                  className={`relative overflow-hidden rounded-xl border px-4 py-3 text-left transition-all duration-500 ${
-                    isActive
-                      ? "border-border-hover bg-charcoal-elevated/90"
-                      : isComplete
-                        ? "border-border bg-charcoal-light/80"
-                        : "border-border bg-charcoal-light/50"
-                  }`}
-                >
-                  {isActive && isInView && !isPaused && (
-                    <motion.span
-                      key={`mobile-step-progress-${active}`}
-                      className="absolute bottom-0 left-0 right-0 h-0.5 origin-left bg-accent"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: AUTO_ADVANCE_MS / 1000, ease: "linear" }}
-                      aria-hidden="true"
-                    />
-                  )}
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border ${
-                        isActive ? "border-border-active bg-charcoal-light" : "border-border"
-                      }`}
-                    >
-                      <StepIcon id={meta.id} />
-                    </div>
-                    <div className="min-w-0">
-                      <span
-                        className={`text-[10px] tracking-[0.14em] uppercase ${
-                          isActive ? "text-accent" : "text-muted-dim"
-                        }`}
-                      >
-                        {step.number}
-                      </span>
-                      <p
-                        className={`font-display text-sm font-semibold ${
-                          isActive ? "text-white" : "text-white/75"
-                        }`}
-                      >
-                        {step.title}
-                      </p>
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
           </div>
         </div>
 

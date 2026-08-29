@@ -30,9 +30,9 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "why-roas-declining-paid-ads-expert-attribution",
     title: "Why Your ROAS Is Declining: The Real Problem Isn't Your Paid Ads Expert",
-    metaTitle: "Why ROAS Is Declining (It's Not Your Paid Ads Expert)",
+    metaTitle: "Why ROAS Is Declining | B2B Attribution Guide",
     metaDescription:
-      "Struggling with declining ROAS? The problem isn't your paid ads expert—it's broken attribution data. Learn how to rebuild your measurement infrastructure.",
+      "Declining ROAS is rarely a talent problem. Learn why broken attribution data misleads B2B paid search decisions — and how to rebuild measurement that drives pipeline.",
     publishedAt: "2026-04-04",
     category: "Attribution & Measurement",
     readingTime: 12,

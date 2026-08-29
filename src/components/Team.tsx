@@ -34,7 +34,7 @@ export default function Team() {
                     <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border border-border">
                       <Image
                         src={member.image}
-                        alt={member.name}
+                        alt={member.imageAlt ?? `${member.name}, ${member.role}`}
                         fill
                         className="object-cover"
                         sizes="56px"

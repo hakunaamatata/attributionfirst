@@ -105,6 +105,7 @@ export interface TeamMember {
   linkedin: string;
   initials: string;
   image?: string;
+  imageAlt?: string;
 }
 
 export const teamMembers: TeamMember[] = [
@@ -122,6 +123,8 @@ export const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/junaid-kazi-b205b0222/",
     initials: "JK",
     image: "/images/profileImage.jpeg",
+    imageAlt:
+      "Junaid Kazi, B2B paid search and performance marketing specialist at Attribution First",
   },
   {
     name: "Noumaan Khatib",
@@ -130,6 +133,8 @@ export const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/nouman-khatib-495830100/",
     initials: "NK",
     image: "/images/nouman-profile.jpeg",
+    imageAlt:
+      "Noumaan Khatib, search technology and SEO specialist at Attribution First",
   },
 ];
 
@@ -617,7 +622,7 @@ export const profiles: Record<"michael" | "junaid" | "nouman", Profile> = {
     name: "Michael Simkin",
     title: "Commercial Strategy & Positioning",
     focus: "Strategy & Research",
-    imageAlt: "Michael Simkin - Commercial Strategy",
+    imageAlt: "Michael Simkin, commercial strategy and customer research consultant at Attribution First",
     bio: [
       "Michael helps B2B businesses define where their commercial opportunities lie, understand what buyers actually value, and translate complex propositions into clear, compelling messaging.",
     ],
@@ -651,7 +656,8 @@ export const profiles: Record<"michael" | "junaid" | "nouman", Profile> = {
     title: "Paid Search & Performance Marketing",
     focus: "Paid Search",
     image: "/images/profileImage.jpeg",
-    imageAlt: "Junaid Kazi - Paid Search & Performance Marketing",
+    imageAlt:
+      "Junaid Kazi, B2B paid search and Google Ads specialist at Attribution First",
     bio: [
       "Junaid designs and manages paid-search programmes for high-value B2B markets — including enterprise campaigns for Thomas Cook and international lead generation across the UK, US and UAE.",
     ],
@@ -697,7 +703,8 @@ export const profiles: Record<"michael" | "junaid" | "nouman", Profile> = {
     title: "Search, Technology & Conversion",
     focus: "Technology & SEO",
     image: "/images/nouman-profile.jpeg",
-    imageAlt: "Noumaan Khatib - Search, Technology & Conversion",
+    imageAlt:
+      "Noumaan Khatib, technical SEO, web development and conversion specialist at Attribution First",
     bio: [
       "Noumaan builds the search and conversion infrastructure behind effective campaigns — landing pages, technical SEO and performance engineering that turns traffic into credible enquiries.",
     ],

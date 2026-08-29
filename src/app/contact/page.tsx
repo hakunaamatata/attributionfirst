@@ -1,16 +1,15 @@
-import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import FadeIn from "@/components/FadeIn";
 import SectionLabel from "@/components/SectionLabel";
 import { contactPageCopy, siteConfig } from "@/data/siteData";
+import {
+  absoluteUrl,
+  buildContactPageSchema,
+  buildPageMetadata,
+  pageSeo,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Get in touch with Junaid Ahmed Kazi for performance marketing, or Nouman Khatib for websites, SEO and landing pages.",
-  alternates: { canonical: `${siteConfig.siteUrl}/contact` },
-  openGraph: { url: `${siteConfig.siteUrl}/contact` },
-};
+export const metadata = buildPageMetadata(pageSeo.contact);
 
 const contactMethods = [
   {
@@ -53,15 +52,17 @@ export default function ContactPage() {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
-      { "@type": "ListItem", position: 2, name: "Contact" },
+      { "@type": "ListItem", position: 2, name: "Contact", item: absoluteUrl(pageSeo.contact.path) },
     ],
   };
+
+  const structuredData = [breadcrumbSchema, buildContactPageSchema()];
 
   return (
     <main>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
       <section className="section-padding relative overflow-hidden border-b border-border pt-32 md:pt-36">

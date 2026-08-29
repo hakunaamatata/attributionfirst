@@ -1,25 +1,19 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import SectionLabel from "@/components/SectionLabel";
 import { blogPosts } from "@/data/blog";
 import { blogPageCopy, siteConfig } from "@/data/siteData";
+import { absoluteUrl, buildPageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Blog — Marketing Attribution & Performance Insights",
-  description:
-    "Expert insights on marketing attribution, ROAS optimization, and paid ads strategy. Learn how to build measurement infrastructure that drives real business growth.",
-  alternates: { canonical: `${siteConfig.siteUrl}/blog` },
-  openGraph: { url: `${siteConfig.siteUrl}/blog` },
-};
+export const metadata = buildPageMetadata(pageSeo.blog);
 
 export default function BlogPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
     name: "Attribution First — Marketing Insights",
-    description: metadata.description,
-    url: `${siteConfig.siteUrl}/blog`,
+    description: pageSeo.blog.description,
+    url: absoluteUrl(pageSeo.blog.path),
     author: {
       "@type": "Organization",
       name: siteConfig.name,

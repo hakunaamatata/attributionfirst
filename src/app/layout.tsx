@@ -1,7 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import NoiseOverlay from "@/components/NoiseOverlay";
-import { siteConfig, teamMembers } from "@/data/siteData";
+import { teamMembers } from "@/data/siteData";
+import {
+  buildOrganizationSchema,
+  buildWebsiteSchema,
+  seoDefaults,
+} from "@/lib/seo";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -12,30 +17,48 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Attribution First | B2B Customer Acquisition Through Search",
-  description: siteConfig.description,
-  keywords: [
-    "B2B customer acquisition",
-    "revenue attribution",
-    "paid search consultancy",
-    "search intent marketing",
-    "Google Ads B2B",
-    "marketing measurement",
-  ],
-  authors: teamMembers.map((m) => ({ name: m.name })),
+  metadataBase: new URL(seoDefaults.siteUrl),
+  title: {
+    default: `${seoDefaults.siteName} | ${seoDefaults.defaultTitle}`,
+    template: `%s | ${seoDefaults.siteName}`,
+  },
+  description: seoDefaults.defaultDescription,
+  keywords: seoDefaults.keywords,
+  authors: teamMembers.map((member) => ({ name: member.name, url: member.linkedin })),
+  creator: seoDefaults.siteName,
+  publisher: seoDefaults.siteName,
+  category: "Business",
+  alternates: {
+    canonical: seoDefaults.siteUrl,
+  },
   openGraph: {
-    title: "Attribution First | B2B Customer Acquisition Through Search",
-    description: siteConfig.description,
+    title: `${seoDefaults.siteName} | ${seoDefaults.defaultTitle}`,
+    description: seoDefaults.defaultDescription,
     type: "website",
-    locale: "en_GB",
-    siteName: "Attribution First",
+    locale: seoDefaults.locale,
+    siteName: seoDefaults.siteName,
+    url: seoDefaults.siteUrl,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Attribution First | B2B Customer Acquisition Through Search",
-    description: siteConfig.description,
+    title: `${seoDefaults.siteName} | ${seoDefaults.defaultTitle}`,
+    description: seoDefaults.defaultDescription,
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export const viewport: Viewport = {
@@ -44,32 +67,20 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Attribution First",
-  description: siteConfig.description,
-  url: siteConfig.siteUrl,
-  employee: teamMembers.map((m) => ({
-    "@type": "Person",
-    name: m.name,
-    jobTitle: m.role,
-    sameAs: m.linkedin,
-  })),
-};
+const jsonLd = [buildOrganizationSchema(), buildWebsiteSchema()];
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={manrope.variable}>
+    <html lang="en-GB" className={manrope.variable} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased" suppressHydrationWarning>
         <NoiseOverlay />
         {children}
       </body>

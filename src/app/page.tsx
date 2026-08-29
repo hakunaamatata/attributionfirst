@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
@@ -12,6 +13,9 @@ import Founder from "@/components/Founder";
 import Insights from "@/components/Insights";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import { buildPageMetadata, pageSeo } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata(pageSeo.home);
 
 export default function Home() {
   return (
